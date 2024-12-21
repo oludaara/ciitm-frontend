@@ -1,5 +1,6 @@
-import React from 'react'
 import { IoClose } from "react-icons/io5";
+import Notice_Card from "../components/Home/Notice_Card";
+
 
 const Hero = () => {
   return (
@@ -10,17 +11,13 @@ const Hero = () => {
         <h3 className='text-6xl font-[700] leading-tight'>Education</h3>
         <p className='text-2xl w-[70%] '>Empowering students to achieve academic success with professional resources</p>
       </div>
-      <div className="card-container h-full w-1/2 flex items-end justify-end pb-20 flex-col gap-4">
-        <div className="card w-[60%] text-black bg-white rounded-md px-4 py-2 flex items-start justify-between">
-          <h3 className='w-1/2'>Download Free Call</h3>
-          <button className='bg-[#FF0000] px-2 rounded text-white'>Explore Now</button>
-          <IoClose fontWeight={900} size={20} />
-        </div>
-        <div className="card w-[60%] text-black bg-white rounded-md px-4 py-2 flex items-start justify-between">
-          <h3 className='w-1/2'>Apply online admission 2025-2026</h3>
-          <button className='bg-[#FF0000] rounded px-2 text-white'>Apply Today</button>
-          <IoClose fontWeight={900} size={20} />
-        </div>
+      <div className="card-container h-full w-1/2 flex items-end justify-end pb-10 flex-col gap-4">
+    
+
+
+        <Notice_Card title="Download Free Call" />
+        <Notice_Card title="Apply online admission 2025-2026" />
+      
       </div>
     </section>
   )
