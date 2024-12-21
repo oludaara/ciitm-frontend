@@ -1,5 +1,5 @@
-import { IoClose } from "react-icons/io5";
-import Notice_Card from "../components/Home/Notice_Card";
+// import { IoClose } from "react-icons/io5";
+import Notice_Card from "./Notice_Card";
 
 
 const Hero = () => {
