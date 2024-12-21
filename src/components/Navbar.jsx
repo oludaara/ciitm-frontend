@@ -2,9 +2,9 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className='w-full h-20 fixed top-0 left-0 bg-white flex items-center justify-between px-10'>
+    <nav className='w-full py-[2vh] fixed top-0 left-0 bg-white flex items-center justify-between px-10'>
         <div className="logo">
-            <h1 className='text-4xl'>CIITM</h1>
+            <h1 className='text-[1.8vw]'>CIITM</h1>
         </div>
         <div className="links">
             <ul className='flex items-center justify-center gap-6'>

@@ -1,14 +1,11 @@
-import React from 'react'
-import Hero from './pages/Hero'
-import Navbar from './components/Navbar'
-
+import React from "react";
+import Body from "./body";
 const App = () => {
   return (
     <>
-    <Navbar/>
-    <Hero/>
+      <Body />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
