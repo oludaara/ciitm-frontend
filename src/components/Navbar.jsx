@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../assets/images/ciitmLogo.png'
 
 const Navbar = () => {
   return (
-    <nav className='max-lg:bg-red-500 w-full py-[2vh] fixed top-0 left-0 bg-white flex items-center justify-between px-10'>
+    <nav className='max-lg:bg-red-500 w-full py-[2vh] fixed top-0 left-0 z-[99999] bg-white flex items-center justify-between px-10'>
         <div className="logo">
-            <h1 className='text-[1.8vw]'>CIITM</h1>
+            <img src={logo} alt="" />
         </div>
         <div className="flex gap-[2vw] text-[.9vw]">
             <Link to="/">Home</Link>

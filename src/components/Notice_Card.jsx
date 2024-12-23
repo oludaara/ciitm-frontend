@@ -32,10 +32,10 @@ useGSAP(()=>{
   }
 
   return (
-    <div ref={box_ref} className='notice-card w-[60%] h-[5vh] text-black bg-white rounded-md px-3 py-2 flex items-start justify-between opacity-0'>
+    <div ref={box_ref} className='notice-card w-[60%] h-fit text-black bg-white rounded-md px-3 py-2 flex items-center justify-between opacity-0'>
         
-      <h3 className='w-1/2'>{title}</h3>
-      <button className='bg-[#FF0000] px-2 rounded text-white h-full'>
+      <h3 className='w-2/3'>{title}</h3>
+      <button className='bg-[#FF0000] px-2 py-1 rounded text-white h-fit'>
         Explore Now
       </button>
       <IoClose fontWeight={900} size={20} onClick={Handle_Clone_Btn} />
