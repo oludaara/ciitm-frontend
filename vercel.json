@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/api(.*)",
-        "destination": "https://ciitm-backend.onrender.com/"
+        "destination": "https://ciitm-backend.onrender.com$1"
       }
     ]
   }
