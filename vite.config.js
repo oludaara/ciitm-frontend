@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://ciitm-backend.onrender.com', 
+      '/api': 'https://ciitm-backend.onrender.com/', 
     },
     
   }
