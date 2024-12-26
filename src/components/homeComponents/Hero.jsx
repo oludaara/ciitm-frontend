@@ -28,20 +28,20 @@ const Hero = () => {
     return (
 
         <section
-            className="w-full h-screen flex flex-col lg:flex-row items-center justify-center text-white bg-cover bg-no-repeat px-10"
+            className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center text-white bg-cover bg-no-repeat px-10 relative"
             style={{ backgroundImage: `url(${image})` }}
         >
-            <div className="text w-full lg:w-1/2 h-full flex items-start justify-end lg:justify-center flex-col">
+            <div className="text w-full lg:w-1/2 h-full flex items-start justify-center lg:justify-center flex-col gap-3 absolute left-[3vw]">
 
-                <h3 className="text-[7vw] lg:text-[4vw] font-extrabold lg:font-[700] leading-tight">
+                <h3 className="text-[6vw] lg:text-[4vw] font-extrabold lg:font-[700] leading-tight w-[25vh] bg-red-400 lg:w-fit">
                     {heading}
                 </h3>
 
-                <p className="text-lg sm:text-2xl w-[70%]">
+                <p className="text-[5vw] sm:text-2xl w-[70%]">
                     {Paragraph}
                 </p>
             </div>
-            <div className="card-container h-1/2 lg:h-full w-full lg:w-1/2 flex items-end justify-end pb-10 flex-col gap-4">
+            <div className="card-container absolute bottom-[3vh] right-[2vw] lg:h-full w-full lg:w-1/2 flex items-end justify-end pb-10 flex-col gap-4">
                 <Notice_Card title="Download Free Call" />
                 <Notice_Card title="Apply online admission 2025-2026" />
             </div>
