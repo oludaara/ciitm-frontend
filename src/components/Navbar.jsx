@@ -64,7 +64,10 @@ const Navbar = () => {
 
     <nav className='w-screen lg:py-[2vh] fixed top-0 left-0 bg-[#333] lg:bg-white flex flex-col lg:flex-row items-center justify-between lg:px-10 overflow-hidden lg:overflow-visible gap-7 lg:gap-0 h-[8vh] lg:h-auto z-50 '>
         <div className="logo flex justify-between items-center lg:items-start lg:justify-normal w-full h-fit lg:h-auto lg:w-auto px-5 py-2 lg:py-0 lg:px-0 bg-white">
+          <Link to='/'>
             <img src={logo} alt="Ciitm Logo" className="h-2/3" />
+          
+          </Link>
             <TiThMenu  className="open_menu lg:hidden text-2xl  rounded-full w-12 h-full p-2 bg-[#333] text-white" onClick={Toggle_Open}/>
             <AiFillCloseCircle  className="close_menu lg:hidden text-4xl   w-12 h-full  text-[#333] hidden" onClick={Toggle_Close}/>
 

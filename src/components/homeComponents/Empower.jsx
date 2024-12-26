@@ -43,7 +43,7 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className="empower-text md:w-1/2  h-full relative">
+      <div className="empower-text md:w-1/2  relative">
         <h1 className="heading md:text-6xl sm:text-2xl   font-['Montserrat'] font-bold tracking-wide w-[90%]">
           {Heading_First}
         </h1>
