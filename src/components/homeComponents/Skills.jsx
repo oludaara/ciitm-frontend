@@ -17,18 +17,18 @@ function Skills() {
   }, [data])  
 
   return (
-    <div className='skills-main flex w-full h-fit bg-[#333] py-8 px-5 gap-12 items-center justify-center'>
+    <div className='skills-main flex  bg-[#333] py-8 px-5 gap-12 items-center justify-center'>
       {error ? (
         <h1>Data Not Loaded</h1>  // Show error if there's no data
       ) : (
         goals.length > 0 ? (
           goals.map(item => (
-            <div className='h-52 w-52 rounded-lg flex flex-col justify-center py-4 px-3 bg-white' key={item._id}>
+            <div className='h-full w-full rounded-lg flex flex-col justify-center py-[0.8vh] px-[0.8vw] bg-white' key={item._id}>
               <div className='image h-16 w-16'>
                 <img src={item.image} alt={item.title} className='object-cover w-full h-full rounded-full'/>
               </div>
-              <h1 className='heading2 my-2 text-2xl sm:text-xl font-["Montserrat"]'>{item.title}</h1>
-              <p className='text-gray-500 text-sm'>{item.content}</p>
+              <h1 className='heading2 my-2 text-[1vw]  font-["Montserrat"]'>{item.title}</h1>
+              <p className='text-gray-500 text-[0.8vw]'>{item.content}</p>
             </div>
           ))
         ) : (
