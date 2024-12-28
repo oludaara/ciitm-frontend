@@ -30,28 +30,28 @@ useEffect(() => {
 
 
   return (
-    <div className="flex mt-10 relative">
+    <div className="flex my-10 max-[599px]:my-0 relative">
       <div className="empower-img-div relative w-1/2 h-full flex justify-center items-center">
-        <div className="h-[15vw] w-[15vw] bg-black rounded-full absolute left-[5vw] top-0">
+        <div className="h-[15vw] w-[15vw] bg-black rounded-full absolute left-[5vw] top-[3vw]">
           <img src={Image1} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
-        <div className="h-[10vh]  md:h-[12vw] w-[12vw] rounded-full absolute left-[22vw] top-[20vh]">
+        <div className="h-[10vh]  md:h-[12vw] w-[12vw] rounded-full absolute left-[21vw] top-[20vh]">
         <img src={Image2} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
-        <div className="h-[15vw] w-[15vw]  rounded-full absolute left-[4vw] top-[40vh]">
+        <div className="h-[15vw] w-[15vw]  rounded-full absolute left-[8vw] top-[40vh]">
         <img src={Image3} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
       </div>
 
-      <div className="empower-text md:w-1/2  relative">
-        <h1 className="heading text-[3.2vw]   font-['Montserrat'] font-bold tracking-wide w-[43vw]  text-[#333333]">
+      <div className="empower-text md:w-1/2 relative">
+        <h1 className="heading text-[3.2vw] max-[599px]:text-[9vw] max-[599px]:w-[90%] font-['Montserrat'] font-bold max-[599px]:font-extrabold leading-tight w-[43vw]  text-[#333333]">
           {Heading_First}
         </h1>
-        <h2 className="heading2 text-[1.8vw]  font-['Montserrat'] font-medium my-8 w-[35vw]  text-[#333333]">
+        <h2 className="heading2 text-[1.6vw] max-[599px]:text-[5vw] font-['Montserrat'] font-medium max-[599px]:font-bold my-2 max-[599px]:my-2 max-[599px]:leading-tight w-[37vw] max-[599px]:w-full text-[#333333]">
           {Heading_Second}
         </h2>
 
-        <p className="text-[0.9vw]   font-medium my-[1vh] w-[35vw]  text-[#333333] font-['Poppins'] ">
+        <p className="text-[0.9vw] max-[599px]:mt-4 max-[599px]:text-[3vw] mt-4 font-medium w-[35vw] max-[599px]:w-full text-[#333333] font-['Poppins'] ">
           {Paragraph_First}
           <br />
           <br />
