@@ -30,35 +30,35 @@ useEffect(() => {
 
 
   return (
-    <div className="flex mt-10 md:h-[109vh] lg:h-[90vh] sm:h-fit relative">
+    <div className="flex my-10 max-[599px]:my-0 relative">
       <div className="empower-img-div relative w-1/2 h-full flex justify-center items-center">
-        <div className="sm:h-48 sm:w-48 md:h-72 md:w-72 bg-black rounded-full absolute left-[5%] top-0">
+        <div className="h-[15vw] w-[15vw] bg-black rounded-full absolute left-[5vw] top-[3vw]">
           <img src={Image1} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
-        <div className="md:h-52 md:w-52 sm:h-28 sm:w-28 bg-black rounded-full absolute left-[40%] top-[20%] md:left-[55%] md:top-[25%] lg:left-[40%] lg:top-[22%]">
+        <div className="h-[10vh]  md:h-[12vw] w-[12vw] rounded-full absolute left-[21vw] top-[20vh]">
         <img src={Image2} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
-        <div className="md:h-72 md:w-72 sm:h-48 sm:w-48 bg-black rounded-full absolute left-[12%] top-[45%]">
+        <div className="h-[15vw] w-[15vw]  rounded-full absolute left-[8vw] top-[40vh]">
         <img src={Image3} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
       </div>
 
-      <div className="empower-text md:w-1/2  relative">
-        <h1 className="heading md:text-6xl sm:text-2xl   font-['Montserrat'] font-bold tracking-wide w-[90%]">
+      <div className="empower-text md:w-1/2 relative">
+        <h1 className="heading text-[3.2vw] max-[599px]:text-[9vw] max-[599px]:w-[90%] font-['Montserrat'] font-bold max-[599px]:font-extrabold leading-tight w-[43vw]  text-[#333333]">
           {Heading_First}
         </h1>
-        <h2 className="heading2 md:text-3xl sm:text-xl font-['Montserrat'] font-medium my-8 w-[90%]">
+        <h2 className="heading2 text-[1.6vw] max-[599px]:text-[5vw] font-['Montserrat'] font-medium max-[599px]:font-bold my-2 max-[599px]:my-2 max-[599px]:leading-tight w-[37vw] max-[599px]:w-full text-[#333333]">
           {Heading_Second}
         </h2>
 
-        <p className="text-gray-500 sm:w-[75%] sm:text-sm w-full font-['Poppins'] ">
+        <p className="text-[0.9vw] max-[599px]:mt-4 max-[599px]:text-[3vw] mt-4 font-medium w-[35vw] max-[599px]:w-full text-[#333333] font-['Poppins'] ">
           {Paragraph_First}
           <br />
           <br />
           {Paragraph_Second}
         </p>
 
-        <button className="mt-8 bg-[#333] font-['Poppins'] text-white py-2 px-4 rounded-lg">Read More</button>
+        <button className="my-[2vh] bg-[#333] font-['Poppins'] text-white py-2 px-4 rounded-lg">Read More</button>
       </div>
     </div>
   );
