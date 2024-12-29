@@ -33,7 +33,7 @@ const Hero = () => {
         >
             <div className="text w-full lg:w-1/2 h-full flex items-start justify-center lg:justify-center flex-col gap-3 absolute left-[3vw]">
 
-                <h3 className="text-[6vw] lg:text-[4vw] font-extrabold lg:font-[700] leading-tight w-[25vh] bg-red-400 lg:w-fit">
+                <h3 className="text-[6vw] lg:text-[4vw] font-extrabold lg:font-[700] leading-tight w-[25vh] lg:w-fit">
                     {heading}
                 </h3>
 
