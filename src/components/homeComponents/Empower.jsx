@@ -1,5 +1,6 @@
 import React, {memo, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
+import arrow from '../../assets/images/arrow.png'
 
 function Empower() {
 const [Image1, setImage1] = useState('')
@@ -31,6 +32,9 @@ useEffect(() => {
 
   return (
     <div className="flex my-10 max-[599px]:my-0 relative">
+
+      <img src={arrow} alt="arrow image" className="arrow-image absolute top-1/2 left-[39vw] -translate-x-1/2 -translate-y-1/2 h-[13vw]" />
+
       <div className="empower-img-div relative w-1/2 h-full flex justify-center items-center">
         <div className="h-[15vw] w-[15vw] bg-black rounded-full absolute left-[5vw] top-[3vw]">
           <img src={Image1} alt="Image1" className="h-full w-full object-cover rounded-full" />
