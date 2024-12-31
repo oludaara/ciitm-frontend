@@ -72,7 +72,7 @@ const Album = () => {
               <div className="flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw]  md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2">
                 <GoArrowUpRight className="text-2xl text-white" />
               </div>
-              <div className="absolute bottom-0 left-0 bg-black bg-opacity-20 flex justify-between h-[20%] items-center px-4 w-full z-50">
+              <div className="absolute bottom-0 left-0 bg-black bg-opacity-20 flex justify-between h-[20%] items-center px-4 w-full z-40">
                 <p className="text-[2vw] md:text-[1vw] text-white font-semibold">{item.aName}</p>
                 <p className="text-[2.3vw] md:text-[1vw] text-white">{item.createdAt.split('T')[0]}</p>
               </div>
@@ -110,7 +110,7 @@ const Album = () => {
                 <GoArrowUpRight className="text-2xl text-white" />
               </div>
 
-                <div className="absolute bottom-0 right-0 bg-black bg-opacity-40 flex justify-between h-[25%] items-center px-4 w-full z-50  ">
+                <div className="absolute bottom-0 right-0 bg-black bg-opacity-40 flex justify-between h-[25%] items-center px-4 w-full z-40  ">
                 <p className="text-lg md:text-base text-white">{item.aName}</p>
                 {/* <p className="sm:text-sm md:text-base text-white">{item.aDescription}</p> */}
                 <p className="text-lg md:text-base text-white">{item.createdAt.split('T')[0]}</p>

@@ -24,7 +24,7 @@ const Hero = () => {
     }, [hero])
 
 
-
+ 
     return (
 
         <section
@@ -33,11 +33,11 @@ const Hero = () => {
         >
             <div className="text w-full lg:w-1/2 h-full flex items-start justify-center lg:justify-center flex-col gap-3 absolute left-[3vw]">
 
-                <h3 className="text-[6vw] lg:text-[4vw] font-extrabold lg:font-[700] leading-tight w-[25vh] lg:w-fit">
+                <h3 className=" max-[400px]:text-[8.5vw] text-[6vw] lg:text-[4vw] font-extrabold lg:font-[700] leading-tight w-[25vh] lg:w-fit">
                     {heading}
                 </h3>
 
-                <p className="text-[5vw] sm:text-2xl w-[70%]">
+                <p className="max-[400px]:text-[6vw] text-[5vw] sm:text-2xl w-[70%]">
                     {Paragraph}
                 </p>
             </div>
