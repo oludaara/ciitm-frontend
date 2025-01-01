@@ -5,7 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*{
+    font-family: "Poppins";
+}
 
 .heading{
     font-family:"Montserrat", serif;
