@@ -31,8 +31,10 @@ p{
   
   .slick-slide:not(.slick-center) .card {
     transform: scale(0.9);
-    opacity: 0.5;
+    opacity: 0.5 !important; 
   }
+  
+ 
 
 /* making the empower section responsive */
 
@@ -48,6 +50,9 @@ p{
         height: fit-content;
         padding: 20px;
     }
+    /* .slick-prev{
+        left: 10px !important;
+      } */
 
     /* testimonial section responsive */
     .slick-slide:not(.slick-center) .card {
