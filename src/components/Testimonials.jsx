@@ -20,6 +20,7 @@ useEffect(()=>{
   handleUserTestimonial()
 },[])
 
+
 const starsFunction = (star) =>{
   let stars =""
   for (let i=0; i<star; i++){
@@ -30,7 +31,7 @@ const starsFunction = (star) =>{
 }
   const settings = {
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
@@ -39,20 +40,20 @@ const starsFunction = (star) =>{
     autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 600, // Mobile
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          centerPadding: "0",
-          centerMode: false,
+          centerPadding: "0%",
+          centerMode: true,
         },
       },
     ],
   };
 
   return (
-    <section className="w-full py-10 px-6 text-white bg-[#333] flex max-[600px]:flex-col items-center overflow-hidden">
-      <div className="left-txts w-[33vw] mb-8 max-[600px]:w-full">
-        <h1 className="text-[4vw] max-[599px]:text-[8vw] font-semibold">
+    <section className="w-full  py-[10vh] max-[700px]:px-[5vw] px-[2vw] text-white bg-[#333] p-[2vw] flex max-[600px]:flex-col items-center overflow-hidden">
+      <div className="left-txts w-[33vw] mb-8 max-[600px]:w-full ml-[2.5vw]">
+        <h1 className="text-[3.1vw] max-[599px]:text-[8vw] font-semibold">
           Transforming Lives, One Story at a Time!
         </h1>
         <p className="text-[1vw] max-[599px]:text-[3.5vw] font-light mt-4 w-[65%] max-[599px]:w-full">
