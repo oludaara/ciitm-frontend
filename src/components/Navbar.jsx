@@ -2,7 +2,7 @@ import { TiThMenu } from "react-icons/ti";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/images/ciitmLogo.png'
 
 const Navbar = () => {
@@ -73,11 +73,11 @@ const Navbar = () => {
 
         </div>
         <div className="flex gap-[3vw] lg:gap-[2vw] text-2xl items-center justify-center  lg:mt-0 lg:items-start lg:text-[.9vw] h-[70%] lg:h-auto w-full  lg:w-fit flex-col lg:flex-row bg-[#333333] lg:bg-white text-white lg:text-black font-light">
-            <Link to="/" className="hover:font-normal transition-all">Home</Link>
-            <Link to="/about" className="hover:font-normal transition-all">About US</Link>
-            <Link to="/gallery" className="hover:font-normal transition-all">Gallery</Link>
-            <Link to="/students" className="hover:font-normal transition-all">Students</Link>
-            <Link to="/contact" className="hover:font-normal transition-all" >Contact Us</Link>
+            <NavLink to="/" className={({isActive}) => isActive ? "font-semibold transition-all" : "hover:font-normal transition-all"}>Home</NavLink>
+            <NavLink to="/about" className={({isActive}) => isActive ? "font-semibold  transition-all" : "hover:font-normal transition-all"}>About US</NavLink>
+            <NavLink to="/gallery" className={({isActive}) => isActive ? "font-semibold  transition-all" : "hover:font-normal transition-all"}>Gallery</NavLink>
+            <NavLink to="/students" className={({isActive}) => isActive ? "font-semibold  transition-all" : "hover:font-normal transition-all"}>Students</NavLink>
+            <NavLink to="/contact" className={({isActive}) => isActive ? "font-semibold  transition-all" : "hover:font-normal transition-all"}>Contact Us</NavLink>
         </div>
         <div className="btns flex items-center justify-center gap-2 flex-col w-[80%] mb-[15vh] lg:mb-0 lg:w-auto lg:flex-row">
             <button className='px-8 py-2 w-full bg-blue-600 lg:bg-[#333] text-white rounded-md'>Login</button>

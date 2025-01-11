@@ -46,7 +46,6 @@ const Album = () => {
 
 
 
-
   return (
     <div className="w-full h-auto md:h-screen px-[3vw] py-5 flex items-center justify-between flex-col md:flex-row">
       <div className="md:w-[55vw] md:h-[62vh] w-full sm:h-full grid  grid-rows-2 grid-cols-2  md:grid-cols-3 gap-[3vw]  md:gap-[1.5vw]  place-items-center">

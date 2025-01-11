@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Notice_Card from "../Notice_Card";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+let Loader = React.lazy(()=> import("../Loader"));
 
 const Hero = () => {
     let [image, setImage] = useState();
@@ -21,13 +22,13 @@ const Hero = () => {
             setHeading(data.homeTitle)
             setParagraph(data.homeParagraph)
         }
-    }, [hero])
+    }, [])
 
 
  
     return (
 
-        <section
+           !hero ? <Loader/> : <section
             className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center text-white bg-cover bg-no-repeat px-10 relative"
             style={{ backgroundImage: `url(${image})` }}
         >
