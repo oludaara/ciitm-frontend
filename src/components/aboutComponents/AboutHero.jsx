@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import About_BG from "../../assets/images/about us hero section background img.svg";
+import About_BG from "../../assets/images/aboutbg.svg";
 import Loader from "../Loader";
 import { useSelector } from "react-redux";
 
