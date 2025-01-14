@@ -9,17 +9,21 @@ const uiSlice = createSlice({
   },
   reducers: {
     setLandingPage: (state, action) => {
-      state.landingPage = action.payload;
+      state.landingPage =
+        action.payload;
     },
     setAboutPage: (state, action) => {
       state.aboutPage = action.payload;
     },
   },
-    setTestimonials: (state, action) => {
-      state.testimonials = action.payload;
-    },
+  setTestimonials: (state, action) => {
+    state.testimonials = action.payload;
   },
-);
+});
 
-export const { setLandingPage, setAboutPage, setTestimonials } = uiSlice.actions;
+export const {
+  setLandingPage,
+  setAboutPage,
+  setTestimonials,
+} = uiSlice.actions;
 export default uiSlice.reducer;
