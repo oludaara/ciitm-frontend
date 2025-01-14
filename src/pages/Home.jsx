@@ -1,17 +1,17 @@
+import Hero from '../components/homeComponents/Hero';
+import Empower from '../components/homeComponents/Empower';
+import Skills from '../components/homeComponents/Skills';
+import Album from '../components/Album';
+import Testimonials from '../components/Testimonials';
+import { Helmet } from 'react-helmet-async';
 
-import Hero from '../components/homeComponents/Hero'
-import Empower from '../components/homeComponents/Empower'
-import Skills from '../components/homeComponents/Skills'
-import Album from '../components/Album'
-import Testimonials from '../components/Testimonials'
-import { Helmet } from 'react-helmet-async'
-
-function Home () {
+function Home() {
   return (
     <>
       <Helmet>
         <title>
-          Top BCA Colleges In Dhanbad | BCA Course In Dhanbad – CIITM
+          Top BCA Colleges In Dhanbad |
+          BCA Course In Dhanbad – CIITM
         </title>
         <meta
           name='description'
@@ -23,11 +23,8 @@ function Home () {
       <Skills />
       <Album />
       <Testimonials />
-
     </>
   );
 }
 
-
-export default Home
-
+export default Home;
