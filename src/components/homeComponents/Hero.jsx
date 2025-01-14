@@ -8,7 +8,7 @@ const Hero = () => {
     const [heading, setHeading] = useState()
     const [Paragraph, setParagraph] = useState()
 
-    let hero = useSelector((state) => state.ui.landingPage);
+    let hero = useSelector((state) => state.home.landingPage);
 
 
     useEffect(() => {

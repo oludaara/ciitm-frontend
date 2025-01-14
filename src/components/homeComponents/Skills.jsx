@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 function Skills() {
   const [goals, setGoals] = useState([])  
   const [error, setError] = useState(false)  
-  const data = useSelector(state => state.ui.landingPage)  
+  const data = useSelector(state => state.home.landingPage)  
 
   
   useEffect(() => {

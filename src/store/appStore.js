@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import uiSliceReducer from "./uiSlice";
+import homeSlice from "./homeSlice";
+import aboutSlice from "./AboutSlice";
 
 export const appStore = configureStore({
   reducer: {
-    ui: uiSliceReducer,
+    home: homeSlice,
+    about: aboutSlice,
   },
 });

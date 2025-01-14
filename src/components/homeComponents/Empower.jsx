@@ -10,7 +10,7 @@ const [Heading_First, setHeading_First] = useState('')
 const [Heading_Second, setHeading_Second] = useState('')
 const [Paragraph_First, setParagraph_First] = useState('')
 const [Paragraph_Second, setParagraph_Second] = useState('')
-let about = useSelector(state => state.ui.landingPage)
+let about = useSelector(state => state.home.landingPage)
 
 useEffect(() => {
 
