@@ -10,7 +10,7 @@ const AboutHero = () => {
   const [heading, setHeading] = useState()
   const [Paragraph, setParagraph] = useState()
 
-  let about = useSelector((state) => state.ui.aboutPage);
+  let about = useSelector((state) => state.home.aboutPage);
 
 
   useEffect(() => {

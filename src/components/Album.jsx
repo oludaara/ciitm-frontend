@@ -1,49 +1,23 @@
 import { GoArrowUpRight } from 'react-icons/go';
-import { get_Album } from '../service/user.service';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAlbum from '../hooks/useAlbum';
+import { useSelector } from 'react-redux';
 
 const Album = () => {
-  const [lastAlbum, setlastAlbum] = useState()
   const [albums, setAlbums] = useState([]);
   const [error, setError] = useState(false);
+  let album  = useSelector(state => state.home.Album)
 
-
-
-
+  
+  useAlbum()
+  
   useEffect(() => {
-    const fetchAlbums = async () => {
-      try {
-        const data = await get_Album();
-        if (!data || data.length === 0) {
-          setError(true);
-        } else {
-          setAlbums(data);
+    if(album){
+      setAlbums([...album])
+    }
 
-
-          setError(false); // Reset error if data is available
-        }
-      } catch (err) {
-        console.log(err);
-        setError(true); // Set error if request fails
-      }
-    };
-
-    fetchAlbums();
-
-
-
-  }, [])
-
-
-  // useEffect(() => {
-  //   if (albums.length > 0) {
-  //     let obj = albums[albums.length - 1];
-  //     console.log('obj',obj)
-  //     setlastAlbum({ obj }); 
-  //   }
-  // }, [albums]); 
-
+  }, [album])
 
 
   return (

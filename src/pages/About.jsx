@@ -12,7 +12,7 @@ const About = () => {
     <Helmet>
             <title>About - CIITM Dhanbad</title>
             <meta name='description' content='About My Website' />
-        </Helmet>
+    </Helmet>
         
     <AboutHero/>
   <History/>
