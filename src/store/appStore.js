@@ -1,12 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import uiSliceReducer from './uiSlice';
-import albumSliceReducer from './Album.slice';
-import testimonialSliceReducer from './Testimonials.slice';
+import { configureStore } from "@reduxjs/toolkit";
+import homeSlice from "./homeSlice";
+import aboutSlice from "./AboutSlice";
 
 export const appStore = configureStore({
   reducer: {
-    ui: uiSliceReducer,
-    album: albumSliceReducer,
-    testimonials: testimonialSliceReducer,
+    home: homeSlice,
+    about: aboutSlice,
   },
 });

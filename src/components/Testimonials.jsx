@@ -1,45 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { setTestimonials_Data } from '../store/Testimonials.slice';
-import { get_Testimonial } from '../service/user.service';
-import { useDispatch, useSelector } from 'react-redux';
+
+import  { useEffect, useState } from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
+import useTestimonial from '../hooks/useTestimoniyal'
+import { useSelector } from 'react-redux'
 
 const Testimonials = () => {
-  let testimonials_Slice = useSelector(
-    state => state.testimonials.testimonials,
-  );
-  let dispatch = useDispatch();
-  const [testimonials, setTestimonials] = useState([]);
-  console.log('redux data', testimonials_Slice);
+  let testimonial = useSelector(state => state.home.Testimonital)
 
-  const handleUserTestimonial = async () => {
-    try {
-      if (!testimonials_Slice) {
-        const data = await get_Testimonial();
-        setTestimonials(data);
-        dispatch(setTestimonials_Data(data));
-      } else {
-        setTestimonials(testimonials_Slice);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [testimonials, setTestimonials] = useState([])
+
+
+  useTestimonial()
 
   useEffect(() => {
-    handleUserTestimonial();
-  }, []);
+    if (testimonial) {
+      setTestimonials([...testimonial])
+    }
+  }, [testimonial])
 
   const starsFunction = star => {
-    let stars = '';
+    let stars = ''
     for (let i = 0; i < star; i++) {
-      stars += '⭐';
+      stars += '⭐'
     }
 
-    return stars;
-  };
+    return stars
+  }
   const settings = {
     infinite: true,
     speed: 800,
@@ -48,18 +37,18 @@ const Testimonials = () => {
     centerMode: true,
     centerPadding: '16%',
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           centerPadding: '0%',
-          centerMode: true,
-        },
-      },
-    ],
-  };
+          centerMode: true
+        }
+      }
+    ]
+  }
 
   return (
     <section className='w-full  py-[10vh] max-[700px]:px-[5vw] px-[2vw] text-white bg-[#333] p-[2vw] flex max-[600px]:flex-col items-center overflow-hidden'>
@@ -80,7 +69,7 @@ const Testimonials = () => {
               key={testimonial.id}
               className='relative w-full flex justify-center'
             >
-              <div className='card w-[30vw] max-[599px]:w-full bg-white text-black rounded-xl px-6 py-8 transform transition-all duration-300 hover:scale-105'>
+              <div className='card w-[30vw] max-[599px]:w-full bg-white text-black rounded-xl px-6 py-8 transform transition-all duration-300'>
                 <div className='profile flex items-center gap-4'>
                   <div className='image w-[3.5vw] max-[599px]:w-[12vw] h-[3.5vw] max-[599px]:h-[12vw] rounded-full overflow-hidden'>
                     <img
@@ -115,7 +104,7 @@ const Testimonials = () => {
         </Slider>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials
