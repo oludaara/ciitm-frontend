@@ -1,10 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const uiSlice = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState: {
     landingPage: null,
     aboutPage: null,
+    testimonials: null,
   },
   reducers: {
     setLandingPage: (state, action) => {
@@ -14,7 +15,11 @@ const uiSlice = createSlice({
       state.aboutPage = action.payload;
     },
   },
-});
+    setTestimonials: (state, action) => {
+      state.testimonials = action.payload;
+    },
+  },
+);
 
-export const { setLandingPage, setAboutPage } = uiSlice.actions;
+export const { setLandingPage, setAboutPage, setTestimonials } = uiSlice.actions;
 export default uiSlice.reducer;

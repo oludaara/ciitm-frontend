@@ -1,10 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Album_Image = () => {
-  
-  return (
-    <div>Album_Image</div>
-  )
-}
+  return <div>Album_Image</div>;
+};
 
-export default Album_Image
+export default Album_Image;

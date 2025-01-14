@@ -10,7 +10,7 @@ const [Heading_First, setHeading_First] = useState('')
 const [Heading_Second, setHeading_Second] = useState('')
 const [Paragraph_First, setParagraph_First] = useState('')
 const [Paragraph_Second, setParagraph_Second] = useState('')
-let about = useSelector(state => state.ui.landingPage)
+let about = useSelector(state => state.home.landingPage)
 
 useEffect(() => {
 
@@ -36,13 +36,13 @@ useEffect(() => {
       <img src={arrow} alt="arrow image" className="arrow-image absolute top-1/2 left-[39vw] -translate-x-1/2 -translate-y-1/2 h-[13vw]" />
 
       <div className="empower-img-div relative w-1/2 h-full flex justify-center items-center">
-        <div className="h-[15vw] w-[15vw] bg-black rounded-full absolute left-[5vw] top-[3vw]">
+        <div className="h-[17vw] w-[17vw] bg-black rounded-full absolute left-[3vw] top-[1vw]">
           <img src={Image1} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
-        <div className="h-[10vh]  md:h-[12vw] w-[12vw] rounded-full absolute left-[21vw] top-[20vh]">
+        <div className="h-[10vh] md:h-[12vw] w-[12vw] rounded-full absolute left-[22vw] top-[19vh]">
         <img src={Image2} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
-        <div className="h-[15vw] w-[15vw]  rounded-full absolute left-[8vw] top-[40vh]">
+        <div className="h-[16vw] w-[16vw]  rounded-full absolute left-[8vw] top-[40vh]">
         <img src={Image3} alt="Image1" className="h-full w-full object-cover rounded-full" />
         </div>
       </div>
