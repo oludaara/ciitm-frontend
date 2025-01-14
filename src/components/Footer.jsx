@@ -11,7 +11,7 @@ const Footer = () => {
       <p className='w-[47%] text-[1vw] max-[599px]:hidden text-[#333] max-[999px]:text-center max-[999px]:pb-6'>See why students love learning with us and how we’ve made a difference in their journeys. </p>
       </div>
 
-      <div className="right w-[40%] max-[999px]:w-full h-full flex items-center justify-between gap-10 flex-wrap">
+      <div className="right w-[40%] max-[999px]:w-full h-full flex items-center justify-center gap-10 flex-wrap">
         <div className='flex max-[599px]:w-[40%] items-center justify-between flex-col gap-4'>
           <p className='text-[1vw] max-[599px]:text-[4.5vw] text-[#333] font-bold'>Navigation</p>
           <Link to="/" className='text-[0.9vw] max-[599px]:text-[3.5vw]'>Home</Link>
@@ -20,7 +20,7 @@ const Footer = () => {
           <Link to="/" className='text-[0.9vw] max-[599px]:text-[3.5vw]'>Student</Link>
           <Link to="/" className='text-[0.9vw] max-[599px]:text-[3.5vw]'>Contact Us</Link>
         </div>
-        <div className='flex max-[599px]:w-[45%] items-center justify-between flex-col gap-4'>
+        <div className='flex max-[599px]:w-[45%] items-center justify-between flex-col gap-4 text-center'>
           <p className='text-[1vw] text-[#333] font-bold max-[599px]:text-[4.5vw]'>Important Links</p>
           <Link to="/" className='text-[0.9vw] max-[599px]:text-[3.5vw]'>Privacy Policy</Link>
           <Link to="/" className='text-[0.9vw] max-[599px]:text-[3.5vw]'>Terms of Services</Link>

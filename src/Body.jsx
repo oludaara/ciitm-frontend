@@ -2,9 +2,10 @@ import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setLandingPage, setAboutPage } from "./store/uiSlice";
 import axios from "axios";
+import Loader from "./components/Loader";
 
 
 
@@ -34,10 +35,12 @@ const Body = () => {
   
   }, []);
 
+  
+
   return (
     <>
-      <Navbar />
-      <Outlet />
+        <Navbar />
+        <Outlet />
       <Footer />
     </>
   );
