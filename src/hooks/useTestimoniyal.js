@@ -1,29 +1,46 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setTestimonital } from '../store/homeSlice'
-import axios from 'axios'
-import { Testimonital_EndPoint } from '../utils/constants'
+import { useEffect } from 'react';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
+import { setTestimonital } from '../store/homeSlice';
+import axios from 'axios';
+import { Testimonital_EndPoint } from '../utils/constants';
 
 const useTestimonial = () => {
-  let Testimonital = useSelector(state => state.home.Testimonital)
+  let Testimonital = useSelector(
+    state => state.home.Testimonital,
+  );
 
-  let dispatch = useDispatch()
-  const handleTestimonial = async () => {
-    try {
-      if (!Testimonital) {
-        const response = await axios.get(Testimonital_EndPoint)
-        console.log('data testi', response)
-        dispatch(setTestimonital(response.data.Find_Testimonial))
+  let dispatch = useDispatch();
+  const handleTestimonial =
+    async () => {
+      try {
+        if (!Testimonital) {
+          const response =
+            await axios.get(
+              Testimonital_EndPoint,
+            );
+          console.log(
+            'data testi',
+            response,
+          );
+          dispatch(
+            setTestimonital(
+              response.data
+                .Find_Testimonial,
+            ),
+          );
+        }
+        // setTestimonials(data)
+      } catch (error) {
+        console.log(error);
       }
-      // setTestimonials(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+    };
 
   useEffect(() => {
-    handleTestimonial()
-  }, [])
-}
+    handleTestimonial();
+  }, []);
+};
 
-export default useTestimonial
+export default useTestimonial;

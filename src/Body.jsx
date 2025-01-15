@@ -1,29 +1,19 @@
-import Navbar from "./components/Navbar";
-import { Outlet } from "react-router-dom";
-import Footer from "./components/Footer";
+import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom';
+import Footer from './components/Footer';
 
-
-import useHomeUi from "./hooks/useHomeUi.js";
-
-
-
-
+import useHomeUi from './hooks/useHomeUi.js';
 
 const Body = () => {
-
-  useHomeUi()
-
-
-  
+  useHomeUi();
 
   return (
     <>
-        <Navbar />
-        <Outlet />
+      <Navbar />
+      <Outlet />
       <Footer />
     </>
   );
 };
 
 export default Body;
-

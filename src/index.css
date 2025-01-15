@@ -52,7 +52,8 @@ p {
       } */
 
   /* testimonial section responsive */
-  .slick-slide:not(.slick-center) .card {
+  .slick-slide:not(.slick-center)
+    .card {
     transform: scale(1);
     opacity: 1;
   }

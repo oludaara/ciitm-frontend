@@ -6,11 +6,16 @@ const testimonials_Slice = createSlice({
     testimonials: null,
   },
   reducers: {
-    setTestimonials_Data: (state, action) => {
-      state.testimonials = action.payload;
+    setTestimonials_Data: (
+      state,
+      action,
+    ) => {
+      state.testimonials =
+        action.payload;
     },
   },
 });
 
-export const { setTestimonials_Data } = testimonials_Slice.actions;
+export const { setTestimonials_Data } =
+  testimonials_Slice.actions;
 export default testimonials_Slice.reducer;

@@ -12,5 +12,6 @@ const album_Slice = createSlice({
   },
 });
 
-export const { album } = album_Slice.actions;
+export const { album } =
+  album_Slice.actions;
 export default album_Slice.reducer;
