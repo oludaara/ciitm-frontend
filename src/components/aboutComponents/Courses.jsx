@@ -19,7 +19,7 @@ const Courses = () => {
         Our Courses
       </div>
 
-      <p className='text text-[1vw] max-[599px]:text-[3.3vw] font-[Poppins] w-[40%] max-[599px]:w-full text-center pb-8'>
+      <p className='text text-[1vw] max-[599px]:text-[3vw] font-[Poppins] w-[40%] max-[599px]:w-[90%] text-center pb-8'>
         We have a group of eminent
         Faculty members with great
         personality and excellence in
@@ -111,9 +111,6 @@ const Courses = () => {
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
           }}
           loop={true}
           modules={[Autoplay]}

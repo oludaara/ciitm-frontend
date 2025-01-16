@@ -38,25 +38,25 @@ const History = () => {
           History
         </h1>
 
-        <p className='history_Para_One text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='history_Para_One text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!history.paragraph_First
             ? 'Not Found Paragraph One'
             : history.paragraph_First}
         </p>
 
-        <p className=' history_Para_Two text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className=' history_Para_Two text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!history.paragraph_Second
             ? 'Not Found Paragraph Two'
             : history.paragraph_Second}
         </p>
 
-        <p className='history_Para_Three text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='history_Para_Three text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!history.paragraph_Third
             ? 'Not Found Paragraph Three'
             : history.paragraph_Third}
         </p>
 
-        <p className='history_Para_Four text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='history_Para_Four text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!history.paragraph_Four
             ? 'Not Found Paragraph Four'
             : history.paragraph_Four}
@@ -70,25 +70,25 @@ const History = () => {
             : Vision.title}
         </h1>
 
-        <p className='vision_Para_First text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='vision_Para_First text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!Vision.paragraph_First
             ? 'Vision Para fist Not Found'
             : Vision.paragraph_First}
         </p>
 
-        <p className='vision_Para_Second text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='vision_Para_Second text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!Vision.paragraph_Second
             ? 'Vision Para Second Not Found'
             : Vision.paragraph_Second}
         </p>
 
-        <p className='vision_Para_Third text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='vision_Para_Third text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!Vision.paragraph_Third
             ? 'Vision Paragraph Third Not Found'
             : Vision.paragraph_Third}
         </p>
 
-        <p className='vision_Para_Four text-[0.9vw] max-[599px]:text-[2.5vw] font-[Poppins] text-[#333]'>
+        <p className='vision_Para_Four text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]'>
           {!Vision.paragraph_Four
             ? 'Vision Paragraph Four Not Found'
             : Vision.paragraph_Four}

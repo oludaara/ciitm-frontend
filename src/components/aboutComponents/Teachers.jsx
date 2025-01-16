@@ -139,7 +139,7 @@ const Teachers = () => {
       <div className='title text-[3.5vw] font-semibold max-[599px]:text-[10vw]'>
         Our Teachers
       </div>
-      <p className='text text-[1.3vw] w-[50%] max-[599px]:w-full max-[599px]:font-light text-center max-[599px]:text-[3.3vw]'>
+      <p className='text text-[1.3vw] w-[50%] max-[599px]:w-[90%] max-[599px]:font-light text-center max-[599px]:text-[3vw]'>
         We have a group of eminent
         Faculty members with great
         personality and excellence in
@@ -165,11 +165,8 @@ const Teachers = () => {
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 1000,
+            delay: 5000,
             disableOnInteraction: true,
-          }}
-          pagination={{
-            clickable: true,
           }}
           loop={true}
           modules={[

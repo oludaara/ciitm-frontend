@@ -46,16 +46,12 @@ const CampusFacilities = () => {
       setDescription({
         ...About_Page_Data.Description,
       });
-      console.log(
-        'description',
-        Description,
-      );
     }
   }, [About_Page_Data]);
 
   return (
     <section className='w-full h-full px-8 max-[599px]:px-6 py-12 bg-[#333] flex items-center justify-between gap-2 max-[599px]:gap-10 max-[599px]:flex-col'>
-      <div className='Facilites_Card_Container left w-[17.5%] max-[599px]:w-full h-full bg-red-400 p-4 max-[599px]:p-8 rounded-2xl max-[599px]:rounded-3xlxl'>
+      <div className='Facilites_Card_Container left w-[17.5%] max-[599px]:w-full h-full bg-white p-4 max-[599px]:p-8 rounded-2xl max-[599px]:rounded-3xlxl'>
         <div className=' h-auto flex items-start justify-between flex-col gap-3.5 max-[599px]:gap-4'>
           {Facilities.map(
             (Facility, index) => {
@@ -71,7 +67,7 @@ const CampusFacilities = () => {
           )}
         </div>
       </div>
-      <div className='right w-[82.5%] max-[599px]:w-full text-white px-8 max-[599px]:px-0 h-full flex items-start justify-between flex-col gap-8'>
+      <div className='right w-[82.5%] max-[599px]:w-full text-white px-8 max-[599px]:px-0 h-full flex items-start justify-between flex-col gap-6'>
         <div className='facilities'>
           <h1 className='text-[1.2vw] max-[599px]:text-[5vw] font-semibold font-[Montserrat] mb-2'>
             Capmus and Faciities
@@ -108,7 +104,7 @@ const CampusFacilities = () => {
           </p>
         </div>
         <div className='discription w-full h-full flex max-[599px]:flex-col items-start justify-start gap-7'>
-          <div className='img-container w-[11vw] max-[599px]:w-full h-[11vw] max-[599px]:h-[45vw] bg-[#FFE7E7] rounded-2xl'>
+          <div className='img-container w-[10vw] max-[599px]:w-full h-[10vw] max-[599px]:h-[45vw] bg-[#FFE7E7] rounded-2xl overflow-hidden'>
             <img
               src={Description.image}
               alt=''
