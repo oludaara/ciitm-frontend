@@ -91,7 +91,7 @@ const Footer = () => {
           <p className='text-[1vw] text-[#333] font-bold max-[599px]:text-[4.5vw]'>
             Social Media
           </p>
-          <div className='links flex flex-col max-[599px]:flex-row gap-4'>
+          <div className='links flex flex-col max-[599px]:flex-row gap-4 flex-wrap justify-center text-center'>
             <Link
               to='/'
               className='text-[0.9vw] max-[599px]:text-[3.5vw]'
