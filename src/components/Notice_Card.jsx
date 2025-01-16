@@ -42,6 +42,7 @@ const Notice_Card = ({
         fontWeight={900}
         size={20}
         onClick={Handle_Clone_Btn}
+        className='cursor-pointer'
       />
     </div>
   );

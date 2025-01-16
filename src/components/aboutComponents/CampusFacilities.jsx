@@ -13,7 +13,9 @@ export let Facilites_Card = ({
 }) => {
   return (
     <div
-      className='Facilites_Card flex gap-3 w-full h-full max-[1098px]:w-[40%]'
+
+      className='Facilites_Card flex gap-3 w-full h-full'
+
       key={index}
     >
       <img
@@ -68,7 +70,7 @@ const CampusFacilities = () => {
           )}
         </div>
       </div>
-      <div className='right w-[82.5%] max-[599px]:w-full text-white px-8 max-[599px]:px-0 h-full flex items-start justify-between flex-col gap-8'>
+      <div className='right w-[82.5%] max-[599px]:w-full text-white px-8 max-[599px]:px-0 h-full flex items-start justify-between flex-col gap-6'>
         <div className='facilities'>
           <h1 className='text-[1.2vw] max-[599px]:text-[5vw] font-semibold font-[Montserrat] mb-2'>
             Capmus and Faciities
@@ -105,7 +107,7 @@ const CampusFacilities = () => {
           </p>
         </div>
         <div className='discription w-full h-full flex max-[599px]:flex-col items-start justify-start gap-7'>
-          <div className='img-container w-[11vw] max-[599px]:w-full h-[11vw] max-[599px]:h-[45vw] bg-[#FFE7E7] rounded-2xl'>
+          <div className='img-container w-[10vw] max-[599px]:w-full h-[10vw] max-[599px]:h-[45vw] bg-[#FFE7E7] rounded-2xl overflow-hidden'>
             <img
               src={Description.image}
               alt=''
