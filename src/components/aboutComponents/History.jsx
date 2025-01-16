@@ -32,7 +32,7 @@ const History = () => {
   }, [aboutPage]);
 
   return (
-    <section className='w-full px-10 max-[599px]:px-6 py-20 max-[599px]:py-4 flex items-center justify-center max-[599px]:gap-10 font-[Montserrat] max-[599px]:flex-col'>
+    <section className='w-full px-10 max-[599px]:px-6 py-20 max-[599px]:py-4 flex items-center gap-3 justify-center max-[599px]:gap-10 font-[Montserrat] max-[599px]:flex-col'>
       <div className='left w-1/2 max-[599px]:w-full h-full flex items-start justify-between gap-3 flex-col'>
         <h1 className='text-[1.7vw] font-semibold text-[#333] max-[599px]:text-[4.5vw]'>
           History

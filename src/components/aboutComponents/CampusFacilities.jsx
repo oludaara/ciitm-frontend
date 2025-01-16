@@ -13,7 +13,7 @@ export let Facilites_Card = ({
 }) => {
   return (
     <div
-      className='Facilites_Card flex gap-2'
+      className='Facilites_Card flex gap-3 w-full h-full'
       key={index}
     >
       <img
@@ -21,7 +21,7 @@ export let Facilites_Card = ({
         alt=''
         className='Facilites_Card_Image'
       />
-      <h1 className='Facilites_Card_Title text-[1vw] max-[599px]:text-[4.5vw] font-medium'>
+      <h1 className='Facilites_Card_Title text-[1vw] max-[599px]:text-[4.6vw] font-medium'>
         {Title}
       </h1>
     </div>
@@ -59,6 +59,7 @@ const CampusFacilities = () => {
                 Facility.title;
               return (
                 <Facilites_Card
+                  key={index}
                   Title={title}
                   index={index}
                 />

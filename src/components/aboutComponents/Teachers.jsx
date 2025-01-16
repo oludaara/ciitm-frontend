@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import useTeacher from '../../hooks/useTeacher';
 
 const TeacherCard = ({ teacher }) => (
-  <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl'>
+  <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl  max-[1098px]:w-[40%]'>
     <div className='img w-full h-[23vh] rounded-xl flex items-center justify-center'>
       <img
         src={teacher.image}
@@ -24,7 +24,7 @@ const TeacherCard = ({ teacher }) => (
         className='w-full bg-cover object-cover  overflow-hidden rounded-xl  h-full  '
       />
     </div>
-    <h1 className='text-[1.2vw] max-[599px]:text-[4.8vw] font-medium'>
+    <h1 className='text-[1.2vw] max-[599px]:text-[4.8vw] font-medium bg-slate-500'>
       {teacher.position}
     </h1>
     <div className='list w-full'>
@@ -147,7 +147,7 @@ const Teachers = () => {
       </p>
 
       {/* Desktop version */}
-      <div className='cards w-full h-full py-4 flex justify-center gap-10 max-[599px]:flex-col max-[599px]:hidden'>
+      <div className='cards w-full h-full py-4 flex justify-center gap-10 max-[599px]:flex-col max-[599px]:hidden max-[1098px]:flex-wrap'>
         {teachers &&
           teachers.map(
             (teacher, index) => (
