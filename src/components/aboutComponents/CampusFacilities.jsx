@@ -13,7 +13,7 @@ export let Facilites_Card = ({
 }) => {
   return (
     <div
-      className='Facilites_Card flex gap-2'
+      className='Facilites_Card flex gap-3 w-full h-full max-[1098px]:w-[40%]'
       key={index}
     >
       <img
@@ -21,7 +21,7 @@ export let Facilites_Card = ({
         alt=''
         className='Facilites_Card_Image'
       />
-      <h1 className='Facilites_Card_Title text-[1vw] max-[599px]:text-[4.5vw] font-medium'>
+      <h1 className='Facilites_Card_Title text-[1vw] max-[599px]:text-[4.6vw] font-medium'>
         {Title}
       </h1>
     </div>
@@ -46,16 +46,12 @@ const CampusFacilities = () => {
       setDescription({
         ...About_Page_Data.Description,
       });
-      console.log(
-        'description',
-        Description,
-      );
     }
   }, [About_Page_Data]);
 
   return (
     <section className='w-full h-full px-8 max-[599px]:px-6 py-12 bg-[#333] flex items-center justify-between gap-2 max-[599px]:gap-10 max-[599px]:flex-col'>
-      <div className='Facilites_Card_Container left w-[17.5%] max-[599px]:w-full h-full bg-red-400 p-4 max-[599px]:p-8 rounded-2xl max-[599px]:rounded-3xlxl'>
+      <div className='Facilites_Card_Container left w-[17.5%] max-[599px]:w-full h-full bg-white p-4 max-[599px]:p-8 rounded-2xl max-[599px]:rounded-3xlxl'>
         <div className=' h-auto flex items-start justify-between flex-col gap-3.5 max-[599px]:gap-4'>
           {Facilities.map(
             (Facility, index) => {
@@ -63,6 +59,7 @@ const CampusFacilities = () => {
                 Facility.title;
               return (
                 <Facilites_Card
+                  key={index}
                   Title={title}
                   index={index}
                 />
