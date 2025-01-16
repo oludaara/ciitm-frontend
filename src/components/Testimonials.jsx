@@ -81,7 +81,7 @@ const Testimonials = () => {
                 key={testimonial.id}
                 className='relative w-full flex justify-center'
               >
-                <div className='card w-[30vw] max-[599px]:w-full bg-white text-black rounded-xl px-6 py-8 transform transition-all duration-300'>
+                <div className='card cursor-grab w-[30vw] max-[599px]:w-full bg-white text-black rounded-xl px-6 py-8 transform transition-all duration-300'>
                   <div className='profile flex items-center gap-4'>
                     <div className='image w-[3.5vw] max-[599px]:w-[12vw] h-[3.5vw] max-[599px]:h-[12vw] rounded-full overflow-hidden'>
                       <img
