@@ -58,7 +58,7 @@ const Navbar = () => {
         ref={menu}
         className='mobile-menu w-full  h-screen bg-[#333] text-[6vw] font-semibold text-white hidden max-[599px]:block -translate-y-[100%] fixed top-0 left-0 z-[99]'
       >
-        <nav className='w-full h-full flex items-center justify-center gap-6 flex-col'>
+        <nav className='w-full h-full flex items-center justify-center  gap-6 flex-col'>
           <NavLink
             to='/'
             className={({

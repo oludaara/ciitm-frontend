@@ -10,6 +10,7 @@ import About from './pages/About';
 import Landing from './pages/Home';
 import Student from './pages/Student';
 import Album_Image from './pages/Album_Image';
+import ContactUs from './components/ContactUs';
 const App = () => {
   return (
     <>
@@ -26,6 +27,10 @@ const App = () => {
             <Route
               path='/about'
               element={<About />}
+            ></Route>
+            <Route
+              path='/contact'
+              element={<ContactUs />}
             ></Route>
             <Route
               path='/student'
