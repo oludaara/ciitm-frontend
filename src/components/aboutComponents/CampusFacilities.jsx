@@ -13,9 +13,7 @@ export let Facilites_Card = ({
 }) => {
   return (
     <div
-
       className='Facilites_Card flex gap-3 w-full h-full'
-
       key={index}
     >
       <img
