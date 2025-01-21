@@ -7,25 +7,27 @@ import Loader from '../Loader';
 import { useSelector } from 'react-redux';
 
 const AboutHero = () => {
-
-const [image, setimage] = useState('')
-const [para, setpara] = useState('')
-const [heading, setheading] = useState('')
+  const [image, setimage] =
+    useState('');
+  const [para, setpara] = useState('');
+  const [heading, setheading] =
+    useState('');
 
   let about = useSelector(
     state => state.about.aboutPage,
   );
 
-
-  useEffect(()=>{
-
-    if(about){
-    setimage(about.AboutHero.image)
-    setpara(about.AboutHero.paragraph)
-    setheading(about.AboutHero.Heading)
+  useEffect(() => {
+    if (about) {
+      setimage(about.AboutHero.image);
+      setpara(
+        about.AboutHero.paragraph,
+      );
+      setheading(
+        about.AboutHero.Heading,
+      );
     }
-
-  },[about])
+  }, [about]);
   return !about ? (
     <Loader />
   ) : (
@@ -42,7 +44,7 @@ const [heading, setheading] = useState('')
             {heading}
           </h1>
           <p className='w-[58%] max-[599px]:w-[85%] text-[1.25vw] max-[599px]:text-[3.5vw] font-medium text-center font-[Poppins]'>
-            {para }
+            {para}
           </p>
           <div className='btns flex items-center gap-4 max-[599px]:mt-4'>
             <button className='bg-transparent text-[1vw] max-[599px]:text-[2.5vw] border-[1px] border-white px-3 py-2 rounded-md font-bold'>
