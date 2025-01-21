@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className='w-full flex items-center justify-between p-10 max-[999px]:flex-col'>
-      <div className='left w-[60%] max-[599px]:pb-10 max-[999px]:w-full h-full flex items-start max-[999px]:items-center justify-center flex-col gap-4'>
+      <div className='left w-[50%] max-[599px]:pb-10 max-[999px]:w-full h-full flex items-start max-[999px]:items-center justify-center flex-col gap-4'>
         <Link to='/'>
           <img src={logo} alt='' />
         </Link>
@@ -16,8 +16,8 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className='right w-[40%] max-[999px]:w-full h-full flex items-center justify-center gap-10 flex-wrap'>
-        <div className='flex max-[599px]:w-[40%] items-center justify-between flex-col gap-4'>
+      <div className='right w-[50%] max-[999px]:w-full h-full flex items-center justify-center gap-10 flex-wrap'>
+        <div className='flex max-[599px]:w-[25%] items-center justify-evenly flex-col gap-4 mb-4 mx-8'>
           <p className='text-[1vw] max-[599px]:text-[4.5vw] text-[#333] font-bold'>
             Navigation
           </p>
@@ -52,7 +52,7 @@ const Footer = () => {
             Contact Us
           </Link>
         </div>
-        <div className='flex max-[599px]:w-[45%] items-center justify-between flex-col gap-4 text-center'>
+        <div className='flex max-[599px]:w-[45%] mx-0 items-center justify-between flex-col gap-4 text-center mb-4'>
           <p className='text-[1vw] text-[#333] font-bold max-[599px]:text-[4.5vw]'>
             Important Links
           </p>
@@ -87,7 +87,7 @@ const Footer = () => {
             Support
           </Link>
         </div>
-        <div className='flex max-[599px]:w-full items-center justify-between flex-col gap-4'>
+        <div className='flex max-[599px]:w-full items-center justify-between flex-col gap-4 mb-4 mx-8'>
           <p className='text-[1vw] text-[#333] font-bold max-[599px]:text-[4.5vw]'>
             Social Media
           </p>
