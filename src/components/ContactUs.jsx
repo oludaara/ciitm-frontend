@@ -108,41 +108,27 @@ const ContactUs = () => {
   };
 
   return (
-    <div className='Form_Container flex  bg-[#d7d7d719] my-[2vh] max-[550px]:pt-[20%] px-[3vw] justify-between max-[823px]:flex-col items-center pt-[12vh] pb-[7vh]'>
-      <div className='Container_Left w-[38%] max-[823px]:w-[93vw] p-2 text-[#333333] text-wrap '>
+    <div className='Form_Container flex bg-[#d7d7d719] my-[2vh] max-[550px]:pt-[10%] px-[3vw] justify-between max-[823px]:flex-col items-center pt-[5vh] pb-[7vh]'>
+      <div className='Container_Left w-[35%] max-[823px]:w-[93vw] p-2 text-[#333333] text-wrap'>
         <h1 className='text-[2.6vw] max-[410px]:text-[8vw] max-[823px]:text-[4vw] font-semibold'>
           About Us
         </h1>
-        <p className='text-[0.9vw] max-[410px]:text-[2.5vw]   max-[823px]:text-[2.2vw] font-medium'>
-          Welcome to [Institute Name],
-          an institution dedicated to
-          fostering innovation,
-          knowledge, and personal
-          growth. Our mission is to
-          shape tomorrow’s leaders by
-          offering exceptional
-          educational opportunities and
-          encouraging intellectual
-          exploration.
+        <p className='text-[0.9vw] max-[410px]:text-[2.5vw] max-[823px]:text-[2.2vw] font-medium'>
+          Welcome to [Institute Name], an institution dedicated to fostering innovation, knowledge, and personal growth. Our mission is to shape tomorrow’s leaders by offering exceptional educational opportunities and encouraging intellectual exploration.
         </p>
 
-        <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw]  max-[823px]:text-[3vw]  mt-[.8rem] mb-[.5rem]'>
+        <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw] max-[823px]:text-[3vw] mt-[.8rem] mb-[.5rem]'>
           Location
         </h2>
-        <p className='text-[0.9vw]  max-[410px]:text-[2.5vw] max-[823px]:text-[2.2vw]  font-medium'>
-          Welcome to [Institute Name],
-          an institution dedicated to
-          fostering innovation,
-          knowledge, and personal
-          growth. O
+        <p className='text-[0.9vw] max-[410px]:text-[2.5vw] max-[823px]:text-[2.2vw] font-medium'>
+          Welcome to [Institute Name], an institution dedicated to fostering innovation, knowledge, and personal growth.
         </p>
 
-        <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw] max-[823px]:text-[3vw]  mt-[.8rem] mb-[.5rem]'>
+        <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw] max-[823px]:text-[3vw] mt-[.8rem] mb-[.5rem]'>
           Our Principle
         </h2>
         <p className='text-[0.9vw] max-[410px]:text-[2.5vw] max-[823px]:text-[2.2vw] font-medium'>
-          Muhammad Muneeb and vice
-          Principle Sammer Khan
+          Muhammad Muneeb and vice Principle Sammer Khan
         </p>
 
         <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw] max-[823px]:text-[3vw] mt-[.8rem] mb-[.5rem]'>
@@ -159,6 +145,7 @@ const ContactUs = () => {
           insta, facebook
         </div>
       </div>
+
 
       <div className='Container_Right bg-white rounded-[2.5vw] w-[40vw] max-[1179px]:w-[48vw] max-[822px]:w-[90vw]  h-fit p-[2vw] max-[410px]:text-[4.5vw] max-[823px]:p-[4vw] text-[#333333] border-[1.1px] border-[#D7D7D7] shadow-lg shadow-gray-300 mt-[7vh]'>
         <h1 className='text-[1.3vw] max-[410px]:text-[4.5vw] max-[823px]:text-[3.5vw] font-semibold'>
@@ -206,6 +193,7 @@ const ContactUs = () => {
               {errors.cNumber.message}
             </p>
           )}
+
           <input
             type='text'
             {...register('cNumber')}
@@ -227,14 +215,14 @@ const ContactUs = () => {
             </p>
           )}
 
+
           <textarea
             {...register('cMessage')}
-            className='p-4 bg-[#F9F9F9] text-[0.9vw] max-[410px]:text-[3vw] max-[830px]:text-[2.5vw] outline-none w-full h-[15vh] rounded-lg my-[2vw] border border-[#D7D7D7]'
+            className='p-4 bg-[#F9F9F9] text-[0.9vw] max-[410px]:text-[3vw] max-[830px]:text-[2.5vw] outline-none w-full h-[8vh] rounded-lg my-[2vw] border border-[#D7D7D7]'
             placeholder='Message:'
-            id=''
           ></textarea>
 
-          <button className='text-center bg-[#333333] w-full text-white py-3 text-[1.2vw] max-[830px]:text-[3vw] rounded-lg'>
+          <button className='text-center bg-[#333333] w-full text-white py-2 text-[1.2vw] max-[830px]:text-[3vw] rounded-lg'>
             Submit
           </button>
         </form>
