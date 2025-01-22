@@ -8,3 +8,4 @@ export const Album_EndPoint =
   '/api/albums';
 export const Find_Teacher_EndPoint =
   '/api/find/teacher';
+export const Contact_EndPoint = `/api/contact/form/submit`;
