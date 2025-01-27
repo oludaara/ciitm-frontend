@@ -5,6 +5,7 @@ import React, {
 import About_BG from '../../assets/images/aboutbg.svg';
 import Loader from '../Loader';
 import { useSelector } from 'react-redux';
+import useAbout from '../../hooks/useAbout';
 
 const AboutHero = () => {
   const [image, setimage] =
@@ -12,6 +13,8 @@ const AboutHero = () => {
   const [para, setpara] = useState('');
   const [heading, setheading] =
     useState('');
+
+  useAbout();
 
   let about = useSelector(
     state => state.about.aboutPage,
@@ -28,9 +31,7 @@ const AboutHero = () => {
       );
     }
   }, [about]);
-  return !about ? (
-    <Loader />
-  ) : (
+  return (
     <section className='bg-black w-full text-white'>
       <div className='about_hero relative w-full h-[90vh] bg-gradient-to-b from-white via-gray-700 to-black'>
         <img
