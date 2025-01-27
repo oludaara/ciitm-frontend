@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import bulletPoint from '../../assets/images/bulletPoint.svg';
 import { useSelector } from 'react-redux';
 import { use } from 'react';
+import useAbout from '../../hooks/useAbout';
 
 export let Facilites_Card = ({
   Title,
@@ -33,6 +34,8 @@ const CampusFacilities = () => {
     useState([]);
   const [Description, setDescription] =
     useState({});
+
+  useAbout();
 
   let About_Page_Data = useSelector(
     state => state.about.aboutPage,

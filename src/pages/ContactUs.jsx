@@ -114,14 +114,18 @@ const ContactUs = () => {
           About Us
         </h1>
         <p className='text-[0.9vw] max-[410px]:text-[2.5vw] max-[823px]:text-[2.2vw] font-medium'>
+
           Welcome to [Institute Name], an institution dedicated to fostering innovation, knowledge, and personal growth. Our mission is to shape tomorrow’s leaders by offering exceptional educational opportunities and encouraging intellectual exploration.
+
         </p>
 
         <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw] max-[823px]:text-[3vw] mt-[.8rem] mb-[.5rem]'>
           Location
         </h2>
         <p className='text-[0.9vw] max-[410px]:text-[2.5vw] max-[823px]:text-[2.2vw] font-medium'>
+
           Welcome to [Institute Name], an institution dedicated to fostering innovation, knowledge, and personal growth.
+
         </p>
 
         <h2 className='font-semibold text-[1.5vw] max-[410px]:text-[5vw] max-[823px]:text-[3vw] mt-[.8rem] mb-[.5rem]'>
