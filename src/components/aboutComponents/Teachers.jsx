@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 import {
   Swiper,
   SwiperSlide,
@@ -14,6 +17,7 @@ import 'swiper/css/navigation';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useTeacher from '../../hooks/useTeacher';
+import Loader from '../Loader';
 
 const TeacherCard = ({ teacher }) => (
   <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl  max-[1098px]:w-[40%]'>
@@ -128,11 +132,24 @@ const TeacherCard = ({ teacher }) => (
 );
 
 const Teachers = () => {
-  const teachers = useSelector(
+  let [teachers, SetTeacher] =
+    useState();
+
+  useTeacher();
+
+  const data = useSelector(
     state => state.about.teacher,
   );
 
-  useTeacher();
+  useEffect(() => {
+    if (data) {
+      SetTeacher([...data]);
+    }
+  }, [data]);
+
+  {
+    !data && <Loader />;
+  }
 
   return (
     <section className='w-full px-10 py-10 max-[599px]:py-6 flex items-center justify-between gap-4 flex-col bg-[#333] text-white overflow-hidden'>
