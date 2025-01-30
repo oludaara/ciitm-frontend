@@ -48,7 +48,7 @@ const App = () => {
               path='/student'
               element={<Student />}
             ></Route>
-             <Route
+            <Route
               path='/admission'
               element={<Admission />}
             ></Route>
