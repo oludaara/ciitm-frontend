@@ -15,59 +15,30 @@ const UniversityInfo = ({
       />
 
       <Dropdown
-        placeholder='Degree Type'
-        name='degreeType'
+        placeholder='Select Your University'
+        name='university'
         options={[
-          'Undergraduate',
-          'Masters',
-          'PhD',
-          'Other',
+          'Aisect University',
+          'Makhanlal Chaturvedi  University Bhopal ',
+      
         ]}
         onChange={handleInputChange}
       />
 
-      <InputField
-        placeholder='Course Name'
-        type='text'
+
+<Dropdown
+        placeholder='Select Course'
         name='courseName'
-        onChange={handleInputChange}
-      />
-
-      <InputField
-        placeholder='Start Date'
-        type='date'
-        name='startDate'
-        onChange={handleInputChange}
-      />
-
-      <InputField
-        placeholder='End Date'
-        type='date'
-        name='endDate'
-        onChange={handleInputChange}
-      />
-
-      <InputField
-        placeholder='GPA'
-        type='number'
-        name='gpa'
-        onChange={handleInputChange}
-        step='0.1'
-        min='0'
-        max='4.0'
-      />
-
-      <Dropdown
-        placeholder='Graduation Status'
-        name='graduationStatus'
         options={[
-          'Graduated',
-          'In Progress',
-          'Dropped Out',
-          'Not Applicable',
+          'MCA',
+          'BCA',
+      
         ]}
         onChange={handleInputChange}
       />
+
+
+  
     </div>
   );
 };

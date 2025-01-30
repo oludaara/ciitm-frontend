@@ -8,99 +8,75 @@ const Grades = ({
   return (
     <div className='sm:grid flex flex-col w-full 2xl:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 sm:gap-x-4 gap-y-10'>
       <InputField
-        placeholder='Subject 1'
+        placeholder='Enter Your 10th Marks'
         type='text'
-        name='subject1'
+        name='tenthMarks'
         onChange={handleInputChange}
       />
       <Dropdown
-        placeholder='Grade for Subject 1'
-        name='grade1'
+        placeholder='Select Your 10th Board'
+        name='tenthBoard'
         options={[
-          'A',
-          'B',
-          'C',
-          'D',
-          'F',
+          'CBSE',
+          'JAC',
+          'ICSE',
+          'JAC',
+          'BSEB',
         ]}
         onChange={handleInputChange}
       />
 
-      <InputField
-        placeholder='Subject 2'
-        type='text'
-        name='subject2'
-        onChange={handleInputChange}
-      />
-      <Dropdown
-        placeholder='Grade for Subject 2'
-        name='grade2'
+
+<Dropdown
+        placeholder='Select Your 10th Grade'
+        name='tenthGrade'
         options={[
           'A',
           'B',
           'C',
           'D',
-          'F',
+          'E',
         ]}
         onChange={handleInputChange}
       />
 
-      <InputField
-        placeholder='Subject 3'
+{/* tenthGrade */}
+
+
+<InputField
+        placeholder='Enter Your 12th Marks'
         type='text'
-        name='subject3'
+        name='twelfthMarks'
         onChange={handleInputChange}
       />
       <Dropdown
-        placeholder='Grade for Subject 3'
-        name='grade3'
+        placeholder='Select Your 12th Board'
+        name='twelfthBoard'
         options={[
-          'A',
-          'B',
-          'C',
-          'D',
-          'F',
+          'CBSE',
+          'JAC',
+          'ICSE',
+          'JAC',
+          'BSEB',
         ]}
         onChange={handleInputChange}
       />
 
-      <InputField
-        placeholder='Subject 4'
-        type='text'
-        name='subject4'
-        onChange={handleInputChange}
-      />
-      <Dropdown
-        placeholder='Grade for Subject 4'
-        name='grade4'
+
+<Dropdown
+        placeholder='Select Your 12th Grade'
+        name='twelfthGrade'
         options={[
           'A',
           'B',
           'C',
           'D',
-          'F',
+          'E',
         ]}
         onChange={handleInputChange}
       />
 
-      <InputField
-        placeholder='Subject 5'
-        type='text'
-        name='subject5'
-        onChange={handleInputChange}
-      />
-      <Dropdown
-        placeholder='Grade for Subject 5'
-        name='grade5'
-        options={[
-          'A',
-          'B',
-          'C',
-          'D',
-          'F',
-        ]}
-        onChange={handleInputChange}
-      />
+      
     </div>
   );
 };
