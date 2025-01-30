@@ -15,6 +15,7 @@ import Student from './pages/Student';
 import Album_Image from './components/Album_Image_Components/Album_Image';
 import ContactUs from './pages/ContactUs';
 import Loader from './components/Loader';
+import Admission from './pages/Admission';
 
 const App = () => {
   useEffect(() => {
