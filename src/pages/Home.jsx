@@ -1,11 +1,23 @@
 import Hero from '../components/homeComponents/Hero';
 import Empower from '../components/homeComponents/Empower';
 import Skills from '../components/homeComponents/Skills';
-import Album from '../components/Album';
-import Testimonials from '../components/Testimonials';
+import Album from '../components/homeComponents/Album';
+import Testimonials from '../components/homeComponents/Testimonials';
 import { Helmet } from 'react-helmet-async';
+import useHomeUi from '../hooks/useHomeUi';
+import { useSelector } from 'react-redux';
+import Loader from '../components/Loader';
 
 function Home() {
+  useHomeUi();
+  let data = useSelector(
+    state => state.home.landingPage,
+  );
+
+  {
+    !data ? <Loader /> : null;
+  }
+
   return (
     <>
       <Helmet>

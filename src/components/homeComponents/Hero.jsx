@@ -5,25 +5,23 @@ import React, {
   useState,
 } from 'react';
 import Loader from '../Loader';
+import useHomeUi from '../../hooks/useHomeUi';
 
 const Hero = () => {
   let [image, setImage] = useState();
+
   const [heading, setHeading] =
     useState();
   const [Paragraph, setParagraph] =
     useState();
+
+  useHomeUi();
 
   let hero = useSelector(
     state => state.home.landingPage,
   );
 
   useEffect(() => {
-    setImage('');
-    setHeading('');
-    setParagraph(
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, nemo.',
-    );
-
     if (hero) {
       let data = hero.HeroSection;
       setImage(
@@ -34,9 +32,7 @@ const Hero = () => {
     }
   }, [hero]);
 
-  return !hero ? (
-    <Loader />
-  ) : (
+  return (
     <section
       className='w-full min-h-screen flex flex-col lg:flex-row items-center justify-center text-white bg-cover bg-no-repeat px-10 relative overflow-clip'
       style={{

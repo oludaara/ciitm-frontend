@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useSelector } from 'react-redux';
 
 const Loader = () => {
   let loader = useRef();

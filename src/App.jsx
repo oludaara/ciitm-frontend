@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useEffect,
+} from 'react';
 import Body from './Body';
 import {
   BrowserRouter,
@@ -9,10 +11,18 @@ import ErrorPage from './components/ErrorPage';
 import About from './pages/About';
 import Landing from './pages/Home';
 import Student from './pages/Student';
-import Album_Image from './pages/Album_Image';
-import ContactUs from './components/ContactUs';
-import Admission from './pages/Admission';
+
+import Album_Image from './components/Album_Image_Components/Album_Image';
+import ContactUs from './pages/ContactUs';
+import Loader from './components/Loader';
+
 const App = () => {
+  useEffect(() => {
+    window.onload = () => {
+      return <Loader />;
+    };
+  }, []);
+
   return (
     <>
       <BrowserRouter basename='/'>
