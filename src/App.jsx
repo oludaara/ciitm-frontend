@@ -11,9 +11,11 @@ import ErrorPage from './components/ErrorPage';
 import About from './pages/About';
 import Landing from './pages/Home';
 import Student from './pages/Student';
+
 import Album_Image from './components/Album_Image_Components/Album_Image';
 import ContactUs from './pages/ContactUs';
 import Loader from './components/Loader';
+
 const App = () => {
   useEffect(() => {
     window.onload = () => {
@@ -44,6 +46,10 @@ const App = () => {
             <Route
               path='/student'
               element={<Student />}
+            ></Route>
+             <Route
+              path='/admission'
+              element={<Admission />}
             ></Route>
             <Route
               path='/album/:name'
