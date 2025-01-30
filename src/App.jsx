@@ -11,6 +11,7 @@ import Landing from './pages/Home';
 import Student from './pages/Student';
 import Album_Image from './pages/Album_Image';
 import ContactUs from './components/ContactUs';
+import Admission from './pages/Admission';
 const App = () => {
   return (
     <>
@@ -35,6 +36,10 @@ const App = () => {
             <Route
               path='/student'
               element={<Student />}
+            ></Route>
+             <Route
+              path='/admission'
+              element={<Admission />}
             ></Route>
             <Route
               path='/album/:name'
