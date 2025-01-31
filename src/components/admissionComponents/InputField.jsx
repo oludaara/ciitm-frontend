@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAdmission  , Admission , setOneAdmission} from '../../store/AdmissionSlice';
+
 
 
 const InputField = ({
@@ -10,9 +11,15 @@ const InputField = ({
 }) => {
 
 
-let admission = useSelector(state => state.admission.admission);
 
+let admission = useSelector(state => state.admission.admission);
 let find_index = admission.findIndex((item) => item.name === placeholder.replace(/\s+/g, '').toLowerCase());
+
+
+
+useEffect(() => {
+  setValue(admission[find_index]?.value)
+}, [admission])
 
 
 
@@ -23,6 +30,9 @@ let array = [];
 
   const [value, setValue] =
     useState('');
+
+
+    
   const [isError, setIsError] =
     useState(false);
 
@@ -31,6 +41,7 @@ let array = [];
     .toLowerCase();
 
  
+
 
 
 
