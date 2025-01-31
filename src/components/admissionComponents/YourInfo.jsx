@@ -41,6 +41,14 @@ const YourInfo = ({
         name='mothersName'
         onChange={handleInputChange}
       />
+
+      <InputField
+        placeholder='Aadhar Number'
+        type='number'
+        name='AadharCardNumber'
+        onChange={handleInputChange}
+      />
+   
       <InputField
         placeholder='Email'
         type='email'
@@ -70,94 +78,34 @@ const YourInfo = ({
         ]}
         onChange={handleInputChange}
       />
-      <Dropdown
-        placeholder='Nationality'
-        name='nationality'
-        options={[
-          'Pakistan',
-          'India',
-          'Bangladesh',
-        ]}
-        onChange={handleInputChange}
-      />
-      <InputField
+
+   
+   <InputField
         placeholder='Street'
         type='text'
         name='street'
         onChange={handleInputChange}
       />
-      <Dropdown
+      <InputField
         placeholder='City'
+        type='text'
         name='city'
-        options={[
-          'Lahore',
-          'Delhi',
-          'Dhaka',
-        ]}
         onChange={handleInputChange}
       />
-      <Dropdown
+      <InputField
         placeholder='State'
+        type='text'
         name='state'
-        options={[
-          'Punjab',
-          'Goa',
-          'Dhaka',
-        ]}
         onChange={handleInputChange}
       />
-
-      {/* Tenth Marks */}
-      <div
-        className={`border min-[630px]:max-w-[248px] w-full cursor-pointer rounded-[8px] py-1.5 px-4 text-xs flex items-center justify-between ${
-          activeBox === 'tenth'
-            ? 'border-black'
-            : 'border-[#A0A0A080]'
-        }`}
-        onClick={() =>
-          setActiveBox('tenth')
-        }
-      >
-        Tenth Marks
-        <div
-          className={`border ${
-            activeBox === 'tenth'
-              ? 'bg-[#333]'
-              : 'bg-[#FAFAFA]'
-          } w-[29px] h-[29px] rounded-[5px]`}
-        ></div>
-      </div>
-
-      <div
-        className={`border min-[630px]:max-w-[248px] w-full cursor-pointer rounded-[8px] py-1.5 px-4 text-xs flex items-center justify-between ${
-          activeBox === 'twelfth'
-            ? 'border-black'
-            : 'border-[#A0A0A080]'
-        }`}
-        onClick={() =>
-          setActiveBox('twelfth')
-        }
-      >
-        Twelfth Marks
-        <div
-          className={`border ${
-            activeBox === 'twelfth'
-              ? 'bg-[#333]'
-              : 'bg-[#FAFAFA]'
-          } w-[29px] h-[29px] rounded-[5px]`}
-        ></div>
-      </div>
-
-      <Dropdown
-        placeholder='University'
-        name='university'
-        options={[
-          'USA',
-          'International',
-          'GC',
-        ]}
+      <InputField
+        placeholder='Pin Code'
+        type='number'
+        name='pinCode'
         onChange={handleInputChange}
       />
+   
+
     </div>
   );
 };
