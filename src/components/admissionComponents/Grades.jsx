@@ -16,6 +16,7 @@ const Grades = ({
       <Dropdown
         placeholder='Select Your 10th Board'
         name='tenthBoard'
+        required={true}
         options={[
           'CBSE',
           'JAC',
@@ -30,6 +31,7 @@ const Grades = ({
 <Dropdown
         placeholder='Select Your 10th Grade'
         name='tenthGrade'
+        required={true}
         options={[
           'A',
           'B',
@@ -47,6 +49,7 @@ const Grades = ({
         placeholder='Enter Your 12th Marks'
         type='text'
         name='twelfthMarks'
+        required={true}
         onChange={handleInputChange}
       />
       <Dropdown
@@ -66,6 +69,7 @@ const Grades = ({
 <Dropdown
         placeholder='Select Your 12th Grade'
         name='twelfthGrade'
+        required={true}
         options={[
           'A',
           'B',

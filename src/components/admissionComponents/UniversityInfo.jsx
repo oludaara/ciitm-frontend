@@ -10,6 +10,7 @@ const UniversityInfo = ({
       <InputField
         placeholder='University Name'
         type='text'
+        required={true}
         name='universityName'
         onChange={handleInputChange}
       />
@@ -17,6 +18,7 @@ const UniversityInfo = ({
       <Dropdown
         placeholder='Select Your University'
         name='university'
+        required={true}
         options={[
           'Aisect University',
           'Makhanlal Chaturvedi  University Bhopal ',
@@ -29,6 +31,7 @@ const UniversityInfo = ({
 <Dropdown
         placeholder='Select Course'
         name='courseName'
+        required={true}
         options={[
           'MCA',
           'BCA',

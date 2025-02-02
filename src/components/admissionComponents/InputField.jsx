@@ -80,7 +80,7 @@ let array = [];
     }
 
 
-    if (!value.trim()) {
+    if (required) {
       setIsError(true);
     }
   };

@@ -14,6 +14,7 @@ const YourInfo = ({
       <InputField
         placeholder='First Name'
         type='text'
+        required={true}
         name='firstName'
         onChange={handleInputChange}
       />
@@ -21,22 +22,26 @@ const YourInfo = ({
         placeholder='Middle Name'
         type='text'
         name='middleName'
+        required={false}
         onChange={handleInputChange}
       />
       <InputField
         placeholder='Last Name'
         type='text'
+        required={true}
         name='lastName'
         onChange={handleInputChange}
       />
       <InputField
         placeholder="Father's Name"
         type='text'
+        required={true}
         name='fathersName'
         onChange={handleInputChange}
       />
       <InputField
         placeholder="Mother's Name"
+        required={true}
         type='text'
         name='mothersName'
         onChange={handleInputChange}
@@ -44,6 +49,7 @@ const YourInfo = ({
 
       <InputField
         placeholder='Aadhar Number'
+        required={true}
         type='number'
         name='AadharCardNumber'
         onChange={handleInputChange}
@@ -51,18 +57,21 @@ const YourInfo = ({
    
       <InputField
         placeholder='Email'
+        required={true}
         type='email'
         name='email'
         onChange={handleInputChange}
       />
       <InputField
         placeholder='Contact No'
+        required={true}
         type='tel'
         name='contactNo'
         onChange={handleInputChange}
       />
       <InputField
         placeholder='Date of Birth'
+        required={true}
         type='date'
         name='dateOfBirth'
         onChange={handleInputChange}
@@ -71,6 +80,7 @@ const YourInfo = ({
       <Dropdown
         placeholder='Gender'
         name='gender'
+        required={true}
         options={[
           'Male',
           'Female',
@@ -82,17 +92,20 @@ const YourInfo = ({
    
    <InputField
         placeholder='Street'
+        required={true}
         type='text'
         name='street'
         onChange={handleInputChange}
       />
       <InputField
         placeholder='City'
+        required={true}
         type='text'
         name='city'
         onChange={handleInputChange}
       />
       <InputField
+       required={true}
         placeholder='State'
         type='text'
         name='state'
@@ -100,6 +113,7 @@ const YourInfo = ({
       />
       <InputField
         placeholder='Pin Code'
+        required={true}
         type='number'
         name='pinCode'
         onChange={handleInputChange}

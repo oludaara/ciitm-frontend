@@ -14,6 +14,7 @@ const ParentsInfo = ({
    
       <InputField
         placeholder="Guardian's Name"
+        required={true}
         type='text'
         name='Gname'
         onChange={handleInputChange}
@@ -21,6 +22,7 @@ const ParentsInfo = ({
       <Dropdown
         placeholder="Guardian's Relation"
         name='Grelation'
+        required={true}
         options={[
           'Father',
           'Mother',
@@ -30,6 +32,7 @@ const ParentsInfo = ({
       />
       <InputField
         placeholder="Guardian's Contact Number"
+        required={true}
         type='number'
         name='GcontactNumber'
         onChange={handleInputChange}
