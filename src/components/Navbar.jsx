@@ -10,55 +10,34 @@ const Navbar = () => {
   let open = useRef(null);
   let close = useRef(null);
 
-  const showMenu = () => {
+  const openMenu = () => {
     gsap.to(menu.current, {
       y: '0%',
-      duration: 0.5, // Adjusted duration for smoothness
+      duration: 0.5,
     });
-    gsap.to(
-      open.current,
-      {
-        display: 'none',
-      },
-      'a',
-    );
-    gsap.to(
-      close.current,
-      {
-        display: 'block',
-      },
-      'a',
-    );
+    open.current.style.display = 'none';
+    close.current.style.display =
+      'block';
   };
 
   const closeMenu = () => {
     gsap.to(menu.current, {
       y: '-100%',
-      duration: 0.5, // Adjusted duration for smoothness
+      duration: 0.5,
     });
-    gsap.to(
-      open.current,
-      {
-        display: 'block',
-      },
-      'b',
-    );
-    gsap.to(
-      close.current,
-      {
-        display: 'none',
-      },
-      'b',
-    );
+    open.current.style.display =
+      'block';
+    close.current.style.display =
+      'none';
   };
 
   return (
     <>
       <div
         ref={menu}
-        className='mobile-menu w-full  h-screen bg-[#333] text-[6vw] font-semibold text-white hidden max-[599px]:block -translate-y-[100%] fixed top-0 left-0 z-[99]'
+        className='mobile-menu w-full h-screen bg-[#333] text-[6vw] font-semibold text-white hidden max-[599px]:block -translate-y-[100%] fixed top-0 left-0 z-[99]'
       >
-        <nav className='w-full h-full flex items-center justify-center  gap-6 flex-col'>
+        <nav className='w-full h-full flex items-center justify-center gap-6 flex-col'>
           <NavLink
             to='/'
             className={({
@@ -68,6 +47,7 @@ const Navbar = () => {
                 ? 'font-semibold transition-all'
                 : 'hover:font-normal transition-all'
             }
+            onClick={closeMenu}
           >
             Home
           </NavLink>
@@ -77,9 +57,10 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-semibold  transition-all'
+                ? 'font-semibold transition-all'
                 : 'hover:font-normal transition-all'
             }
+            onClick={closeMenu}
           >
             About US
           </NavLink>
@@ -89,9 +70,10 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-semibold  transition-all'
+                ? 'font-semibold transition-all'
                 : 'hover:font-normal transition-all'
             }
+            onClick={closeMenu}
           >
             Gallery
           </NavLink>
@@ -101,9 +83,10 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-semibold  transition-all'
+                ? 'font-semibold transition-all'
                 : 'hover:font-normal transition-all'
             }
+            onClick={closeMenu}
           >
             Students
           </NavLink>
@@ -113,19 +96,36 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-semibold  transition-all'
+                ? 'font-semibold transition-all'
                 : 'hover:font-normal transition-all'
             }
+            onClick={closeMenu}
           >
             Contact Us
           </NavLink>
+          <div className='btns flex items-center justify-between gap-3 text-[5vw]'>
+            <NavLink
+              to='/login'
+              className='px-8 py-2 w-full bg-[#f9f9f9] text-[#333] rounded-lg font-[Poppins]'
+              onClick={closeMenu}
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to='/signup'
+              className='px-3 py-2 w-full bg-[#F9F9F9] text-[#333] border-[1px] border-[#D7D7D74D] rounded-lg font-[Poppins]'
+              onClick={closeMenu}
+            >
+              Registration
+            </NavLink>
+          </div>
         </nav>
       </div>
 
       <nav className='w-full fixed top-0 left-0 px-10 max-[599px]:px-6 py-3 z-[999] bg-white flex items-center justify-between'>
-        <div className='logo'>
+        <NavLink className='logo'>
           <img src={logo} alt='' />
-        </div>
+        </NavLink>
         <div className='links flex items-center justify-between gap-6 text-[1vw] font-light font-[Poppins] max-[599px]:hidden'>
           <NavLink
             to='/'
@@ -145,7 +145,7 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-medium  transition-all'
+                ? 'font-medium transition-all'
                 : 'hover:font-normal transition-all'
             }
           >
@@ -157,7 +157,7 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-medium  transition-all'
+                ? 'font-medium transition-all'
                 : 'hover:font-normal transition-all'
             }
           >
@@ -169,7 +169,7 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-medium  transition-all'
+                ? 'font-medium transition-all'
                 : 'hover:font-normal transition-all'
             }
           >
@@ -181,7 +181,7 @@ const Navbar = () => {
               isActive,
             }) =>
               isActive
-                ? 'font-medium  transition-all'
+                ? 'font-medium transition-all'
                 : 'hover:font-normal transition-all'
             }
           >
@@ -189,30 +189,32 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className='btns flex items-center justify-between gap-3 max-[599px]:hidden'>
-          <button className='px-8 py-2 w-full bg-[#333] text-white rounded-lg text-sm font-[Poppins]'>
+          <NavLink
+            to='/login'
+            className='px-8 py-2 w-full bg-[#333] text-white rounded-lg text-sm font-[Poppins]'
+          >
             Login
-          </button>
-          <button className='px-3 py-2 w-full bg-[#F9F9F9] border-[1px] border-[#D7D7D74D] rounded-lg text-sm font-[Poppins]'>
+          </NavLink>
+          <NavLink
+            to='/signup'
+            className='px-3 py-2 w-full bg-[#F9F9F9] border-[1px] border-[#D7D7D74D] rounded-lg text-sm font-[Poppins]'
+          >
             Registration
-          </button>
+          </NavLink>
         </div>
         <div
           ref={open}
           className='bg-[#333] rounded-full text-white p-2 hidden max-[599px]:block'
+          onClick={openMenu}
         >
-          <IoMenu
-            size={25}
-            onClick={showMenu}
-          />
+          <IoMenu size={25} />
         </div>
         <div
           ref={close}
           className='bg-[#333] rounded-full text-white p-2 hidden'
+          onClick={closeMenu}
         >
-          <IoClose
-            size={25}
-            onClick={closeMenu}
-          />
+          <IoClose size={25} />
         </div>
       </nav>
     </>

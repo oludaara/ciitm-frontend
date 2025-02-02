@@ -14,8 +14,8 @@ function Home() {
     state => state.home.landingPage,
   );
 
-  {
-    !data ? <Loader /> : null;
+  if (!data) {
+    return <Loader />;
   }
 
   return (

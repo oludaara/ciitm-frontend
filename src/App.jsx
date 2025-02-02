@@ -16,6 +16,8 @@ import Album_Image from './components/Album_Image_Components/Album_Image';
 import ContactUs from './pages/ContactUs';
 import Loader from './components/Loader';
 import Admission from './pages/Admission';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 const App = () => {
   useEffect(() => {
@@ -55,6 +57,14 @@ const App = () => {
             <Route
               path='/album/:name'
               element={<Album_Image />}
+            ></Route>
+            <Route
+              path='/login'
+              element={<Login />}
+            ></Route>
+            <Route
+              path='/signup'
+              element={<Signup />}
             ></Route>
           </Route>
           <Route
