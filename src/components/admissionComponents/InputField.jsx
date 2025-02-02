@@ -7,6 +7,7 @@ import { setAdmission  , Admission , setOneAdmission} from '../../store/Admissio
 const InputField = ({
   placeholder,
   type,
+  name,
   required,
 }) => {
 
@@ -53,7 +54,7 @@ let array = [];
   const handleBlur = e => {
  
     let data = {
-      name: nameAndId,
+      name: name,
       value: e.target.value,
     };
 
@@ -80,8 +81,12 @@ let array = [];
     }
 
 
-    if (required) {
+    if (required && e.target.value === '') {
+
       setIsError(true);
+  
+    }else{
+      setIsError(false);
     }
   };
 

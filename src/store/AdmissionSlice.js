@@ -18,7 +18,7 @@ let AdmissionSlice = createSlice({
         setOneAdmission: (state, action) => {
             let find_index = state.admission.findIndex((item) => item.name === action.payload.name);
    
-
+           console.log('find_Index 145 redux' , find_index)
             if(find_index !== -1){
                 state.admission[find_index] = action.payload;
             }

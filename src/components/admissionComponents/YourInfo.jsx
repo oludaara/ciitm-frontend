@@ -36,14 +36,14 @@ const YourInfo = ({
         placeholder="Father's Name"
         type='text'
         required={true}
-        name='fathersName'
+        name='fatherName'
         onChange={handleInputChange}
       />
       <InputField
         placeholder="Mother's Name"
         required={true}
         type='text'
-        name='mothersName'
+        name='motherName'
         onChange={handleInputChange}
       />
 
@@ -66,7 +66,7 @@ const YourInfo = ({
         placeholder='Contact No'
         required={true}
         type='tel'
-        name='contactNo'
+        name='contactNumber'
         onChange={handleInputChange}
       />
       <InputField
@@ -82,6 +82,7 @@ const YourInfo = ({
         name='gender'
         required={true}
         options={[
+
           'Male',
           'Female',
           'Rather not to say',

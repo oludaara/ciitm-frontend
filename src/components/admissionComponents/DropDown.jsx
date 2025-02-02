@@ -1,20 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setAdmission , setOneAdmission } from '../../store/AdmissionSlice';
 
 const Dropdown = ({
   placeholder,
   options,
   handleSelect,
+  name,
   isRequired = false,
   errorMessage = 'This field is required.',
 }) => {
+
+  let admission = useSelector(state => state.admission.admission);
+  let find_index = admission.findIndex((item) => item.name === name);
+
+
+  let arr = [];
+
+// console.log('admisn ',admission)
+
+  let dispatch = useDispatch();
+
+// useEffect(() => {
+
+//   if(admission[find_index]?.value){
+//     setSelectedOption(admission[find_index]?.value)
+//   }
+
+// }, [admission])
+
+
+
+ 
+
   const [
     selectedOption,
     setSelectedOption,
   ] = useState(placeholder);
+
+
+  useEffect(() => {
+
+   
+    if(find_index !== -1){
+      console.log('find_Index 145 ' , find_index)
+       dispatch(setOneAdmission({name: name, value: selectedOption}))
+    }
+
+
+  }, [
+    selectedOption,
+  ]);
+
+
+
+
   const [isOpen, setIsOpen] =
     useState(false);
+
+
+
   const [isError, setIsError] =
     useState(false);
+
+
+
 
   const validateDropdown = () => {
     if (
@@ -27,12 +78,25 @@ const Dropdown = ({
     }
   };
 
+
+
   const handleOptionClick = option => {
+
+
+    if(find_index === -1){
+
+      dispatch(setAdmission({name: name, value: option}))
+    }
+
     setSelectedOption(option);
+
+ 
+   
     setIsOpen(false);
     setIsError(false);
-    if (handleSelect)
-      handleSelect(option);
+   
+
+
   };
 
   const handleBlur = () =>
@@ -40,11 +104,15 @@ const Dropdown = ({
 
   return (
     <div className='relative min-[630px]:max-w-[248px] w-full'>
-      <div
+      <div 
         tabIndex={0}
         onClick={() =>
           setIsOpen(!isOpen)
         }
+
+        
+        // onChange={(e) => handleOptionChange(e)}
+
         onBlur={handleBlur}
         className={`border cursor-pointer w-full flex items-center justify-between gap-2 rounded-[8px] px-4 py-3 text-xs text-[#333333] ${
           isError
@@ -83,6 +151,8 @@ const Dropdown = ({
                     option,
                   )
                 }
+
+                
                 className='flex items-center gap-2 px-4 py-3 text-xs text-[#333333] cursor-pointer hover:bg-[#FAFAFA]'
               >
                 <div
