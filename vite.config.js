@@ -4,11 +4,11 @@ import { backend_Url } from './src/utils/constants';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      // '/api': backend_Url,
-      '/api': 'http://localhost:3000',
-    },
-  },
+   plugins: [react()],
+   server: {
+      proxy: {
+         // '/api': backend_Url,
+         '/api': 'http://localhost:3000',
+      },
+   },
 });
