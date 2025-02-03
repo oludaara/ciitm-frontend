@@ -12,9 +12,9 @@ function Home() {
    useHomeUi();
    let data = useSelector(state => state.home.landingPage);
 
-   {
-      !data ? <Loader /> : null;
-   }
+  if (!data) {
+    return <Loader />;
+  }
 
    return (
       <>
