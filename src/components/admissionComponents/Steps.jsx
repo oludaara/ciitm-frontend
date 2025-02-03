@@ -6,18 +6,11 @@ import Grades from './Grades';
 import UniversityInfo from './UniversityInfo';
 
 const Steps = () => {
-  const [activeStep, setActiveStep] =
-    useState(0);
-  const [isLoading, setIsLoading] =
-    useState(false);
-  const [image, setImage] =
-    useState(null);
-  const [
-    imageUploadSuccess,
-    setImageUploadSuccess,
-  ] = useState(false);
-  const [formData, setFormData] =
-    useState({});
+  const [activeStep, setActiveStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  const [imageUploadSuccess, setImageUploadSuccess] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -27,10 +20,7 @@ const Steps = () => {
     }));
   };
 
-  const handleDropdownChange = (
-    name,
-    value,
-  ) => {
+  const handleDropdownChange = (name, value) => {
     setFormData(prevData => ({
       ...prevData,
       [name]: value,
@@ -54,12 +44,8 @@ const Steps = () => {
       label: 'Your Info',
       component: (
         <YourInfo
-          handleInputChange={
-            handleInputChange
-          }
-          handleDropdownChange={
-            handleDropdownChange
-          }
+          handleInputChange={handleInputChange}
+          handleDropdownChange={handleDropdownChange}
         />
       ),
     },
@@ -67,12 +53,8 @@ const Steps = () => {
       label: 'Parents Info',
       component: (
         <ParentsInfo
-          handleInputChange={
-            handleInputChange
-          }
-          handleDropdownChange={
-            handleDropdownChange
-          }
+          handleInputChange={handleInputChange}
+          handleDropdownChange={handleDropdownChange}
         />
       ),
     },
@@ -91,28 +73,20 @@ const Steps = () => {
   ];
 
   const validateStep = () => {
-    const currentStepData =
-      steps[activeStep];
+    const currentStepData = steps[activeStep];
 
-    if (
-      currentStepData.component.props
-    ) {
-      const formFields =
-        Object.keys(formData);
+    if (currentStepData.component.props) {
+      const formFields = Object.keys(formData);
 
       for (const field in formData) {
         if (formData[field] === '') {
-          alert(
-            'Please fill in all fields before proceeding!',
-          );
+          alert('Please fill in all fields before proceeding!');
           return false;
         }
       }
 
       if (activeStep === 4 && !image) {
-        alert(
-          'Please upload your image before proceeding!',
-        );
+        alert('Please upload your image before proceeding!');
         return false;
       }
     }
@@ -121,54 +95,49 @@ const Steps = () => {
 
   const handleNext = () => {
     if (validateStep()) {
-      if (
-        activeStep <
-        steps.length - 1
-      ) {
-        setActiveStep(
-          prevStep => prevStep + 1,
-        );
-      }
+      setIsLoading(true);
+      setTimeout(() => {
+        if (activeStep < steps.length - 1) {
+          setActiveStep(prevStep => prevStep + 1);
+        }
+        setIsLoading(false);
+      }, 1500);
     }
   };
 
   const handlePrevious = () => {
-    if (activeStep > 0) {
-      setActiveStep(
-        prevStep => prevStep - 1,
-      );
-    }
+    setIsLoading(true);
+    setTimeout(() => {
+      if (activeStep > 0) {
+        setActiveStep(prevStep => prevStep - 1);
+      }
+      setIsLoading(false);
+    }, 1500);
   };
 
   return (
     <>
-      <form action='POST'>
+      <form action='POST' className={`${isLoading ? 'opacity-10 transition-opacity duration-500' : 'opacity-100 transition-opacity duration-500'}`}>
         <div className='flex mt-10 mb-20 items-center w-full'>
           {steps.map((step, index) => (
             <React.Fragment key={index}>
               <div className='w-[18vw]'>
                 <div
-                  className={`mt-2 text-[1.31vw] leading-none text-center font-medium
-                    ${index <= activeStep ? 'text-black' : 'text-[#AAAAAA]'}`}
+                  className={`mt-2 text-[1.31vw] leading-none text-center font-medium ${index <= activeStep ? 'text-black' : 'text-[#AAAAAA]'}`}
                 >
                   {step.label}
                 </div>
                 <div className='flex items-center'>
                   <div
-                    className={`min-[800px]:w-6 w-3 h-3 min-[800px]:h-6 flex items-center bg-white justify-center rounded-full border-2 transition-all duration-300 ease-in-out
-                    ${index <= activeStep ? 'border-black' : 'border-[#A0A0A080]'}`}
+                    className={`min-[800px]:w-6 w-3 h-3 min-[800px]:h-6 flex items-center bg-white justify-center rounded-full border-2 transition-all duration-300 ease-in-out ${index <= activeStep ? 'border-black' : 'border-[#A0A0A080]'}`}
                   >
                     <div
-                      className={`min-[800px]:w-3.5 w-1.5 h-1.5 min-[800px]:h-3.5 rounded-full
-                      ${index <= activeStep ? 'bg-black' : 'bg-[#A0A0A080]'}`}
+                      className={`min-[800px]:w-3.5 w-1.5 h-1.5 min-[800px]:h-3.5 rounded-full ${index <= activeStep ? 'bg-black' : 'bg-[#A0A0A080]'}`}
                     ></div>
                   </div>
-                  {index <
-                    steps.length -
-                      0 && (
+                  {index < steps.length - 0 && (
                     <div
-                      className={`flex-grow h-0.5 mx-2 transition-all duration-300 ease-in-out
-                      ${index < activeStep ? 'bg-black' : 'bg-[#333333]/30'}`}
+                      className={`flex-grow h-0.5 mx-2 transition-all duration-300 ease-in-out ${index < activeStep ? 'bg-black' : 'bg-[#333333]/30'}`}
                     ></div>
                   )}
                 </div>
@@ -181,72 +150,41 @@ const Steps = () => {
 
         <div className='rounded-[8px] flex flex-wrap gap-4 items-end justify-between mt-16 min-[800px]:w-[47%] border border-[#AAAAAA80] px-5 pt-4 pb-5'>
           <div className='min-[700px]:w-[70%]'>
-            <h1 className='text-[#576675]'>
-              Picture Upload
-            </h1>
-            <p className='text-xs text-[#A1A8B4] pt-2'>
-              Submit Your Order
-              Information - Item Name,
-              Decoration Size, Quantity,
-              Due Date, and any other
-              details
-            </p>
+            <h1 className='text-[#576675]'>Picture Upload</h1>
+            <p className='text-xs text-[#A1A8B4] pt-2'>Submit Your Order Information - Item Name, Decoration Size, Quantity, Due Date, and any other details</p>
           </div>
 
-          <input
-            type='file'
-            accept='image/*'
-            onChange={handleImageUpload}
-            className='hidden'
-            id='upload-btn'
-          />
-          <label
-            htmlFor='upload-btn'
-            className='cursor-pointer text-center bg-[#333333] px-6 text-white py-2.5 text-xs rounded-[8px]'
-          >
+          <input type='file' accept='image/*' onChange={handleImageUpload} className='hidden' id='upload-btn' />
+          <label htmlFor='upload-btn' className='cursor-pointer text-center bg-[#333333] px-6 text-white py-2.5 text-xs rounded-[8px]'>
             Upload
           </label>
 
-          {imageUploadSuccess &&
-            image && (
-              <div className='mt-4'>
-                <p className='text-green-500'>
-                  Upload successful!
-                </p>
-                <img
-                  src={image}
-                  alt='Uploaded'
-                  className='mt-2 w-32 h-32 object-cover rounded-md'
-                />
-              </div>
-            )}
+          {imageUploadSuccess && image && (
+            <div className='mt-4'>
+              <p className='text-green-500'>Upload successful!</p>
+              <img src={image} alt='Uploaded' className='mt-2 w-32 h-32 object-cover rounded-md' />
+            </div>
+          )}
         </div>
 
         <div className='flex mt-10 min-[1000px]:mt-0 min-[600px]:flex-row flex-col w-full items-center justify-end gap-5'>
           {activeStep > 0 && (
-            <button
-              type='button'
-              className='text-center bg-[#333333] w-full min-[600px]:w-fit px-6 text-white py-2.5 text-sm rounded-[8px]'
-              onClick={handlePrevious}
-              disabled={isLoading}
-            >
+            <button type='button' className='text-center bg-[#333333] w-full min-[600px]:w-fit px-6 text-white py-2.5 text-sm rounded-[8px]' onClick={handlePrevious} disabled={isLoading}>
               Previous
             </button>
           )}
 
-          <button
-            type='button'
-            className='text-center w-full min-[600px]:w-fit bg-[#333333] px-6 text-white py-2.5 text-sm rounded-[8px]'
-            onClick={handleNext}
-            disabled={isLoading}
-          >
-            {activeStep ===
-            steps.length - 1
-              ? 'Submit'
-              : 'Next'}
+          <button type='button' className='text-center w-full min-[600px]:w-fit bg-[#333333] px-6 text-white py-2.5 text-sm rounded-[8px]' onClick={handleNext} disabled={isLoading}>
+            {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
           </button>
         </div>
       </form>
+
+      {isLoading && (
+        <div className='fixed inset-0 flex items-center justify-center bg-transparent'>
+          <div className='w-12 h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin'></div>
+        </div>
+      )}
     </>
   );
 };
