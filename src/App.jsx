@@ -1,12 +1,6 @@
-import React, {
-  useEffect,
-} from 'react';
+import React, { useEffect } from 'react';
 import Body from './Body';
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ErrorPage from './components/ErrorPage';
 import About from './pages/About';
 import Landing from './pages/Home';
@@ -20,12 +14,11 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 
 const App = () => {
-  useEffect(() => {
-    window.onload = () => {
-      return <Loader />;
-    };
-  }, []);
-
+   useEffect(() => {
+      window.onload = () => {
+         return <Loader />;
+      };
+   }, []);
   return (
     <>
       <BrowserRouter basename='/'>

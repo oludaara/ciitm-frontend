@@ -6,9 +6,9 @@ import logo from '../assets/images/ciitmLogo.png';
 import { useRef } from 'react';
 
 const Navbar = () => {
-  let menu = useRef(null);
-  let open = useRef(null);
-  let close = useRef(null);
+   let menu = useRef(null);
+   let open = useRef(null);
+   let close = useRef(null);
 
   const openMenu = () => {
     gsap.to(menu.current, {

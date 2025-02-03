@@ -6,64 +6,63 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Poppins';
+   font-family: 'Poppins';
 }
 
 .heading {
-  font-family: 'Montserrat', serif;
-  font-weight: 700;
+   font-family: 'Montserrat', serif;
+   font-weight: 700;
 }
 
 .heading2 {
-  font-family: 'Montserrat', serif;
-  font-weight: 600;
+   font-family: 'Montserrat', serif;
+   font-weight: 600;
 }
 
 p {
-  font-family: 'Poppins', serif;
+   font-family: 'Poppins', serif;
 }
 
 /* tesitimonial section carousal effect */
 .slick-center .card {
-  transform: scale(1);
-  opacity: 1;
+   transform: scale(1);
+   opacity: 1;
 }
 
 .slick-slide:not(.slick-center) .card {
-  transform: scale(0.9);
-  opacity: 0.5 !important;
+   transform: scale(0.9);
+   opacity: 0.5 !important;
 }
 
 /* making the empower section responsive */
 
 @media screen and (max-width: 1000px) {
-  .empower-img-div {
-    display: none;
-  }
-  .arrow-image {
-    display: none;
-  }
-  .empower-text {
-    height: fit-content;
-    padding: 20px;
-  }
-  /* .slick-prev{
+   .empower-img-div {
+      display: none;
+   }
+   .arrow-image {
+      display: none;
+   }
+   .empower-text {
+      height: fit-content;
+      padding: 20px;
+   }
+   /* .slick-prev{
         left: 10px !important;
       } */
 
-  /* testimonial section responsive */
-  .slick-slide:not(.slick-center)
-    .card {
-    transform: scale(1);
-    opacity: 1;
-  }
+   /* testimonial section responsive */
+   .slick-slide:not(.slick-center) .card {
+      transform: scale(1);
+      opacity: 1;
+   }
 }
 
 @media screen and (min-width: 300px) and (max-width: 800px) {
-  .skills-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5;
-    place-content: center;
-  }
+   .skills-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5;
+      place-content: center;
+   }
 }

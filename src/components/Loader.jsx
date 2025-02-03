@@ -19,8 +19,7 @@ const Loader = () => {
           </p>
         </div>
       </div>
-    </div>
-  );
+   );
 };
 
 export default Loader;
