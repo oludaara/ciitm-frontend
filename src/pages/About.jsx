@@ -10,35 +10,28 @@ import useAbout from '../hooks/useAbout';
 import Loader from '../components/Loader';
 
 const About = () => {
-  useAbout();
+   useAbout();
 
-  let about = useSelector(
-    state => state.about.aboutPage,
-  );
+   let about = useSelector(state => state.about.aboutPage);
 
-  if (!about) {
-    return <Loader />;
-  }
+   if (!about) {
+      return <Loader />;
+   }
 
-  return (
-    <>
-      <Helmet>
-        <title>
-          About - CIITM Dhanbad
-        </title>
-        <meta
-          name='description'
-          content='About My Website'
-        />
-      </Helmet>
+   return (
+      <>
+         <Helmet>
+            <title>About - CIITM Dhanbad</title>
+            <meta name='description' content='About My Website' />
+         </Helmet>
 
-      <AboutHero />
-      <History />
-      <Teachers />
-      <Courses />
-      <CampusFacilities />
-    </>
-  );
+         <AboutHero />
+         <History />
+         <Teachers />
+         <Courses />
+         <CampusFacilities />
+      </>
+   );
 };
 
 export default About;

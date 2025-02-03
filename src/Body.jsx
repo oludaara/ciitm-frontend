@@ -5,15 +5,15 @@ import Footer from './components/Footer';
 import useHomeUi from './hooks/useHomeUi.js';
 
 const Body = () => {
-  useHomeUi();
+   useHomeUi();
 
-  return (
-    <>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </>
-  );
+   return (
+      <>
+         <Navbar />
+         <Outlet />
+         <Footer />
+      </>
+   );
 };
 
 export default Body;

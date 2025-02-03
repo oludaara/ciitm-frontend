@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import bulletPoint from '../../assets/images/bulletPoint.svg';
+
+
+
 
 export let Facilites_Card = ({ Title, index, isActive, onClick }) => {
   return (
@@ -51,18 +55,15 @@ const CampusFacilities = () => {
       </div>
 
       <div className='right w-[82.5%] max-[599px]:w-full text-white px-8 max-[599px]:px-0 h-full flex items-start justify-between flex-col gap-6'>
-      <div className='facilities'>
+        <div className='facilities'>
           <h1 className='text-[1.2vw] max-[599px]:text-[5vw] font-semibold font-[Montserrat] mb-2'>
             Capmus and Faciities
           </h1>
           <p className='text-[0.9vw] max-[599px]:text-[3vw] w-[65%] max-[599px]:w-full'>
-            The University of the
-            institute provides several
-            facilities to staff and
-            students, which include
-            health, hostel, transport,
-            library, sports and various
-            others.
+            The University of the institute provides several
+            facilities to staff and students, which include
+            health, hostel, transport, library, sports and
+            various others.
           </p>
         </div>
         <div className='dynamic-links'>
@@ -76,7 +77,6 @@ const CampusFacilities = () => {
             {`There are twenty eight ${activeTab?.title || 'Hostels'} including eleven separate ${activeTab?.title || 'Hostels'} for female students. The residential accommodation in each of these ${activeTab?.title || 'Hostels'} comprises of cubicles and three-seat dormitories.`}
           </p>
         </div>
-
         <div className='discription w-full h-full flex max-[599px]:flex-col items-start justify-start gap-7'>
           <div className='img-container w-[10vw] max-[599px]:w-full h-[10vw] max-[599px]:h-[45vw] bg-[#FFE7E7] rounded-2xl overflow-hidden'>
             <img src={Description.image} alt='' className='w-full h-full object-cover' />
@@ -101,6 +101,7 @@ const CampusFacilities = () => {
       </div>
     </section>
   );
+ 
 };
 
 export default CampusFacilities;

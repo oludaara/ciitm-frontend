@@ -9,34 +9,32 @@ import { useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 
 function Home() {
-  useHomeUi();
-  let data = useSelector(
-    state => state.home.landingPage,
-  );
+   useHomeUi();
+   let data = useSelector(state => state.home.landingPage);
 
-  {
-    !data ? <Loader /> : null;
-  }
+   {
+      !data ? <Loader /> : null;
+   }
 
-  return (
-    <>
-      <Helmet>
-        <title>
-          Top BCA Colleges In Dhanbad |
-          BCA Course In Dhanbad – CIITM
-        </title>
-        <meta
-          name='description'
-          content="Top BCA Colleges In Dhanbad: List of BCA Colleges offering Bachelor's Degree in Dhanbad, along with course duration, course fees, and other important details."
-        />
-      </Helmet>
-      <Hero />
-      <Empower />
-      <Skills />
-      <Album />
-      <Testimonials />
-    </>
-  );
+   return (
+      <>
+         <Helmet>
+            <title>
+               Top BCA Colleges In Dhanbad | BCA Course In Dhanbad –
+               CIITM
+            </title>
+            <meta
+               name='description'
+               content="Top BCA Colleges In Dhanbad: List of BCA Colleges offering Bachelor's Degree in Dhanbad, along with course duration, course fees, and other important details."
+            />
+         </Helmet>
+         <Hero />
+         <Empower />
+         <Skills />
+         <Album />
+         <Testimonials />
+      </>
+   );
 }
 
 export default Home;

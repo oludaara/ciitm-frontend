@@ -10,17 +10,15 @@ import Loader from './components/Loader';
 
 // Initialize Lenis
 const lenis = new Lenis({
-  autoRaf: true,
+   autoRaf: true,
 });
 
-createRoot(
-  document.getElementById('root'),
-).render(
-  <StrictMode>
-    <HelmetProvider>
-      <Provider store={appStore}>
-        <App />
-      </Provider>
-    </HelmetProvider>
-  </StrictMode>,
+createRoot(document.getElementById('root')).render(
+   <StrictMode>
+      <HelmetProvider>
+         <Provider store={appStore}>
+            <App />
+         </Provider>
+      </HelmetProvider>
+   </StrictMode>,
 );
