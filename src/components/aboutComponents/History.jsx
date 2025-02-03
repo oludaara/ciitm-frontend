@@ -12,7 +12,6 @@ const History = () => {
 
    useEffect(() => {
       if (aboutPage) {
-         console.log('History Data:', aboutPage.History);
          setHistory(aboutPage.History || {});
          setVision(aboutPage.Vision_and_Mission || {});
       }

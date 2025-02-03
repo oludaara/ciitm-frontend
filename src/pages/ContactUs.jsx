@@ -39,7 +39,6 @@ const ContactUs = () => {
    });
 
    const onSubmit = async data => {
-      console.log('data', data);
       try {
          const response = await axios.post(Contact_EndPoint, data);
 
@@ -58,8 +57,6 @@ const ContactUs = () => {
                text: response.data.message,
             });
          }
-
-         console.log('response', response);
       } catch (error) {
          if (error.response.error || error) {
             Swal.fire({
@@ -70,8 +67,6 @@ const ContactUs = () => {
                   : 'Something went wrong!',
             });
          }
-         console.error('error', error);
-         console.error('error response', error.response.message);
       }
    };
 

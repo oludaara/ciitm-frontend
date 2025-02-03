@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+
+import Swal from 'sweetalert2';
 import YourInfo from './YourInfo';
 import ParentsInfo from './ParentsInfo';
 import AreyouHuman from './AreyouHuman';
 import Grades from './Grades';
 import UniversityInfo from './UniversityInfo';
 import { setFile } from '../../store/AdmissionSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import admissionConstant from './admission.constant.mjs';
+import { useEffect } from 'react';
 
 const Steps = () => {
    const [activeStep, setActiveStep] = useState(0);
@@ -15,7 +20,26 @@ const Steps = () => {
       useState(false);
    const [formData, setFormData] = useState({});
 
+   const [Avtor, setAvtor] = useState(null);
+
+   let admission = useSelector(state => state.admission.admission);
+
+   useEffect(() => {
+      if (admission.length <= 0) {
+         Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Please fill Admission Form',
+            showConfirmButton: true,
+            timer: 2500,
+         });
+      }
+   }, [admission]);
+
+   let file = useSelector(state => state.admission.avtar);
+
    let dispatch = useDispatch();
+
    const handleInputChange = e => {
       const { name, value } = e.target;
       setFormData(prevData => ({
@@ -33,7 +57,7 @@ const Steps = () => {
 
    const handleImageUpload = e => {
       const file = e.target.files[0];
-      console.log('file', file);
+      setAvtor(file);
 
       if (file) {
          const reader = new FileReader();
@@ -41,29 +65,58 @@ const Steps = () => {
             setImage(reader.result);
             setImageUploadSuccess(true);
 
-            let file_Data = {
-               name: file.name,
-               size: file.size,
-               type: file.type,
-               base64: reader.result,
-            };
-
- 
-
-            dispatch(setFile(file_Data));
+            dispatch(setFile([URL.createObjectURL(file)]));
          };
          reader.readAsDataURL(file);
       }
    };
 
+   const Handle_From_Submit = async () => {
+      setIsLoading(true);
 
+      try {
+         const formData = new FormData();
 
-   let  Handle_From_Submit = () => {
+         admission.forEach(element => {
+            formData.append(element.name, element.value);
+         });
 
-alert('Form Submitted Successfully')
+         if (Avtor) {
+            formData.append('avtar', Avtor);
+         }
 
-   }
+         let res = await axios.post(
+            '/api/admission/student',
+            formData,
+            {
+               headers: {
+                  'Content-Type': admissionConstant.CONTENT_TYPE,
+               },
+            },
+         );
 
+         Swal.fire({
+            icon: 'success',
+            title: admissionConstant.SUCCESS_TITLE,
+            text: res.data.message || admissionConstant.SUCCESS_TEXT,
+            showConfirmButton: false,
+            timer: 1500,
+         });
+      } catch (error) {
+         console.log('Error 1', error);
+
+         Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:
+               error.response.data.message || admissionConstant.ERROR,
+            showConfirmButton: true,
+            timer: 2500,
+         });
+      } finally {
+         setIsLoading(false);
+      }
+   };
 
    const steps = [
       {
@@ -223,15 +276,16 @@ alert('Form Submitted Successfully')
                <button
                   type='button'
                   className='text-center w-full min-[600px]:w-fit bg-[#333333] px-6 text-white py-2.5 text-sm rounded-[8px]'
-                  onClick={steps.length - 1 === activeStep ? Handle_From_Submit : handleNext}
-
+                  onClick={
+                     steps.length - 1 === activeStep
+                        ? Handle_From_Submit
+                        : handleNext
+                  }
                   disabled={isLoading}
                >
                   {activeStep === steps.length - 1
                      ? 'Submit'
                      : 'Next'}
-
-              
                </button>
             </div>
          </form>

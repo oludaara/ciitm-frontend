@@ -81,6 +81,22 @@ const YourInfo = ({ formData, handleInputChange }) => {
             onChange={handleInputChange}
          />
 
+         <Dropdown
+            placeholder='Select Nationality'
+            name='nationality'
+            required={true}
+            options={[
+               'India',
+               'Pakistan',
+               'Bangladesh',
+               'Sri Lanka',
+               'Nepal',
+               'Bhutan',
+               'Maldives',
+            ]}
+            onChange={handleInputChange}
+         />
+
          <InputField
             placeholder='Street'
             required={true}

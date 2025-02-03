@@ -11,7 +11,6 @@ const Album_Image = () => {
       try {
          // let res = await axios.get(`/api/image/${name}`)
       } catch (error) {
-         console.log(error);
          Swal.fire(() => {
             icon: 'error';
             title: 'Oops...';

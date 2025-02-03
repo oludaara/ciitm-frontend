@@ -28,9 +28,6 @@ const Dropdown = ({
 
    useEffect(() => {
       if (find_index !== -1) {
-        
-
-
          dispatch(
             setOneAdmission({
                name: name,
@@ -121,9 +118,8 @@ const Dropdown = ({
                            <div className='w-2 h-2 rounded-full bg-[#333333]'></div>
                         )}
                      </div>
-                   
-                    {option}
-                   
+
+                     {option}
                   </div>
                ))}
             </div>

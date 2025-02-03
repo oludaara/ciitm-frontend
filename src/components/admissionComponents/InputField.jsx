@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
- 
    setAdmission,
    Admission,
    setOneAdmission,
@@ -9,13 +8,7 @@ import {
 
 const InputField = ({ placeholder, type, name, required }) => {
    let admission = useSelector(state => state.admission.admission);
-   let find_index = admission.findIndex(
-      item =>
-         item.name === name,
-   );
-
-
-
+   let find_index = admission.findIndex(item => item.name === name);
 
    useEffect(() => {
       setValue(admission[find_index]?.value);
@@ -47,9 +40,7 @@ const InputField = ({ placeholder, type, name, required }) => {
          array.forEach(element => {
             dispatch(setAdmission(data));
          });
-
       } else {
-        
          array[find_index] = data;
          dispatch(setOneAdmission(data));
       }
@@ -60,8 +51,6 @@ const InputField = ({ placeholder, type, name, required }) => {
          setIsError(false);
       }
    };
-
-   // console.log(Array);
 
    return (
       <div className='max-[600px]:max-w-[248px] w-full relative'>

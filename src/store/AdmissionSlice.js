@@ -15,9 +15,7 @@ let AdmissionSlice = createSlice({
          state.admission = [...state.admission, action.payload];
       },
 
-
       setFile: (state, action) => {
-         console.log('action.payload', action.payload);
          state.avtar = action.payload;
       },
 
@@ -26,7 +24,6 @@ let AdmissionSlice = createSlice({
             item => item.name === action.payload.name,
          );
 
-         console.log('find_Index 145 redux', find_index);
          if (find_index !== -1) {
             state.admission[find_index] = action.payload;
          }
@@ -34,7 +31,7 @@ let AdmissionSlice = createSlice({
    },
 });
 
-export const { Admission, setAdmission, setOneAdmission , setFile} =
+export const { Admission, setAdmission, setOneAdmission, setFile } =
    AdmissionSlice.actions;
 
 export default AdmissionSlice.reducer;
