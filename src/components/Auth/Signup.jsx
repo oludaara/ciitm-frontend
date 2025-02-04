@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   return (
-    <section className='w-full h-screen flex max-[999px]:flex-col'>
+    <section className='w-full min-h-screen flex max-[999px]:flex-col'>
       <div className='left w-1/2 max-[999px]:w-full h-full '>
         <img
           className='w-full h-full object-cover pointer-events-none'
@@ -52,12 +53,12 @@ const Signup = () => {
           </div>
         <p className='mt-4 text-[0.85vw] max-[999px]:text-[2.5vw] underline font-semibold'>
           Already have an account?{' '}
-          <a
-            href='#'
+          <Link
+           to="/login"
             className='text-[#B83D00]'
           >
             Login
-          </a>
+          </Link>
         </p>
         </form>
       </div>

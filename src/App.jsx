@@ -10,8 +10,8 @@ import Album_Image from './components/Album_Image_Components/Album_Image';
 import ContactUs from './pages/ContactUs';
 import Loader from './components/Loader';
 import Admission from './pages/Admission';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 
 const App = () => {
    useEffect(() => {
