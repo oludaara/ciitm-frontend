@@ -6,7 +6,7 @@ const AdmissionForm = () => {
       <div className='px-[3vw] text-[#333333] bg-[#D7D7D726] pb-[6vw] pt-[3vw]'>
          <div className='font-[400] lg:w-[60%] text-[18px]'>
             <span className='font-[700]'>Note:</span> Welcome to
-            [Institute Name], an institution dedicated to fostering
+            CIITM Dhanbad, an institution dedicated to fostering
             innovation, knowledge, and personal growth. Our mission is
             to shape tom
          </div>
@@ -22,7 +22,7 @@ const AdmissionForm = () => {
                </h1>
                <div className='font-[400]  text-sm pt-1'>
                   <span className='font-[700]'>Note:</span> Welcome to
-                  [Institute Name], an institution dedicated to
+                  CIITM Dhanbad, an institution dedicated to
                   fostering innovation,
                </div>
 

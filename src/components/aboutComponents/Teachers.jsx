@@ -2,100 +2,102 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useTeacher from '../../hooks/useTeacher';
+// import {Swiper} from 'swiper';
+import {Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
-const TeacherCard = React.memo(({ teacher }) => (
-   <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl  max-[1098px]:w-[40%]'>
-      <div className='img w-full h-[23vh] rounded-xl flex items-center justify-center'>
-         <img
-            src={teacher.image}
-            alt=''
-            className='w-full bg-cover object-cover overflow-hidden rounded-xl h-full'
-            loading='lazy'
-         />
-      </div>
-      <h1 className='text-[1.2vw] max-[599px]:text-[4.8vw] font-medium bg-slate-500'>
-         {teacher.position}
-      </h1>
-      <div className='list w-full'>
-         <div className='flex w-full items-center justify-between'>
-            <p className='text-[0.95vw] max-[599px]:text-[3.5vw] font-medium'>
-               {teacher.name}
-            </p>
-            <p className='text-[0.85vw] max-[599px]:text-[3.2vw] font-bold'>
-               {teacher.Specialization}
-            </p>
+const TeacherCard = React.memo(({ teacher }) => {
+   const socialMedia = teacher.social_media && teacher.social_media[0] ? teacher.social_media[0] : {};
+
+   return (
+      <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl  max-[1098px]:w-[40%]'>
+         <div className='img w-full h-[23vh] rounded-xl flex items-center justify-center'>
+            <img
+               src={teacher.image}
+               alt=''
+               className='w-full bg-cover object-cover overflow-hidden rounded-xl h-full'
+               loading='lazy'
+            />
          </div>
-         <div className='flex w-full items-center justify-between'>
-            <p className='text-[0.95vw] max-[599px]:text-[3.5vw] font-medium'>
-               Experience
-            </p>
-            <p className='text-[0.85vw] max-[599px]:text-[3.2vw] font-bold'>
-               {teacher.Experience}
-            </p>
-         </div>
-         <div className='flex w-full items-center justify-between'>
-            <p className='text-[0.95vw] max-[599px]:text-[3.5vw] font-medium'>
-               Specialization
-            </p>
-            <p className='text-[0.85vw] max-[599px]:text-[3.2vw] font-bold'>
-               {teacher.role}
-            </p>
-         </div>
-      </div>
-      <div className='social w-full flex items-center justify-between'>
-         <h1 className='w-1/2 text-[0.95vw] max-[599px]:text-[3.5vw] font-bold'>
-            Social Media accounts
+         <h1 className='text-[1.2vw] max-[599px]:text-[4.8vw] font-medium bg-slate-500'>
+            {teacher.position}
          </h1>
-         <div className='profile flex'>
-            <Link
-               to={teacher.social_media[0].instagram}
-               target='_blank'
-            >
-               <img
-                  src='https://img.icons8.com/bubbles/32/000000/instagram-new.png'
-                  alt='instagram'
-               />
-            </Link>
-            <Link
-               to={teacher.social_media[0].facebook}
-               target='_blank'
-            >
-               <img
-                  src='https://img.icons8.com/bubbles/32/000000/facebook-new.png'
-                  alt='facebook'
-               />
-            </Link>
-            <Link
-               to={teacher.social_media[0].twitter}
-               target='_blank'
-            >
-               <img
-                  src='https://img.icons8.com/bubbles/32/000000/x.png'
-                  alt='twitter'
-               />
-            </Link>
-            <Link
-               to={teacher.social_media[0].linkedin}
-               target='_blank'
-            >
-               <img
-                  src='https://img.icons8.com/bubbles/32/000000/linkedin.png'
-                  alt='linkedin'
-               />
-            </Link>
+         <div className='list w-full'>
+            <div className='flex w-full items-center justify-between'>
+               <p className='text-[0.95vw] max-[599px]:text-[3.5vw] font-medium'>
+                  {teacher.name}
+               </p>
+               <p className='text-[0.85vw] max-[599px]:text-[3.2vw] font-bold'>
+                  {teacher.Specialization}
+               </p>
+            </div>
+            <div className='flex w-full items-center justify-between'>
+               <p className='text-[0.95vw] max-[599px]:text-[3.5vw] font-medium'>
+                  Experience
+               </p>
+               <p className='text-[0.85vw] max-[599px]:text-[3.2vw] font-bold'>
+                  {teacher.Experience}
+               </p>
+            </div>
+            <div className='flex w-full items-center justify-between'>
+               <p className='text-[0.95vw] max-[599px]:text-[3.5vw] font-medium'>
+                  Specialization
+               </p>
+               <p className='text-[0.85vw] max-[599px]:text-[3.2vw] font-bold'>
+                  {teacher.role}
+               </p>
+            </div>
          </div>
+         <div className='social w-full flex items-center justify-between'>
+            <h1 className='w-1/2 text-[0.95vw] max-[599px]:text-[3.5vw] font-bold'>
+               Social Media accounts
+            </h1>
+            <div className='profile flex'>
+               {socialMedia.instagram && (
+                  <Link to={socialMedia.instagram} target='_blank'>
+                     <img
+                        src='https://img.icons8.com/bubbles/32/000000/instagram-new.png'
+                        alt='instagram'
+                     />
+                  </Link>
+               )}
+               {socialMedia.facebook && (
+                  <Link to={socialMedia.facebook} target='_blank'>
+                     <img
+                        src='https://img.icons8.com/bubbles/32/000000/facebook-new.png'
+                        alt='facebook'
+                     />
+                  </Link>
+               )}
+               {socialMedia.twitter && (
+                  <Link to={socialMedia.twitter} target='_blank'>
+                     <img
+                        src='https://img.icons8.com/bubbles/32/000000/x.png'
+                        alt='twitter'
+                     />
+                  </Link>
+               )}
+               {socialMedia.linkedin && (
+                  <Link to={socialMedia.linkedin} target='_blank'>
+                     <img
+                        src='https://img.icons8.com/bubbles/32/000000/linkedin.png'
+                        alt='linkedin'
+                     />
+                  </Link>
+               )}
+            </div>
+         </div>
+         {socialMedia.linkedin && (
+            <Link to={socialMedia.linkedin} target='_blank' className='w-full'>
+               <button className='bg-[#333] text-[0.95vw] max-[599px]:text-[3.5vw] font-semibold w-full text-white rounded-lg py-2 px-6'>
+                  Contact me
+               </button>
+            </Link>
+         )}
       </div>
-      <Link
-         to={teacher.social_media[0].linkedin}
-         target='_blank'
-         className='w-full'
-      >
-         <button className='bg-[#333] text-[0.95vw] max-[599px]:text-[3.5vw] font-semibold w-full text-white rounded-lg py-2 px-6'>
-            Contact me
-         </button>
-      </Link>
-   </div>
-));
+   );
+});
 
 const Teachers = () => {
    const teachers = useSelector(state => state.about.teacher);

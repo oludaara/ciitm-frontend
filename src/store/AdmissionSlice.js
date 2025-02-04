@@ -4,10 +4,12 @@ let AdmissionSlice = createSlice({
   name: 'admission',
   initialState: {
     admission: [],
+    avtar: null,
   },
   reducers: {
     Admission: (state, action) => {
       state.admission = action.payload;
+    
     },
 
     setAdmission: (state, action) => {
@@ -16,6 +18,12 @@ let AdmissionSlice = createSlice({
         action.payload,
       ];
     },
+
+    setFile: (state, action) => {
+      state.avtar = action.payload;
+   },
+
+
 
     setOneAdmission: (
       state,
@@ -40,6 +48,7 @@ export const {
   Admission,
   setAdmission,
   setOneAdmission,
+  setFile,
 } = AdmissionSlice.actions;
 
 export default AdmissionSlice.reducer;
