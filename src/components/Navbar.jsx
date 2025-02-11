@@ -10,6 +10,11 @@ const Navbar = () => {
    const close = useRef(null);
    const dropdownRef = useRef(null); // Ref for dropdown
    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+   //const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+   const windowWidth = window.innerWidth;
+   console.log(windowWidth);
+  
 
    // Open/Close menu methods
    const openMenu = () => {
@@ -17,8 +22,14 @@ const Navbar = () => {
          y: '0%',
          duration: 0.5,
       });
-      open.current.style.display = 'none';
-      close.current.style.display = 'block';
+
+      if (windowWidth > 799) {
+         open.current.style.display = 'none';
+         close.current.style.display = 'none'; 
+      } else {
+         open.current.style.display = 'none';
+         close.current.style.display = 'block';
+      }
    };
 
    const closeMenu = () => {
@@ -26,8 +37,14 @@ const Navbar = () => {
          y: '-100%',
          duration: 0.5,
       });
-      open.current.style.display = 'block';
-      close.current.style.display = 'none';
+
+      if (windowWidth > 799) {
+         open.current.style.display = 'none';
+         close.current.style.display = 'none'; 
+      } else {
+         open.current.style.display = 'block';
+         close.current.style.display = 'none';
+      }
    };
 
    // Toggle dropdown state
@@ -71,9 +88,9 @@ const Navbar = () => {
       <>
          <div
             ref={menu}
-            className='mobile-menu w-full h-screen bg-[#333] text-[6vw] font-semibold text-white hidden max-[599px]:block -translate-y-[100%] fixed top-0 left-0 z-[99]'
+            className='mobile-menu w-full h-screen bg-[#333] text-[20px] font-semibold text-white hidden max-[799px]:block -translate-y-[100%] fixed top-0 left-0 z-[99]'
          >
-            <nav className='w-full h-full flex items-center justify-center gap-6 flex-col'>
+            <nav className='w-full h-full flex items-center justify-center gap-10 flex-col mt-14'>
                {navLinks.map(link =>
                   link.label !== 'Students' ? (
                      <NavLink
@@ -104,7 +121,7 @@ const Navbar = () => {
                         {isDropdownOpen && (
                            <div
                               ref={dropdownRef} // Attach ref here
-                              className='flex flex-col bg-white text-black w-full text-[13px] absolute overflow-hidden top-full left-0 shadow-md rounded-md mt-1 border border-gray-200'
+                              className='flex flex-col bg-white text-black w-full text-[13px] absolute overflow-hidden top-full left-0 shadow-md rounded-md mt-1 mb-5 border border-gray-200'
                            >
                               <NavLink
                                  to='/admission'
@@ -150,7 +167,7 @@ const Navbar = () => {
             </nav>
          </div>
 
-         <nav className='w-full fixed top-0 left-0 px-10 max-[599px]:px-6 py-3 z-[999] bg-white flex items-center justify-between'>
+         <nav className='w-full fixed top-0 left-0 px-10 max-[799px]:px-6 py-3 z-[999] bg-white flex items-center justify-between'>
             <NavLink
                to='/'
                state={{ scrollToSection: true }}
@@ -158,7 +175,7 @@ const Navbar = () => {
             >
                <img src={logo} alt='Logo' />
             </NavLink>
-            <div className='links flex items-center justify-between gap-6 text-[1vw] font-light font-[Poppins] max-[599px]:hidden'>
+            <div className='links flex items-center justify-between gap-6 text-[1vw] font-light font-[Poppins] max-[799px]:hidden'>
                {navLinks.map(link =>
                   link.label !== 'Students' ? (
                      <NavLink
@@ -214,7 +231,7 @@ const Navbar = () => {
                   ),
                )}
             </div>
-            <div className='btns flex items-center justify-between gap-3 max-[599px]:hidden'>
+            <div className='btns flex items-center justify-between gap-3 max-[799px]:hidden'>
                <NavLink
                   to='/login'
                   state={{ scrollToSection: true }}
@@ -232,7 +249,7 @@ const Navbar = () => {
             </div>
             <div
                ref={open}
-               className='bg-[#333] rounded-full text-white p-2 hidden max-[599px]:block'
+               className='bg-[#333] rounded-full text-white p-2 hidden max-[799px]:block'
                onClick={openMenu}
             >
                <IoMenu size={25} />
