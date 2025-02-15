@@ -12,7 +12,6 @@ import axios from 'axios';
 
 const Google = ({ text }) => {
    let user = useSelector(state => state.auth.user);
-   console.log('slice', user);
 
    let dispatch = useDispatch();
 
@@ -21,17 +20,15 @@ const Google = ({ text }) => {
          try {
             let token = credentialResponse.access_token;
 
-            if (!user) {
-               let res = await axios.post(
-                  `/api/auth/google?token=${token}`,
-                  {},
-                  { withCredentials: true },
-               );
+            let res = await axios.post(
+               `/api/auth/google?token=${token}`,
+               {},
+               { withCredentials: true },
+            );
 
-               let user = res.data.user;
+            let user = res.data.user;
 
-               dispatch(setUser(user));
-            }
+            dispatch(setUser(user));
          } catch (error) {
             console.log('Login Failed', error);
          }

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../assets/images/ciitmLogo.png';
 import { Link } from 'react-router-dom';
 import useSocialLinks from '../hooks/useSocialLinks';
 
+import { setSocialLinks } from '../store/SocialLinkSlice';
+import { useSelector } from 'react-redux';
+
 const SocialLink = ({ href, label, isEmail = false }) => {
    if (!href) return null;
-
+   
    return (
       <a
          href={isEmail ? `mailto:${href}` : href}
@@ -19,9 +22,24 @@ const SocialLink = ({ href, label, isEmail = false }) => {
 };
 
 const Footer = () => {
-   const socialLinks = useSocialLinks();
+
+   const [Social_Link, setLink] = useState(null);
+
+   let data = useSelector(state => state.socialLink.links);
+   useSocialLinks();
+
+   useEffect(() => {
+     setLink(data);
+     
+   }, [data]);
+
+
+
+
+
 
    return (
+
       <footer className='w-full flex items-center justify-between p-10 max-[999px]:flex-col'>
          <div className='left w-[50%] max-[599px]:pb-10 max-[999px]:w-full h-full flex items-start max-[999px]:items-center justify-center flex-col gap-4'>
             <Link to='/'>
@@ -110,27 +128,27 @@ const Footer = () => {
                </p>
                <div className='links flex flex-col max-[599px]:flex-row gap-4 flex-wrap justify-center text-center'>
                   <SocialLink
-                     href={socialLinks?.instagram}
+                     href={Social_Link?.instagram}
                      label='Instagram'
                   />
                   <SocialLink
-                     href={socialLinks?.facebook}
+                     href={Social_Link?.facebook}
                      label='Facebook'
                   />
                   <SocialLink
-                     href={socialLinks?.twitter}
+                     href={Social_Link?.twitter}
                      label='Twitter'
                   />
                   <SocialLink
-                     href={socialLinks?.youtube}
+                     href={Social_Link?.youtube}
                      label='Youtube'
                   />
                   <SocialLink
-                     href={socialLinks?.linkedin}
+                     href={Social_Link?.linkedin}
                      label='LinkedIn'
                   />
                   <SocialLink
-                     href={socialLinks?.email}
+                     href={Social_Link?.email}
                      label='Email'
                      isEmail
                   />
