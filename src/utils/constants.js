@@ -10,4 +10,6 @@ export const Delete_Album_EndPoint = '/api/albums';
 export const Delete_Testimonial_EndPoint =
    '/api/admin/delete/testimonial/';
 
+export const Sign_Up_EndPoint = ' /api/signup/admin';
+
 // 'https://ciitm-backend.onrender.com' ||

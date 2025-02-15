@@ -5,7 +5,74 @@ import Input from './Input';
 import signupImage from '../../assets/images/signup.png';
 import logo from '../../assets/logo.svg';
 import Checkbox from './Checkbox';
+import { Sign_Up_EndPoint } from '../../utils/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import { setUser } from '../../store/AuthSlice';
+
 const Signup = () => {
+   let dispatch = useDispatch();
+
+   let First_Name = useSelector(state =>
+      state.auth.data.find(item => item.name === 'firstName'),
+   );
+
+   let Last_Name = useSelector(state =>
+      state.auth.data.find(item => item.name === 'lastName'),
+   );
+
+   let email = useSelector(state =>
+      state.auth.data.find(item => item.name === 'signupEmail'),
+   );
+
+   let password = useSelector(state =>
+      state.auth.data.find(item => item.name === 'password'),
+   );
+
+   let confirm_Password = useSelector(state =>
+      state.auth.data.find(item => item.name === 'confirm_Password'),
+   );
+
+   let Handle_Signup = async e => {
+      e.preventDefault();
+
+      if (!First_Name && !Last_Name && !email && !password && !confirm_Password) {
+         throw new Error('Please Enter all the fields');
+      }
+
+      try {
+         let res = await axios.post(Sign_Up_EndPoint, {
+            name: First_Name.value + ' ' + Last_Name.value,
+            email: email.value,
+            password: password.value,
+            confirm_Password: confirm_Password.value,
+         });
+
+         Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: res.data.message,
+         })
+
+         dispatch(setUser(res.data.user));
+
+
+
+
+        
+      } catch (error) {
+
+         let error_message = error.response.data.message;
+        
+         Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error_message ? error_message : 'Something went wrong',
+         });
+      }
+   };
+
    return (
       <section className='w-full min-h-screen flex max-[999px]:flex-col'>
          <div className='left w-1/2 max-[999px]:hidden h-full'>
@@ -29,11 +96,13 @@ const Signup = () => {
                <div className='w-full flex items-center justify-between gap-7'>
                   <Input
                      type='text'
+                     name='firstName'
                      placeholder='First Name'
                      id='firstName'
                   />
                   <Input
                      type='text'
+                     name='lastName'
                      placeholder='Last Name'
                      id='lastName'
                   />
@@ -41,18 +110,21 @@ const Signup = () => {
 
                <Input
                   type='email'
+                  name='signupEmail'
                   placeholder='Enter your Email'
                   id='email'
                />
 
                <Input
                   type='password'
+                  name='password'
                   placeholder='Create Password'
                   id='createPassword'
                />
 
                <Input
                   type='password'
+                  name='confirm_Password'
                   placeholder='Confirm Password'
                   id='confirmPassword'
                />
@@ -65,7 +137,10 @@ const Signup = () => {
                </div>
 
                <div className='flex w-full items-center justify-center gap-6 max-[999px]:gap-4 my-2 max-[999px]:flex-col'>
-                  <button className='bg-[#333] text-white font-medium rounded-lg p-3.5 w-1/2 text-[1vw] max-[999px]:text-[3vw] max-[999px]:w-full'>
+                  <button
+                     onClick={e => Handle_Signup(e)}
+                     className='bg-[#333] text-white font-medium rounded-lg p-3.5 w-1/2 text-[1vw] max-[999px]:text-[3vw] max-[999px]:w-full'
+                  >
                      Sign Up
                   </button>
                   <button className='bg-[#333] text-white font-medium rounded-lg p-3.5 w-1/2 text-[1vw] max-[999px]:text-[3vw] max-[999px]:w-full'>
