@@ -1,6 +1,5 @@
-
 const Delete_Album = () => {
- console.log('hii')
-}
+   console.log('hii');
+};
 
-export default Delete_Album
+export default Delete_Album;

@@ -23,7 +23,6 @@ const useSocialLinks = () => {
    useEffect(() => {
       fetchSocialLinks();
    }, []);
-
 };
 
 export default useSocialLinks;
