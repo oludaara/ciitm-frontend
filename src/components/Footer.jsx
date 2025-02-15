@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 const SocialLink = ({ href, label, isEmail = false }) => {
    if (!href) return null;
-   
+
    return (
       <a
          href={isEmail ? `mailto:${href}` : href}
@@ -22,24 +22,16 @@ const SocialLink = ({ href, label, isEmail = false }) => {
 };
 
 const Footer = () => {
-
    const [Social_Link, setLink] = useState(null);
 
    let data = useSelector(state => state.socialLink.links);
    useSocialLinks();
 
    useEffect(() => {
-     setLink(data);
-     
+      setLink(data);
    }, [data]);
 
-
-
-
-
-
    return (
-
       <footer className='w-full flex items-center justify-between p-10 max-[999px]:flex-col'>
          <div className='left w-[50%] max-[599px]:pb-10 max-[999px]:w-full h-full flex items-start max-[999px]:items-center justify-center flex-col gap-4'>
             <Link to='/'>
