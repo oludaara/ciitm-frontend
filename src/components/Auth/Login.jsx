@@ -132,7 +132,7 @@ const Login = () => {
                </button>
 
                <button className='bg-white border border-gray-300 rounded-lg p-2 w-full text-[1.05vw] max-[999px]:text-[3.05vw]'>
-                  <Google_Wrapper text='Sign In With Google' /> 
+                  <Google_Wrapper text='Sign In With Google' />
                </button>
 
                <div className='w-full flex items-center justify-end'>
