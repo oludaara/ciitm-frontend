@@ -37,7 +37,13 @@ const Signup = () => {
    let Handle_Signup = async e => {
       e.preventDefault();
 
-      if (!First_Name && !Last_Name && !email && !password && !confirm_Password) {
+      if (
+         !First_Name &&
+         !Last_Name &&
+         !email &&
+         !password &&
+         !confirm_Password
+      ) {
          throw new Error('Please Enter all the fields');
       }
 
@@ -53,22 +59,18 @@ const Signup = () => {
             icon: 'success',
             title: 'Success',
             text: res.data.message,
-         })
+         });
 
          dispatch(setUser(res.data.user));
-
-
-
-
-        
       } catch (error) {
-
          let error_message = error.response.data.message;
-        
+
          Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: error_message ? error_message : 'Something went wrong',
+            text: error_message
+               ? error_message
+               : 'Something went wrong',
          });
       }
    };
