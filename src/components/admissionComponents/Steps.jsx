@@ -5,6 +5,7 @@ import ParentsInfo from './ParentsInfo';
 import AreyouHuman from './AreyouHuman';
 import Grades from './Grades';
 import UniversityInfo from './UniversityInfo';
+import StepValidateModal from './StepValidateModal';
 import { setFile } from '../../store/AdmissionSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -12,10 +13,12 @@ import admissionConstant from './admission.constant.mjs';
 import { useEffect } from 'react';
 
 const Steps = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false);
    const [activeStep, setActiveStep] = useState(0);
    const [isLoading, setIsLoading] = useState(false);
    const [image, setImage] = useState(null);
-   const [imageUploadSuccess, setImageUploadSuccess] = useState(false);
+   const [imageUploadSuccess, setImageUploadSuccess] =
+      useState(false);
    const [formData, setFormData] = useState({});
    const [Avtor, setAvtor] = useState(null);
 
@@ -87,7 +90,7 @@ const Steps = () => {
                headers: {
                   'Content-Type': admissionConstant.CONTENT_TYPE,
                },
-            }
+            },
          );
 
          Swal.fire({
@@ -147,23 +150,24 @@ const Steps = () => {
    ];
 
    const validateStep = () => {
-      const currentStepData = steps[activeStep];
+      const requiredFields = [];
 
-      if (currentStepData.component.props) {
-         const formFields = Object.keys(formData);
+      if (activeStep === 0) {
+         requiredFields.push('firstName', 'lastName', 'email');
+      } else if (activeStep === 1) {
+         requiredFields.push('fatherName', 'motherName');
+      } else if (activeStep === 4 && !image) {
+         setIsModalOpen(true);
+         return false;
+      }
 
-         for (const field in formData) {
-            if (formData[field] === '') {
-               alert('Please fill in all fields before proceeding!');
-               return false;
-            }
-         }
-
-         if (activeStep === 4 && !image) {
-            alert('Please upload your image before proceeding!');
+      for (const field of requiredFields) {
+         if (!formData[field]) {
+            setIsModalOpen(true);
             return false;
          }
       }
+
       return true;
    };
 
@@ -268,28 +272,46 @@ const Steps = () => {
                   </button>
                )}
 
-<button
-  type='button'
-  className='text-center w-full min-[600px]:w-fit bg-[#333333] px-6 text-white py-2.5 text-sm rounded-[8px]'
-  onClick={steps.length - 1 === activeStep ? Handle_From_Submit : handleNext}
-  disabled={isLoading}
->
-  {isLoading ? (
-    <div className="flex items-center justify-center">
-      <span className="spinner-border spinner-border-sm text-white mr-2" role="status" aria-hidden="true"></span>
-      <span>Submitting...</span>
-    </div>
-  ) : activeStep === steps.length - 1 ? 'Submit' : 'Next'}
-</button>
-
+               <button
+                  type='button'
+                  className='text-center w-full min-[600px]:w-fit bg-[#333333] px-6 text-white py-2.5 text-sm rounded-[8px]'
+                  onClick={
+                     steps.length - 1 === activeStep
+                        ? Handle_From_Submit
+                        : handleNext
+                  }
+                  disabled={isLoading}
+               >
+                  {isLoading ? (
+                     <div className='flex items-center justify-center'>
+                        <span
+                           className='spinner-border spinner-border-sm text-white mr-2'
+                           role='status'
+                           aria-hidden='true'
+                        ></span>
+                        <span>Submitting...</span>
+                     </div>
+                  ) : activeStep === steps.length - 1 ? (
+                     'Submit'
+                  ) : (
+                     'Next'
+                  )}
+               </button>
             </div>
 
             {isLoading && (
-               <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                  <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white"></div>
+               <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50'>
+                  <div className='animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white'></div>
                </div>
             )}
          </form>
+
+         <StepValidateModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            title='Incomplete Form'
+            message='Please fill in all fields before proceeding!'
+         />
       </>
    );
 };

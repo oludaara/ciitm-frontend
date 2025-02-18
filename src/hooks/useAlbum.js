@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { setAlbum } from '../store/homeSlice';
+
 import { Album_EndPoint } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
