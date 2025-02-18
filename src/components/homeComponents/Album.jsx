@@ -3,8 +3,9 @@ import { MdDelete } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAlbum from '../../hooks/useAlbum';
-import { Remove_One_Album } from '../../store/Album.slice.js';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { Remove_One_Album } from '../../store/homeSlice';
 
 const Album = () => {
    const [albums, setAlbums] = useState([]);
@@ -12,11 +13,19 @@ const Album = () => {
    const [error, setError] = useState(false);
    let user = useSelector(state => state.auth.user);
    const [userRole, setuserRole] = useState('');
-   const [Disable_Click, setDisable_Click] = useState(false);
+   const [isClick, setisClick] = useState(false);
 
    useAlbum();
 
    let album = useSelector(state => state.home.Album);
+
+   useEffect(() => {
+
+      if(album){
+         setAlbums([...album]);
+
+      }
+   }, [album]);
 
    useEffect(() => {
       {
@@ -24,27 +33,13 @@ const Album = () => {
       }
    }, [user]);
 
-   useEffect(() => {
-      if (album) {
-         setAlbums([...album]);
-      }
-   }, [album]);
+ 
+
 
    let Handle_Album_Delete = album => {
-      console.log('Album Deleted', album);
-      console.log('PreventDefault 1 ', Disable_Click);
-      setDisable_Click(_prevState => true);
-      alert('Album Deleted Successfully');
-      console.log('PreventDefault 2 ', Disable_Click);
-
-      // setPreventDefault(true)
-      // dispatch(Remove_One_Album(album))
-   };
-
-   let Handle_Click = e => {
-      if (Disable_Click === true) {
-         e.preventDefault();
-      }
+    
+      setisClick(true);
+      dispatch(Remove_One_Album({ _id: album._id }));
    };
 
    return (
@@ -75,7 +70,9 @@ const Album = () => {
                      </div>
                      <div
                         className='flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'
-                        onClick={() => Handle_Album_Delete(item)}
+                        onClick={() => {
+                           Handle_Album_Delete(item);
+                        }}
                      >
                         {userRole === 'admin' ? (
                            <MdDelete className='text-2xl text-white' />
@@ -100,6 +97,7 @@ const Album = () => {
             {albums.length > 5 &&
                albums.slice(-1).map(item => (
                   <Link
+                     onClick={e => {isClick && e.preventDefault()}}
                      to={`/album/${item.aName}`}
                      className='rounded-lg w-[80%]'
                      key={item.id}
