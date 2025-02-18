@@ -121,9 +121,7 @@ const Dropdown = ({
                   >
                      <div
                         className={`w-4 h-4 border-2 bg-white rounded-full flex items-center justify-center ${
-                           selectedOption === option
-                              ? 'border-[#333333]'
-                              : 'border-gray-400'
+                           selectedOption === option ? 'border-[#333333]' : 'border-gray-400'
                         }`}
                      >
                         {selectedOption === option && (
