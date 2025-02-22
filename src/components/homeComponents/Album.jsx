@@ -20,10 +20,8 @@ const Album = () => {
    let album = useSelector(state => state.home.Album);
 
    useEffect(() => {
-
-      if(album){
+      if (album) {
          setAlbums([...album]);
-
       }
    }, [album]);
 
@@ -33,11 +31,7 @@ const Album = () => {
       }
    }, [user]);
 
- 
-
-
    let Handle_Album_Delete = album => {
-    
       setisClick(true);
       dispatch(Remove_One_Album({ _id: album._id }));
    };
@@ -57,7 +51,13 @@ const Album = () => {
                albums.map(item => (
                   <Link
                      to={`/album/${item.aName}`}
-                     onClick={e => Handle_Click(e)}
+                     onClick={e => {
+                        // Prevent navigation if delete button is clicked
+                        if (e.target.closest('.delete-btn')) {
+                           e.preventDefault();
+                           Handle_Album_Delete(item);
+                        }
+                     }}
                      className='h-[40vw] w-full md:h-full rounded-lg overflow-hidden relative m-[3vw]'
                      key={item._id}
                   >
@@ -69,9 +69,10 @@ const Album = () => {
                         />
                      </div>
                      <div
-                        className='flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'
-                        onClick={() => {
+                        className='delete-btn flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'
+                        onClick={(e) => {
                            Handle_Album_Delete(item);
+                           e.stopPropagation(); // Prevent the click from triggering the Link
                         }}
                      >
                         {userRole === 'admin' ? (
@@ -97,7 +98,9 @@ const Album = () => {
             {albums.length > 5 &&
                albums.slice(-1).map(item => (
                   <Link
-                     onClick={e => {isClick && e.preventDefault()}}
+                     onClick={e => {
+                        if (isClick) e.preventDefault();
+                     }}
                      to={`/album/${item.aName}`}
                      className='rounded-lg w-[80%]'
                      key={item.id}
