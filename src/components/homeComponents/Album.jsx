@@ -31,33 +31,28 @@ const Album = () => {
       }
    }, [user]);
 
-   let Handle_Album_Delete = album => {
-      setisClick(true);
-      dispatch(Remove_One_Album({ _id: album._id }));
+   let Handle_Album_Delete = (e, album) => {
+      e.preventDefault(); // Prevent redirection
+      e.stopPropagation(); // Stop event bubbling
+      
+      if (userRole === 'admin') {
+         dispatch(Remove_One_Album({ _id: album._id }));
+      } else {
+         window.location.href = `/album/${album.aName}`; // Redirect for non-admins
+      }
    };
 
    return (
       <div className='w-full h-auto md:h-screen px-[3vw] py-5 flex items-center justify-between flex-col md:flex-row'>
          <div className='md:w-[55vw] md:h-[62vh] w-full sm:h-full grid grid-rows-2 grid-cols-2 md:grid-cols-3 gap-[3vw] md:gap-[1.5vw] place-items-center'>
             {error ? (
-               <h1 className='text-2xl text-center'>
-                  No Data From Backend
-               </h1>
+               <h1 className='text-2xl text-center'>No Data From Backend</h1>
             ) : albums.length === 0 ? (
-               <h1 className='text-2xl text-center'>
-                  Album Not Found
-               </h1>
+               <h1 className='text-2xl text-center'>Album Not Found</h1>
             ) : (
                albums.map(item => (
                   <Link
                      to={`/album/${item.aName}`}
-                     onClick={e => {
-                        // Prevent navigation if delete button is clicked
-                        if (e.target.closest('.delete-btn')) {
-                           e.preventDefault();
-                           Handle_Album_Delete(item);
-                        }
-                     }}
                      className='h-[40vw] w-full md:h-full rounded-lg overflow-hidden relative m-[3vw]'
                      key={item._id}
                   >
@@ -70,10 +65,7 @@ const Album = () => {
                      </div>
                      <div
                         className='delete-btn flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'
-                        onClick={(e) => {
-                           Handle_Album_Delete(item);
-                           e.stopPropagation(); // Prevent the click from triggering the Link
-                        }}
+                        onClick={(e) => Handle_Album_Delete(e, item)}
                      >
                         {userRole === 'admin' ? (
                            <MdDelete className='text-2xl text-white' />
