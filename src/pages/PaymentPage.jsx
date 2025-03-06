@@ -4,11 +4,6 @@ import Summary from '../components/paymenComponents/Summary';
 
 const PaymentPage = () => {
    const details = [
-      {
-         Name: 'Student Id',
-         Placeholder: 'Student Id',
-         Label: 'Student Id:',
-      },
       { Name: 'Email', Placeholder: 'Your Gmail', Label: 'Email:' },
       { Name: 'Phone', Placeholder: 'Your Number', Label: 'Number:' },
       {
@@ -62,6 +57,7 @@ const PaymentPage = () => {
                   width={true}
                />
             </div>
+
             <Summary
                heading={'Masters of Communication Application'}
                duration={'4-Years'}
