@@ -16,6 +16,7 @@ const Input = ({ Name, Placeholder, Label }) => {
             name={Name}
             placeholder={Placeholder}
             id={Name}
+            disabled
          />
       </div>
    );
