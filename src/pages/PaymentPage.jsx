@@ -4,6 +4,7 @@ import Summary from '../components/paymenComponents/Summary';
 
 const PaymentPage = () => {
    const details = [
+
       { Name: 'Email', Placeholder: 'Your Gmail', Label: 'Email:' },
       { Name: 'Phone', Placeholder: 'Your Number', Label: 'Number:' },
       {

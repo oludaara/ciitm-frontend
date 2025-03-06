@@ -89,6 +89,8 @@ const Form = ({ details }) => {
                <button className='bg-green-600 ml-[2vw] p-[0.7vw] text-white rounded-md font-medium' onClick={()=> Handle_Search()}>Search</button>
             </div>
          </div>
+
+
          {details.map(detail => (
             <Input
                key={detail.Name}
