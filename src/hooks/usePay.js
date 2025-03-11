@@ -3,29 +3,6 @@
 // import axios from 'axios';
 
 // const usePay = ({ Amount }) => {
-//   let Rayzor_Pay_id = import.meta.env.VITE_RAZORPAY_KEY_ID;
-//   console.log('razorpay key id:', Rayzor_Pay_id);
-
-//   // Early exit if Razorpay Key is not available
-//   if (!Rayzor_Pay_id) {
-//     alert('Razorpay Key ID is not configured');
-//     return;
-//   }
-
-//   const { error, isLoading, Razorpay } = useRazorpay();
-
-//   // Handle loading state or error display in the UI if necessary
-//   if (isLoading) {
-//     // You can show a loading spinner or message here
-//     console.log('Loading...');
-//     return;
-//   }
-
-//   // If an error occurs while loading Razorpay, handle the error
-//   if (error) {
-//     alert('Error loading Razorpay');
-//     return;
-//   }
 
 //   const handlePayment = async () => {
 //     try {
