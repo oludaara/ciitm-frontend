@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Fees from './Fees';
 
-const Summary = ({ heading, duration, feesList }) => {
+const Summary = ({ heading, duration, feesList, description }) => {
+   const [isVisible, setisVisible] = useState(false);
+
+   let Handle_Details = () => {
+      setisVisible(!isVisible);
+   };
    return (
-      <div className='payment_Container_Right w-[35%] max-[599px]:w-full h-[31rem] bg-white border-[1px] rounded-2xl border-[#D7D7D79E] overflow-hidden'>
+      <div className='payment_Container_Right w-[35%] max-[599px]:w-full h-[80vh] bg-white border-[1px] rounded-2xl border-[#D7D7D79E] overflow-hidden'>
          <div className='heading bg-white flex flex-col p-4 pb-0'>
             <h2 className='text-[1.25vw] max-[599px]:text-[3.25vw] font-bold text-[#333333]'>
-               <span className='inline-block w-2.5 h-2.5 bg-[#C300FF] rounded-full mr-2'></span>{' '}
+               <span className='inline-block w-2 h-2.5 bg-[#C300FF] rounded-full mr-2'></span>{' '}
                Summary
             </h2>
             <p className='pl-4 text-[0.94vw] max-[599px]:text-[2.94vw] font-light'>
@@ -15,7 +20,11 @@ const Summary = ({ heading, duration, feesList }) => {
             </p>
          </div>
          <div className='Course flex gap-5 p-4'>
-            <div className='w-[45%] h-[8rem] bg-[#FFE9E9] rounded-2xl'></div>
+            <div className='w-[45%] h-[12rem] bg-[#FFE9E9] rounded-2xl flex items-center justify-center'>
+               <p className='-rotate-12 font-medium text-xl'>
+                  {heading}
+               </p>
+            </div>
             <div className='w-[50%] text'>
                <h4 className='text-[1.25vw] max-[599px]:text-[3.25vw] font-bold leading-tight font-[Montserrat]'>
                   {heading}
@@ -26,7 +35,13 @@ const Summary = ({ heading, duration, feesList }) => {
                      {duration}
                   </p>
                </div>
-               <button className='bg-[#F9F9F9] border-[#D7D7D7] border-[0.79px] rounded-md px-6 py-1 text-[0.85vw] max-[599px]:text-[2.85vw] font-normal'>
+               {isVisible && (
+                  <p className='block text[0.5vw]'>{description}</p>
+               )}
+               <button
+                  onClick={() => Handle_Details()}
+                  className='bg-[#F9F9F9] border-[#D7D7D7] border-[0.79px] rounded-md px-6 py-1 text-[0.85vw] max-[599px]:text-[2.85vw] font-normal mt-[2vh]'
+               >
                   Details
                </button>
             </div>
@@ -39,6 +54,7 @@ const Summary = ({ heading, duration, feesList }) => {
                ))}
          </div>
          <div className='Total py-4'>
+            {console.log(feesList)}
             {feesList
                .filter(fee => fee.id === 'total')
                .map((fee, index) => (

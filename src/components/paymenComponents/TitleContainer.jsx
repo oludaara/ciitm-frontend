@@ -1,13 +1,15 @@
 import React from 'react';
 import Form from './Form';
-import TotalAmount from './TotalAmount';
 import BankAccounts from './BankAccounts';
+import Search from './Search';
+import Payment from './Payment';
 
 const TitleContainer = ({
    title,
    form,
    amount,
    bank,
+   pay,
    total,
    width,
    details,
@@ -22,8 +24,10 @@ const TitleContainer = ({
                {title}
             </h2>
          </div>
+
+         {pay && <Search />}
          {form && <Form details={details} />}
-         {amount && <TotalAmount total={total} />}
+         {amount && <Payment />}
          {bank && <BankAccounts />}
       </div>
    );

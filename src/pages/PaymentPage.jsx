@@ -6,23 +6,20 @@ import { use } from 'react';
 
 const PaymentPage = () => {
    const [Student, setStudent] = useState(null);
-   const [Error, setError] = useState(false)
+   const [Error, setError] = useState(false);
    const [Course, setCourse] = useState(null);
+   const [Payment, setPayment] = useState(null);
    let payment = useSelector(state => state.Payment.Payment_Info);
 
- 
-
    useEffect(() => {
-
       if (!payment) {
-         setError(true)
-      }
-      else{
+         setError(true);
+      } else {
          setStudent(payment.student);
-
          setCourse(payment.course);
+         setPayment(payment.fee);
+         console.log('Payment:', payment.fee);
       }
-    
    }, [payment]);
 
    console.log('Student payment', payment);
@@ -47,7 +44,6 @@ const PaymentPage = () => {
          Label: 'Number:',
          Value: Student?.contactNumber,
       },
-      // fatherName
 
       {
          Name: 'FatherName',
@@ -61,6 +57,37 @@ const PaymentPage = () => {
          Placeholder: 'Your Mother Name',
          Label: 'Mother Name:',
          Value: Student?.motherName,
+      },
+   ];
+
+   const Paymeny_Info = [
+      {
+         Name: 'Total Course Fee',
+         Placeholder: 'Course Fee',
+         Label: 'Total Course Fee:',
+         Value:
+            Payment && Payment.course_Fee
+               ? '₹ ' + Payment.course_Fee
+               : '₹ 0',
+      },
+      {
+         Name: 'Total Amount Paid',
+         Placeholder: 'Amount Paid',
+         Label: 'Total Amount Paid:',
+         Value:
+            Payment && Payment.amount_paid
+               ? '₹ ' + Payment.amount_paid
+               : '₹ 0',
+      },
+
+      {
+         Name: 'Total Amount Due',
+         Placeholder: 'Amount Due',
+         Label: 'Total Amount Due:',
+         Value:
+            Payment && Payment.amount_due
+               ? '₹ ' + Payment.amount_due
+               : '₹ 0',
       },
    ];
 
@@ -88,21 +115,31 @@ const PaymentPage = () => {
    ];
 
    const fees = [
-      { id: 'fee', name: 'Admission Fee', amount: '20$ Per Year' },
-      { id: 'fee', name: 'Transport Fee', amount: '20$ Per Year' },
-      { id: 'fee', name: 'Sports Fee', amount: '20$ Per Year' },
-      { id: 'fee', name: 'Hostel Fee', amount: '20$ Per Year' },
+      { id: 'fee', name: 'Admission Fee', amount: '₹ 25,000' },
+      { id: 'fee', name: '1 Year', amount: '₹ 50,000' },
+      { id: 'fee', name: '2 Year', amount: '₹ 50,000' },
+      { id: 'fee', name: '3 Year', amount: '₹ 50,000' },
+      { id: 'fee', name: '4 Year', amount: '₹ 50,000' },
    ];
    const totalAmount = fees.reduce(
-      (sum, fee) => sum + parseInt(fee.amount),
+      (sum, fee) => {
+         let total = (sum += fee.amount.split('₹')[1]
+            ? Number(fee.amount.split('₹')[1])
+            : 0);
+         console.log('Total', total);
+         return total;
+      }, // Use += to accumulate the sum
       0,
    );
+
+   console.log('Total Amount', totalAmount);
+
    const feesList = [
       ...fees,
       {
          id: 'total',
          name: 'Total',
-         amount: `${totalAmount}$ Per Year`,
+         amount: `${Number(Math.round(totalAmount))} INR`,
       },
    ];
 
@@ -115,16 +152,17 @@ const PaymentPage = () => {
          </div>
          <div className='Payment_Container w-full h-full flex justify-between max-[599px]:flex-col gap-4 rounded-2xl'>
             <div className='payment-left-container w-[75%] max-[599px]:w-full flex flex-col gap-8 bg-white px-6 max-[599px]:px-4 py-8 max-[599px]:py-4 rounded-2xl border-[#D7D7D79E]'>
-               {/* {!payment && <h1 className='text-red-600'>Enter Student Id</h1>} */}
                <TitleContainer
                   title={'Student Information'}
                   form={true}
+                  pay={true}
                   details={details}
                />
                <TitleContainer
                   title={'Payment Information'}
+                  form={true}
+                  details={Paymeny_Info}
                   amount={true}
-                  total={80}
                />
                <TitleContainer
                   title={'Bank Account'}
@@ -134,8 +172,11 @@ const PaymentPage = () => {
             </div>
 
             <Summary
-               heading={'Masters of Communication Application'}
-               duration={'4-Years'}
+               heading={Course?.courseName || 'Course Name'}
+               duration={Course?.courseDuration || 'Duration'}
+               description={
+                  Course?.courseDescription || 'Description'
+               }
                feesList={feesList}
             />
          </div>
