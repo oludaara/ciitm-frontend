@@ -11,12 +11,12 @@ const Payment = ({}) => {
 
    const [Amount, setAmount] = useState(null);
    const [Reload, setReload] = useState(false);
+   const [Order_Id, setOrder_Id] = useState('');
 
    useEffect(() => {
       if (student) {
          setReload(true);
       }
-
    }, [student]);
 
    let Rayzor_Pay_id = import.meta.env.VITE_RAZORPAY_KEY_ID;
@@ -49,14 +49,18 @@ const Payment = ({}) => {
 
    const handlePayment = async () => {
       try {
-         const response = await axios.post('/api/pay/fee', {
+         const response = await axios.post('/api/create/payment', {
             amount: Number(Amount),
             currency: 'INR',
             receipt: 'order_rcptid_11',
             payment_capture: 1,
          });
 
-         const order_id = response.data.id;
+
+         setOrder_Id(response.data.id);
+ 
+      
+         console.log('student', student);
 
          const options = {
             key: Rayzor_Pay_id,
@@ -65,21 +69,33 @@ const Payment = ({}) => {
             name: 'CIITM DHANBAD',
             description: 'Pay for your Future',
             image: logo,
-            order_id: order_id,
-            handler: response => {
-               Swal.fire({
-                  icon: 'success',
-                  title: 'Payment Successful!',
-                  text: 'Thank you for your payment',
-               });
+            order_id: Order_Id,
+            handler: async response => {
+               console.log('res front', response);
+             
+               try {
+                  const res = await axios.post('/api/pay/verify', {
+                    Unique_id: student.Student_id,
+                    course_Fee: student.course.coursePrice,
+                    payment_Date: new Date().toISOString(),
+                    payment_id: response.razorpay_payment_id,
+                  });
+
+                  console.log('res', res.data);
+               } catch (error) {
+                  console.error(error);
+                  alert('An error occurred while verifying your payment');
+               }
             },
             prefill: {
-               name: 'John Doe',
-               email: 'john.doe@example.com',
-               contact: '9999999999',
+               name: 'dsfs',
+               email: student.student.email[0],
+               contact: student.student.contactNumber,
+               Student_id : student.Student_id,
+
             },
             theme: {
-               color: '#F37254',
+               color: 'black',
             },
          };
 
