@@ -26,6 +26,8 @@ const Google = ({ text }) => {
                { withCredentials: true },
             );
 
+            console.log('res', res);
+
             let user = res.data.user;
 
             dispatch(setUser(user));
