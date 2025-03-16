@@ -68,7 +68,7 @@ const App = () => {
    return (
       <>
          <BrowserRouter basename='/'>
-            <ScrollRestoration /> {/* ✅ Add Scroll Restoration */}
+            <ScrollRestoration /> 
             <Routes>
                <Route path='/' element={<Body />}>
                   <Route path='/' element={<Landing />} />

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GoArrowUpRight } from 'react-icons/go';
 import { MdDelete } from 'react-icons/md';
 import { useEffect, useState } from 'react';
@@ -6,6 +7,7 @@ import useAlbum from '../../hooks/useAlbum';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Remove_One_Album } from '../../store/homeSlice';
+import Swal from 'sweetalert2';
 
 const Album = () => {
    const [albums, setAlbums] = useState([]);
@@ -31,15 +33,33 @@ const Album = () => {
       }
    }, [user]);
 
-   let Handle_Album_Delete = (e, album) => {
-      e.preventDefault(); // Prevent redirection
+   let Handle_Album_Delete = async(e, album) => {
+
+    try {
+        e.preventDefault(); // Prevent redirection
       e.stopPropagation(); // Stop event bubbling
 
       if (userRole === 'admin') {
          dispatch(Remove_One_Album({ _id: album._id }));
+         let res = await axios.delete(`/api/admin/delete/albums/${album._id}`);
+         console.log('link',`/api/admin/delete/albums/${album._id}`);
+         console.log('Res',res);
+        
+        
+
       } else {
+       
          window.location.href = `/album/${album.aName}`; // Redirect for non-admins
       }
+    } catch (error) {
+      console.log('error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.response.data,
+         });
+
+    }
    };
 
    return (
