@@ -56,10 +56,8 @@ const Payment = ({}) => {
             payment_capture: 1,
          });
 
-
          setOrder_Id(response.data.id);
- 
-      
+
          console.log('student', student);
 
          const options = {
@@ -72,27 +70,28 @@ const Payment = ({}) => {
             order_id: Order_Id,
             handler: async response => {
                console.log('res front', response);
-             
+
                try {
                   const res = await axios.post('/api/pay/verify', {
-                    Unique_id: student.Student_id,
-                    course_Fee: student.course.coursePrice,
-                    payment_Date: new Date().toISOString(),
-                    payment_id: response.razorpay_payment_id,
+                     Unique_id: student.Student_id,
+                     course_Fee: student.course.coursePrice,
+                     payment_Date: new Date().toISOString(),
+                     payment_id: response.razorpay_payment_id,
                   });
 
                   console.log('res', res.data);
                } catch (error) {
                   console.error(error);
-                  alert('An error occurred while verifying your payment');
+                  alert(
+                     'An error occurred while verifying your payment',
+                  );
                }
             },
             prefill: {
                name: 'dsfs',
                email: student.student.email[0],
                contact: student.student.contactNumber,
-               Student_id : student.Student_id,
-
+               Student_id: student.Student_id,
             },
             theme: {
                color: 'black',

@@ -21,6 +21,7 @@ import DOMPurify from 'dompurify';
 import Protected_Stedent from './components/Protected_Stedent';
 import Student from './components/Student/Student';
 import PaymentPage from './pages/PaymentPage';
+import Gallery from './components/Gallery/Gallery';
 
 const userInput = "<img src='x' onerror='alert(1)' />";
 
@@ -68,12 +69,13 @@ const App = () => {
    return (
       <>
          <BrowserRouter basename='/'>
-            <ScrollRestoration /> 
+            <ScrollRestoration />
             <Routes>
                <Route path='/' element={<Body />}>
                   <Route path='/' element={<Landing />} />
                   <Route path='/about' element={<About />} />
                   <Route path='/contact' element={<ContactUs />} />
+                  <Route path='/gallery' element={<Gallery />} />
                   <Route path='/admission' element={<Admission />} />
                   <Route path='/payment' element={<PaymentPage />} />
                   <Route

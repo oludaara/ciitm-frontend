@@ -9,7 +9,7 @@ const Album_Card = lazy(() => import('./Album_Card'));
 
 const Album_Image = () => {
    let Image_Slice = useSelector(state => state.image.Image);
-   const [Image, setImage] = useState([])
+   const [Image, setImage] = useState([]);
 
    let dispatch = useDispatch();
    let parms = useParams();
@@ -17,11 +17,13 @@ const Album_Image = () => {
 
    let Find_Image = async () => {
       try {
-         let find_index = Image_Slice.findIndex(item => item.name === name);
+         let find_index = Image_Slice.findIndex(
+            item => item.name === name,
+         );
          if (find_index !== -1) {
             setImage([...Image_Slice[find_index].Images]);
          } else {
-            let res = await axios.get(`/api/image/${name}`)
+            let res = await axios.get(`/api/image/${name}`);
             let data = {
                name: name,
                Images: [...res.data.data],
@@ -47,7 +49,7 @@ const Album_Image = () => {
          <Suspense fallback={<div>Loading...</div>}>
             {Image.map((item, index) => {
                console.log('item', item);
-               return <Album_Card key={index} url={item.url} />
+               return <Album_Card key={index} url={item.url} />;
             })}
          </Suspense>
       </div>
