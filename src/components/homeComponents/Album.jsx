@@ -33,33 +33,32 @@ const Album = () => {
       }
    }, [user]);
 
-   let Handle_Album_Delete = async(e, album) => {
+   let Handle_Album_Delete = async (e, album) => {
+      try {
+         e.preventDefault(); // Prevent redirection
+         e.stopPropagation(); // Stop event bubbling
 
-    try {
-        e.preventDefault(); // Prevent redirection
-      e.stopPropagation(); // Stop event bubbling
-
-      if (userRole === 'admin') {
-         dispatch(Remove_One_Album({ _id: album._id }));
-         let res = await axios.delete(`/api/admin/delete/albums/${album._id}`);
-         console.log('link',`/api/admin/delete/albums/${album._id}`);
-         console.log('Res',res);
-        
-        
-
-      } else {
-       
-         window.location.href = `/album/${album.aName}`; // Redirect for non-admins
-      }
-    } catch (error) {
-      console.log('error:', error);
-        Swal.fire({
+         if (userRole === 'admin') {
+            dispatch(Remove_One_Album({ _id: album._id }));
+            let res = await axios.delete(
+               `/api/admin/delete/albums/${album._id}`,
+            );
+            console.log(
+               'link',
+               `/api/admin/delete/albums/${album._id}`,
+            );
+            console.log('Res', res);
+         } else {
+            window.location.href = `/album/${album.aName}`; // Redirect for non-admins
+         }
+      } catch (error) {
+         console.log('error:', error);
+         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: error.response.data,
          });
-
-    }
+      }
    };
 
    return (
