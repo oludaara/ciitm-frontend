@@ -161,12 +161,7 @@ const Steps = () => {
          return false;
       }
 
-      for (const field of requiredFields) {
-         if (!formData[field]) {
-            setIsModalOpen(true);
-            return false;
-         }
-      }
+    
 
       return true;
    };
