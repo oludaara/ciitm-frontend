@@ -112,7 +112,7 @@ const Album = () => {
          <div className='bg-red-600 h-[63vh] w-full md:w-[35vw] mr-[1vw] md:mr-[2vw] rounded-lg relative'>
             {albums.length < 5 && (
                <img
-                  srcSet={albums[album.length -1]?.aImage_url}
+                  srcSet={albums[albums.length -1]?.aImage_url}
                   alt=''
                   className='w-full h-full object-cover rounded-lg object-top'
                />
