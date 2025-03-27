@@ -40,7 +40,7 @@ const Input = ({ type, placeholder, label, id, name }) => {
 
       let data = {
          name: Name,
-         value: e.target.value,
+         value: e.target?.value,
       };
 
       if (find_index !== -1) {
@@ -75,7 +75,7 @@ const Input = ({ type, placeholder, label, id, name }) => {
          <input
             type={type !== 'password' ? 'text' : Handle_Unchacked()}
             value={Value}
-            autocomplete='off'
+            autoComplete='off'
             id={id}
             name={name}
             onInput={e => handleInput(e)}

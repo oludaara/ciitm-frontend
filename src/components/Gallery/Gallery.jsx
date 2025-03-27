@@ -11,24 +11,15 @@ const Gallery = () => {
 
    useGallery();
 
-    useEffect(() => {
-        setImage(gallery);
-    }
-    , [gallery]);
-
-
-
-
+   useEffect(() => {
+      setImage(gallery);
+   }, [gallery]);
 
    return (
       <div className='max-w-screen h-full flex flex-wrap items-center justify-center bg-[#f5f1f1] gap-[2vw] max-[421px]:gap-[4vw] py-[15vh] px-[2vw] max-[421px]:px-[4vw] shrink'>
-{
-
-    image.map((img, index) => {
-        return <GalleryCard key={index} url={img.url} />;
-    })
-}
-
+         {image.map((img, index) => {
+            return <GalleryCard key={index} url={img.url} />;
+         })}
       </div>
    );
 };
