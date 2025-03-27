@@ -66,7 +66,7 @@ const Login = () => {
          }
 
          if (Check_Role === 'admin') {
-            navigate('/admin/');
+            navigate('/admin/DashBoard');
          }
       } catch (error) {
          Swal.fire({

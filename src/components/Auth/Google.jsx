@@ -1,16 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../store/AuthSlice';
 
 import { FcGoogle } from 'react-icons/fc';
-import {
-   GoogleOAuthProvider,
-   useGoogleLogin,
-} from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
 const Google = ({ text }) => {
+   console.log('Google');
+
    let user = useSelector(state => state.auth.user);
 
    let dispatch = useDispatch();
@@ -18,7 +18,10 @@ const Google = ({ text }) => {
    const login = useGoogleLogin({
       onSuccess: async credentialResponse => {
          try {
+            console.log('credentialResponse', credentialResponse);
+
             let token = credentialResponse.access_token;
+            console.log('token', token);
 
             let res = await axios.post(
                `/api/auth/google?token=${token}`,
@@ -29,6 +32,8 @@ const Google = ({ text }) => {
             console.log('res', res);
 
             let user = res.data.user;
+
+            console.log('user', user);
 
             dispatch(setUser(user));
          } catch (error) {
@@ -51,6 +56,13 @@ const Google = ({ text }) => {
          <FcGoogle className='text-3xl' /> {text}
       </button>
    );
+};
+Google.propTypes = {
+   text: PropTypes.string,
+};
+
+Google.defaultProps = {
+   text: 'Sign in with Google',
 };
 
 export default Google;
