@@ -18,10 +18,12 @@ import Admission from './pages/Admission';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import DOMPurify from 'dompurify';
-import Protected_Stedent from './components/Protected_Stedent';
+import Protected_Student from './components/Protected_Student';
 import Student from './components/Student/Student';
 import PaymentPage from './pages/PaymentPage';
 import Gallery from './components/Gallery/Gallery';
+import DashBoard from './pages/Admin/DashBoard';
+import Protected_Admin from './components/Proctected_Admin';
 
 const userInput = "<img src='x' onerror='alert(1)' />";
 
@@ -86,8 +88,18 @@ const App = () => {
                   <Route path='/signup' element={<Signup />} />
                </Route>
 
-               <Route path='/student' element={<Protected_Stedent />}>
-                  <Route path='/student/' element={<Student />} />
+               <Route path='/student' element={<Protected_Student />}>
+                  <Route
+                     path='/student/Dashboard'
+                     element={<Student />}
+                  />
+               </Route>
+
+               <Route path='/admin' element={<Protected_Admin />}>
+                  <Route
+                     path='/admin/DashBoard'
+                     element={<DashBoard />}
+                  />
                </Route>
 
                <Route path='*' element={<ErrorPage />} />

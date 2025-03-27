@@ -161,8 +161,6 @@ const Steps = () => {
          return false;
       }
 
-    
-
       return true;
    };
 
