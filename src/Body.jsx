@@ -1,6 +1,6 @@
-import Navbar from './components/Navbar';
+import Navbar from './components/Organisms/NavBar/Navbar.jsx';
 import { Outlet } from 'react-router-dom';
-import Footer from './components/Footer';
+import Footer from './components/Organisms/Footer/Footer.jsx';
 
 import useHomeUi from './hooks/useHomeUi.js';
 

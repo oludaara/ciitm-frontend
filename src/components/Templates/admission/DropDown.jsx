@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
    setAdmission,
    setOneAdmission,
-} from '../../store/AdmissionSlice';
+} from '../../../store/AdmissionSlice';
 
 const Dropdown = ({
    placeholder,

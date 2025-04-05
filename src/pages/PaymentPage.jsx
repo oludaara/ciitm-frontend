@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import TitleContainer from '../components/paymenComponents/TitleContainer';
-import Summary from '../components/paymenComponents/Summary';
+import TitleContainer from '../components/Templates/payment/TitleContainer';
+import Summary from '../components/Templates/payment/Summary';
 import { useSelector } from 'react-redux';
 import { use } from 'react';
 

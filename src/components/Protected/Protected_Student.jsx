@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ErrorPage from './ErrorPage';
+import ErrorPage from '../Templates/ErrorPage';
 import { Outlet } from 'react-router-dom';
 
 const Protected_Stedent = () => {

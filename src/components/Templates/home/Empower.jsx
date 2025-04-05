@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import arrow from '../../assets/images/arrow.png';
+import arrow from '../../../assets/images/arrow.png';
 
 function Empower() {
    const [image1, setImage1] = useState(null);

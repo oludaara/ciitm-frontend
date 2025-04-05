@@ -3,10 +3,10 @@ import { GoArrowUpRight } from 'react-icons/go';
 import { MdDelete } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useAlbum from '../../hooks/useAlbum';
+import useAlbum from '../../../hooks/useAlbum';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Remove_One_Album } from '../../store/homeSlice';
+import { Remove_One_Album } from '../../../store/homeSlice';
 import Swal from 'sweetalert2';
 
 const Album = () => {

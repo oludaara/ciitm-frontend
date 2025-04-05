@@ -3,7 +3,7 @@ import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
-import { set_Image } from '../../store/ImageSlice';
+import { set_Image } from '../../../store/ImageSlice';
 
 const Album_Card = lazy(() => import('./Album_Card'));
 

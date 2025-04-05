@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
-import Notice_Card from '../Notice_Card';
+import Notice_Card from '../../Molecules/Cards/NoticeCard';
 import React, { useEffect, useState } from 'react';
-import Loader from '../Loader';
+import Loader from '../../Molecules/Loader/Loader';
+
 
 const Hero = () => {
    const [image, setImage] = useState('');

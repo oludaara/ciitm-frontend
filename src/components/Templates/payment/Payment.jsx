@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRazorpay } from 'react-razorpay';
-import logo from '../../assets/images/ciitmLogo.png';
+import logo from '../../../assets/images/ciitmLogo.png';
 import axios from 'axios';
 import Input from './Input';
 import { useSelector } from 'react-redux';

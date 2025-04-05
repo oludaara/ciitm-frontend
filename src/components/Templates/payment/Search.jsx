@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import { setPayment_Info } from '../../store/PaymentSlice';
+import { setPayment_Info } from '../../../store/PaymentSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 

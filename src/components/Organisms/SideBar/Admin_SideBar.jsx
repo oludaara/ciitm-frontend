@@ -8,8 +8,9 @@ import { FaImage } from 'react-icons/fa';
 import gsap from 'gsap';
 import { GoBellFill } from 'react-icons/go';
 import { PiStudentBold } from 'react-icons/pi';
-import SideBar_UserCard from '../../Molecules/Card/SideBar_UserCard';
-import SideBar_Link from '../../Molecules/Sidebar/SideBar_Link';
+import SideBar_UserCard from '../../Molecules/Cards/SideBarUserCard';
+import SideBar_Link from '../../atoms/Links/SideBar_Link';
+
 
 
 

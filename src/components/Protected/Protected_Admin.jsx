@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import ErrorPage from './ErrorPage';
+import ErrorPage from '../Templates/ErrorPage';
 
-const Proctected_Admin = () => {
+const Protected_Admin = () => {
    let student = useSelector(state => state.auth.user);
 
    if (!student) {
@@ -15,4 +15,4 @@ const Proctected_Admin = () => {
    );
 };
 
-export default Proctected_Admin;
+export default Protected_Admin;

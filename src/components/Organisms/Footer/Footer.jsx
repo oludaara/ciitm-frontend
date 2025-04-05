@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../assets/images/ciitmLogo.png';
+import logo from '../../../assets/images/ciitmLogo.png';
 import { Link } from 'react-router-dom';
-import useSocialLinks from '../hooks/useSocialLinks';
+import useSocialLinks from '../../../hooks/useSocialLinks';
 
-import { setSocialLinks } from '../store/SocialLinkSlice';
+import { setSocialLinks } from '../../../store/SocialLinkSlice';
 import { useSelector } from 'react-redux';
 
 const SocialLink = ({ href, label, isEmail = false }) => {

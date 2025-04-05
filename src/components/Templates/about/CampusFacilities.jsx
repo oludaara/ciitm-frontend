@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import bulletPoint from '../../assets/images/bulletPoint.svg';
+import bulletPoint from '../../../assets/images/bulletPoint.svg';
 
 export let Facilites_Card = ({ Title, index, isActive, onClick }) => {
    return (

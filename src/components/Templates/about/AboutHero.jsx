@@ -6,7 +6,7 @@ import React, {
    memo,
 } from 'react';
 import { useSelector } from 'react-redux';
-import Loader from '../Loader';
+import Loader from '../../Molecules/Loader/Loader';
 
 const AboutHero = () => {
    const [image, setImage] = useState('');
@@ -22,10 +22,6 @@ const AboutHero = () => {
          setHeading(about.AboutHero.Heading);
       }
    }, [about]);
-
-   const LazyImage = lazy(
-      () => import('../../assets/images/aboutbg.svg'),
-   );
 
    return !about ? (
       <Loader />

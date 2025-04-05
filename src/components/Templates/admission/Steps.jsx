@@ -6,7 +6,7 @@ import AreyouHuman from './AreyouHuman';
 import Grades from './Grades';
 import UniversityInfo from './UniversityInfo';
 import StepValidateModal from './StepValidateModal';
-import { setFile } from '../../store/AdmissionSlice';
+import { setFile } from '../../../store/AdmissionSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import admissionConstant from './admission.constant.mjs';

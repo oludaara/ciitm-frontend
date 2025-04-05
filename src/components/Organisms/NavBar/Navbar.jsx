@@ -1,7 +1,7 @@
 import { IoMenu, IoClose, IoChevronDown } from 'react-icons/io5';
 import gsap from 'gsap';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/images/ciitmLogo.png';
+import logo from '../../../assets/images/ciitmLogo.png';
 import { useRef, useState, useEffect } from 'react';
 
 const Navbar = () => {

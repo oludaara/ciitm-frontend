@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { useGallery } from '../../hooks/useGallery';
+import { useGallery } from '../../../hooks/useGallery';
 import GalleryCard from './GalleryCard';
 
 const Gallery = () => {

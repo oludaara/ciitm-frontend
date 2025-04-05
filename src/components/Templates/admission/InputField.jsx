@@ -4,7 +4,7 @@ import {
    setAdmission,
    Admission,
    setOneAdmission,
-} from '../../store/AdmissionSlice';
+} from '../../../store/AdmissionSlice';
 
 const InputField = ({ placeholder, type, name, required }) => {
    let admission = useSelector(state => state.admission.admission);

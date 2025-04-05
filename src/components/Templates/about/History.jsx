@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
-import useAbout from '../../hooks/useAbout.js';
+import useAbout from '../../../hooks/useAbout.js';
 
 const History = () => {
    const [history, setHistory] = useState(null);
