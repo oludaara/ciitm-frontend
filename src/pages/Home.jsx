@@ -8,7 +8,6 @@ import useHomeUi from '../hooks/useHomeUi';
 import { useSelector } from 'react-redux';
 import Loader from '../components/Molecules/Loader/Loader';
 
-
 function Home() {
    useHomeUi();
    let data = useSelector(state => state.home.landingPage);

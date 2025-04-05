@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import useAbout from '../hooks/useAbout';
 import Loader from '../components/Molecules/Loader/Loader';
 
-
 const About = () => {
    useAbout();
 

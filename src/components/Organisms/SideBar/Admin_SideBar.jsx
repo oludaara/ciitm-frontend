@@ -11,10 +11,6 @@ import { PiStudentBold } from 'react-icons/pi';
 import SideBar_UserCard from '../../Molecules/Cards/SideBarUserCard';
 import SideBar_Link from '../../atoms/Links/SideBar_Link';
 
-
-
-
-
 let Links = [
    {
       name: 'Home',
@@ -52,7 +48,6 @@ let Links = [
 ];
 
 const Admin_SideBar = () => {
-   
    const menu = useSelector(state => state.menu.menu);
 
    const dispatch = useDispatch();
@@ -62,7 +57,6 @@ const Admin_SideBar = () => {
       gsap.to('.Side_bar', {
          y: '-9vh',
          duration: 0.5,
-         
       });
    };
 
@@ -72,10 +66,8 @@ const Admin_SideBar = () => {
          y: '90vh',
          display: 'flex',
          duration: 0.5,
-        
       });
    };
-
 
    useEffect(() => {
       gsap.registerPlugin(useGSAP);
@@ -84,11 +76,7 @@ const Admin_SideBar = () => {
       } else {
          Handle_SideBar_Close();
       }
-   }, [menu])
-   
- 
-
-
+   }, [menu]);
 
    return (
       <div className='Side_bar max-[1046px]:hidden  w-[25%] max-[1300px]:w-[35%] h-[80%] bg-[#1C1C1C] ml-[1.5vw] rounded-xl border border-[#322F2F] p-[2vw] flex item-center flex-col min-[1046px]:relative z-10 max-[1046px]:w-[100vw]  max-[1046px]:fixed max-[1046px]:top-[-81vh] max-[1046px]:left-0 max-[1046px]:h-[90vh] left-0'>

@@ -3,7 +3,6 @@ import Notice_Card from '../../Molecules/Cards/NoticeCard';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../Molecules/Loader/Loader';
 
-
 const Hero = () => {
    const [image, setImage] = useState('');
    const [heading, setHeading] = useState('');
