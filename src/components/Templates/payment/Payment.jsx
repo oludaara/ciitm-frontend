@@ -6,7 +6,7 @@ import Input from './Input';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
-const Payment = ({}) => {
+const Payment = () => {
    let student = useSelector(state => state.Payment.Payment_Info);
 
    const [Amount, setAmount] = useState(null);
