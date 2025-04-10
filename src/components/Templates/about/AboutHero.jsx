@@ -1,60 +1,57 @@
-import React, {
-   useEffect,
-   useState,
-   lazy,
-   Suspense,
-   memo,
-} from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
-import Loader from '../../Molecules/Loader/Loader';
+import useAbout from '../../../hooks/useAbout.js';
 
-const AboutHero = () => {
-   const [image, setImage] = useState('');
-   const [para, setPara] = useState('');
-   const [heading, setHeading] = useState('');
+const History = () => {
+   const [history, setHistory] = useState({});
+   const [vision, setVision] = useState({});
 
-   const about = useSelector(state => state.about.aboutPage);
+   const aboutPage = useSelector(state => state.about.aboutPage);
+
+   useAbout();
 
    useEffect(() => {
-      if (about) {
-         setImage(about.AboutHero.image);
-         setPara(about.AboutHero.paragraph);
-         setHeading(about.AboutHero.Heading);
+      if (aboutPage) {
+         setHistory(aboutPage.History || {});
+         setVision(aboutPage.Vision_and_Mission || {});
       }
-   }, [about]);
+   }, [aboutPage]);
 
-   return !about ? (
-      <Loader />
-   ) : (
-      <section className='bg-black w-full text-white'>
-         <div className='about_hero relative w-full h-[90vh] bg-gradient-to-b from-white via-gray-700 to-black'>
-            <Suspense fallback={<Loader />}>
-               <img
-                  className='w-full h-full object-cover opacity-75 blur-[1.5px] object-top'
-                  src={image}
-                  alt='About Background'
-                  loading='lazy'
-               />
-            </Suspense>
-            <div className='txt w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center gap-5 max-[599px]:gap-6 flex-col pt-10 max-[599px]:pt-20'>
-               <h1 className='w-1/2 max-[599px]:w-full text-center leading-tight text-[3.33vw] max-[599px]:text-[10vw] font-bold font-[Montserrat]'>
-                  {heading}
-               </h1>
-               <p className='w-[58%] max-[599px]:w-[85%] text-[1.25vw] max-[599px]:text-[3.5vw] font-medium text-center font-[Poppins]'>
-                  {para}
+   const paragraphKeys = ['First', 'Second', 'Third', 'Four'];
+
+   return (
+      <section className='w-full px-10 max-[599px]:px-6 py-20 max-[599px]:py-4 flex items-center gap-3 justify-center max-[599px]:gap-10 font-[Montserrat] max-[599px]:flex-col'>
+         <div className='left w-1/2 max-[599px]:w-full h-full flex items-start justify-between gap-3 flex-col'>
+            <h1 className='text-[1.7vw] font-semibold text-[#333] max-[599px]:text-[4.5vw]'>
+               History
+            </h1>
+            {paragraphKeys.map((key, index) => (
+               <p
+                  key={`history-${key}`}
+                  className={`history_Para_${index + 1} text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]`}
+               >
+                  {history[`paragraph_${key}`] ||
+                     `Not Found Paragraph ${index + 1}`}
                </p>
-               <div className='btns flex items-center gap-4 max-[599px]:mt-4'>
-                  <button className='bg-transparent text-[1vw] max-[599px]:text-[2.5vw] border-[1px] border-white px-3 py-2 rounded-md font-bold'>
-                     Let's Started
-                  </button>
-                  <button className='bg-white text-[1vw] max-[599px]:text-[2.5vw] text-black px-4 py-2 rounded-md font-bold'>
-                     Watch Now
-                  </button>
-               </div>
-            </div>
+            ))}
+         </div>
+
+         <div className='right w-1/2 max-[599px]:w-full h-full flex items-start justify-between gap-3 flex-col'>
+            <h1 className='text-[1.7vw] font-semibold text-[#333] max-[599px]:text-[4.5vw]'>
+               {vision?.title || 'Vision Title Not Found'}
+            </h1>
+            {paragraphKeys.map((key, index) => (
+               <p
+                  key={`vision-${key}`}
+                  className={`vision_Para_${index + 1} text-[0.9vw] max-[599px]:text-[3vw] font-[Poppins] text-[#333]`}
+               >
+                  {vision[`paragraph_${key}`] ||
+                     `Vision Paragraph ${index + 1} Not Found`}
+               </p>
+            ))}
          </div>
       </section>
    );
 };
 
-export default memo(AboutHero);
+export default memo(History);
