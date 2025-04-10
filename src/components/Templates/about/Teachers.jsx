@@ -1,24 +1,29 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useTeacher from '../../../hooks/useTeacher';
-// import {Swiper} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
-const TeacherCard = React.memo(({ teacher }) => {
-   const socialMedia =
-      teacher.social_media && teacher.social_media[0]
-         ? teacher.social_media[0]
-         : {};
+const TeacherCard = memo(({ teacher }) => {
+   const social = teacher.social_media?.[0] || {};
+
+   const renderSocialIcon = (platform, url) => (
+      <Link to={url} target='_blank' rel='noopener noreferrer'>
+         <img
+            src={`https://img.icons8.com/bubbles/32/000000/${platform}.png`}
+            alt={platform}
+         />
+      </Link>
+   );
 
    return (
-      <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl  max-[1098px]:w-[40%]'>
+      <div className='card w-[25%] max-[599px]:w-full h-full bg-white text-black flex items-start p-4 justify-between flex-col gap-2 rounded-xl max-[1098px]:w-[40%]'>
          <div className='img w-full h-[23vh] rounded-xl flex items-center justify-center'>
             <img
                src={teacher.image}
-               alt=''
+               alt={teacher.name || 'Teacher'}
                className='w-full bg-cover object-cover overflow-hidden rounded-xl h-full'
                loading='lazy'
             />
@@ -56,44 +61,20 @@ const TeacherCard = React.memo(({ teacher }) => {
             <h1 className='w-1/2 text-[0.95vw] max-[599px]:text-[3.5vw] font-bold'>
                Social Media accounts
             </h1>
-            <div className='profile flex'>
-               {socialMedia.instagram && (
-                  <Link to={socialMedia.instagram} target='_blank'>
-                     <img
-                        src='https://img.icons8.com/bubbles/32/000000/instagram-new.png'
-                        alt='instagram'
-                     />
-                  </Link>
-               )}
-               {socialMedia.facebook && (
-                  <Link to={socialMedia.facebook} target='_blank'>
-                     <img
-                        src='https://img.icons8.com/bubbles/32/000000/facebook-new.png'
-                        alt='facebook'
-                     />
-                  </Link>
-               )}
-               {socialMedia.twitter && (
-                  <Link to={socialMedia.twitter} target='_blank'>
-                     <img
-                        src='https://img.icons8.com/bubbles/32/000000/x.png'
-                        alt='twitter'
-                     />
-                  </Link>
-               )}
-               {socialMedia.linkedin && (
-                  <Link to={socialMedia.linkedin} target='_blank'>
-                     <img
-                        src='https://img.icons8.com/bubbles/32/000000/linkedin.png'
-                        alt='linkedin'
-                     />
-                  </Link>
-               )}
+            <div className='profile flex gap-2'>
+               {social.instagram &&
+                  renderSocialIcon('instagram-new', social.instagram)}
+               {social.facebook &&
+                  renderSocialIcon('facebook-new', social.facebook)}
+               {social.twitter &&
+                  renderSocialIcon('x', social.twitter)}
+               {social.linkedin &&
+                  renderSocialIcon('linkedin', social.linkedin)}
             </div>
          </div>
-         {socialMedia.linkedin && (
+         {social.linkedin && (
             <Link
-               to={socialMedia.linkedin}
+               to={social.linkedin}
                target='_blank'
                className='w-full'
             >
@@ -111,9 +92,7 @@ const Teachers = () => {
    const [swiperVisible, setSwiperVisible] = useState(false);
 
    useEffect(() => {
-      if (window.innerWidth <= 599) {
-         setSwiperVisible(true);
-      }
+      setSwiperVisible(window.innerWidth <= 599);
    }, []);
 
    useTeacher();
@@ -128,35 +107,31 @@ const Teachers = () => {
             personality and excellence in their specific domains.
          </p>
 
-         {/* Desktop version */}
          <div className='cards w-full h-full py-4 flex justify-center gap-10 max-[599px]:flex-col max-[599px]:hidden max-[1098px]:flex-wrap'>
-            {teachers &&
-               teachers.map((teacher, index) => (
-                  <TeacherCard key={index} teacher={teacher} />
-               ))}
+            {teachers?.map((teacher, index) => (
+               <TeacherCard key={index} teacher={teacher} />
+            ))}
          </div>
 
-         {/* Mobile version with Swiper */}
          {swiperVisible && (
             <div className='w-full h-full hidden max-[599px]:block py-10'>
                <Suspense fallback={<div>Loading...</div>}>
                   <Swiper
                      spaceBetween={30}
-                     centeredSlides={true}
+                     centeredSlides
                      autoplay={{
                         delay: 5000,
                         disableOnInteraction: true,
                      }}
-                     loop={true}
+                     loop
                      modules={[Autoplay, Pagination, Navigation]}
                      className='mySwiper'
                   >
-                     {teachers &&
-                        teachers.map((teacher, index) => (
-                           <SwiperSlide key={index}>
-                              <TeacherCard teacher={teacher} />
-                           </SwiperSlide>
-                        ))}
+                     {teachers?.map((teacher, index) => (
+                        <SwiperSlide key={index}>
+                           <TeacherCard teacher={teacher} />
+                        </SwiperSlide>
+                     ))}
                   </Swiper>
                </Suspense>
             </div>
