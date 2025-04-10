@@ -4,7 +4,7 @@ import { useRef } from 'react';
 
 import { IoClose } from 'react-icons/io5';
 
-const Notice_Card = ({ title, link }) => {
+const NoticeCard = ({ title, link }) => {
    const box_ref = useRef();
 
    useGSAP(() => {
@@ -45,4 +45,4 @@ const Notice_Card = ({ title, link }) => {
    );
 };
 
-export default Notice_Card;
+export default NoticeCard;
