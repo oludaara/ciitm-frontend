@@ -1,7 +1,7 @@
 import React from 'react';
 import Admin_SideBar from '../../components/Organisms/SideBar/Admin_SideBar';
-import Admin_NavBar from '../../components/Organisms/NavBar/Admin_NavBar';
-import Card_primary from '../../components/Molecules/Card/Card_primary';
+import Admin_NavBar from '../../components/Organisms/NavBar/AdminNavBar';
+import Card_primary from '../../components/Molecules/Cards/PrimaryCard';
 
 let cards = [
    {

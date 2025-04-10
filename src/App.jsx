@@ -7,23 +7,23 @@ import {
    useLocation,
 } from 'react-router-dom';
 
-import ErrorPage from './components/ErrorPage';
+import ErrorPage from './components/Templates/ErrorPage';
 import About from './pages/About';
 import Landing from './pages/Home';
 
-import Album_Image from './components/Album_Image_Components/Album_Image';
+import Album_Image from './components/Templates/album/Album_Image';
 import ContactUs from './pages/ContactUs';
-import Loader from './components/Loader';
 import Admission from './pages/Admission';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import DOMPurify from 'dompurify';
-import Protected_Student from './components/Protected_Student';
-import Student from './components/Student/Student';
+import Protected_Student from './components/Protected/Protected_Student';
+import Student from './components/Templates/Student/Student';
 import PaymentPage from './pages/PaymentPage';
-import Gallery from './components/Gallery/Gallery';
+import Gallery from './components/Templates/gallery/Gallery';
 import DashBoard from './pages/Admin/DashBoard';
-import Protected_Admin from './components/Proctected_Admin';
+import Protected_Admin from './components/Protected/Protected_Admin';
+import Loader from './components/Molecules/Loader/Loader';
 
 const userInput = "<img src='x' onerror='alert(1)' />";
 

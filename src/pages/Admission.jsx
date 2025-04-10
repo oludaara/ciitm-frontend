@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import AdmissionForm from '../components/admissionComponents/AdmissionForm';
+import AdmissionForm from '../components/Templates/admission/AdmissionForm';
 
 const Admission = () => {
    return (

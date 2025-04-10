@@ -1,12 +1,12 @@
-import Hero from '../components/homeComponents/Hero';
-import Empower from '../components/homeComponents/Empower';
-import Skills from '../components/homeComponents/Skills';
-import Album from '../components/homeComponents/Album';
-import Testimonials from '../components/homeComponents/Testimonials';
+import Hero from '../components/Templates/home/Hero';
+import Empower from '../components/Templates/home/Empower';
+import Skills from '../components/Templates/home/Skills';
+import Album from '../components/Templates/home/Album';
+import Testimonials from '../components/Templates/home/Testimonials';
 import { Helmet } from 'react-helmet-async';
 import useHomeUi from '../hooks/useHomeUi';
 import { useSelector } from 'react-redux';
-import Loader from '../components/Loader';
+import Loader from '../components/Molecules/Loader/Loader';
 
 function Home() {
    useHomeUi();
