@@ -1,25 +1,24 @@
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { GoArrowUpRight } from 'react-icons/go';
 import { MdDelete } from 'react-icons/md';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import useAlbum from '../../../hooks/useAlbum';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { Remove_One_Album } from '../../../store/homeSlice';
 import Swal from 'sweetalert2';
+import useAlbum from '../../../hooks/useAlbum';
+import { Remove_One_Album } from '../../../store/homeSlice';
 
 const Album = () => {
    const [albums, setAlbums] = useState([]);
-   let dispatch = useDispatch();
    const [error, setError] = useState(false);
-   let user = useSelector(state => state.auth.user);
-   const [userRole, setuserRole] = useState('');
-   const [isClick, setisClick] = useState(false);
+   const [userRole, setUserRole] = useState('');
+   const [isClick, setIsClick] = useState(false);
+
+   const dispatch = useDispatch();
+   const user = useSelector(state => state.auth.user);
+   const album = useSelector(state => state.home.Album);
 
    useAlbum();
-
-   let album = useSelector(state => state.home.Album);
 
    useEffect(() => {
       if (album) {
@@ -28,35 +27,30 @@ const Album = () => {
    }, [album]);
 
    useEffect(() => {
-      {
-         user && setuserRole(user.role);
+      if (user) {
+         setUserRole(user.role);
       }
    }, [user]);
 
-   let Handle_Album_Delete = async (e, album) => {
+   const handleAlbumDelete = async (e, albumItem) => {
       try {
-         e.preventDefault(); // Prevent redirection
-         e.stopPropagation(); // Stop event bubbling
+         e.preventDefault();
+         e.stopPropagation();
 
          if (userRole === 'admin') {
-            dispatch(Remove_One_Album({ _id: album._id }));
-            let res = await axios.delete(
-               `/api/admin/delete/albums/${album._id}`,
+            dispatch(Remove_One_Album({ _id: albumItem._id }));
+            await axios.delete(
+               `/api/admin/delete/albums/${albumItem._id}`,
             );
-            console.log(
-               'link',
-               `/api/admin/delete/albums/${album._id}`,
-            );
-            console.log('Res', res);
          } else {
-            window.location.href = `/album/${album.aName}`; // Redirect for non-admins
+            window.location.href = `/album/${albumItem.aName}`;
          }
-      } catch (error) {
-         console.log('error:', error);
+      } catch (err) {
+         console.error('Error:', err);
          Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: error.response.data,
+            text: err?.response?.data || 'Something went wrong!',
          });
       }
    };
@@ -75,9 +69,9 @@ const Album = () => {
             ) : (
                albums.map(item => (
                   <Link
+                     key={item._id}
                      to={`/album/${item.aName}`}
                      className='h-[40vw] w-full md:h-full rounded-lg overflow-hidden relative m-[3vw]'
-                     key={item._id}
                   >
                      <div className='h-full w-full bg-zinc-500 absolute top-0 left-0 bg-cover bg-center'>
                         <img
@@ -86,9 +80,10 @@ const Album = () => {
                            className='w-full h-full object-cover object-top'
                         />
                      </div>
+
                      <div
                         className='delete-btn flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'
-                        onClick={e => Handle_Album_Delete(e, item)}
+                        onClick={e => handleAlbumDelete(e, item)}
                      >
                         {userRole === 'admin' ? (
                            <MdDelete className='text-2xl text-white' />
@@ -96,6 +91,7 @@ const Album = () => {
                            <GoArrowUpRight className='text-2xl text-white' />
                         )}
                      </div>
+
                      <div className='absolute bottom-0 left-0 bg-black bg-opacity-20 flex justify-between h-[20%] items-center px-4 w-full z-40'>
                         <p className='text-[2vw] md:text-[1vw] text-white font-semibold'>
                            {item.aName}
@@ -110,43 +106,39 @@ const Album = () => {
          </div>
 
          <div className='bg-red-600 h-[63vh] w-full md:w-[35vw] mr-[1vw] md:mr-[2vw] rounded-lg relative'>
-            {albums.length < 5 && (
-               <img
-                  srcSet={albums[albums.length - 1]?.aImage_url}
-                  alt=''
-                  className='w-full h-full object-cover rounded-lg object-top'
-               />
-            )}
-            {albums.length > 5 &&
-               albums.slice(-1).map(item => (
+            {albums.length > 0 && (
+               <>
                   <Link
-                     onClick={e => {
-                        if (isClick) e.preventDefault();
-                     }}
-                     to={`/album/${item.aName}`}
+                     to={`/album/${albums[albums.length - 1]?.aName}`}
                      className='rounded-lg w-[80%]'
-                     key={item.id}
+                     onClick={e => isClick && e.preventDefault()}
                   >
                      <img
-                        srcSet={item.aImage_url}
-                        alt=''
+                        srcSet={albums[albums.length - 1]?.aImage_url}
+                        alt={
+                           albums[albums.length - 1]?.aName ||
+                           'Album Preview'
+                        }
                         className='w-full h-full object-cover rounded-lg object-top'
                      />
-
                      <div className='flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'>
                         <GoArrowUpRight className='text-2xl text-white' />
                      </div>
-
                      <div className='absolute bottom-0 right-0 bg-black bg-opacity-40 flex justify-between h-[25%] items-center px-4 w-full z-40'>
                         <p className='text-lg md:text-base text-white'>
-                           {item.aName}
+                           {albums[albums.length - 1]?.aName}
                         </p>
                         <p className='text-lg md:text-base text-white'>
-                           {item.createdAt.split('T')[0]}
+                           {
+                              albums[
+                                 albums.length - 1
+                              ]?.createdAt.split('T')[0]
+                           }
                         </p>
                      </div>
                   </Link>
-               ))}
+               </>
+            )}
          </div>
       </div>
    );
