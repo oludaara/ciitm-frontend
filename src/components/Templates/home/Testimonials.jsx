@@ -2,29 +2,24 @@ import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import useTestimonial from '../../../hooks/useTestimoniyal';
 import { useSelector } from 'react-redux';
+import useTestimonial from '../../../hooks/useTestimoniyal';
 
 const Testimonials = () => {
-   let testimonial = useSelector(state => state.home.Testimonital);
-
+   const testimonialData = useSelector(
+      state => state.home.Testimonital,
+   );
    const [testimonials, setTestimonials] = useState([]);
 
    useTestimonial();
 
    useEffect(() => {
-      if (testimonial) {
-         setTestimonials([...testimonial]);
+      if (testimonialData) {
+         setTestimonials([...testimonialData]);
       }
-   }, [testimonial]);
+   }, [testimonialData]);
 
-   const starsFunction = star => {
-      let stars = '';
-      for (let i = 0; i < star; i++) {
-         stars += '⭐';
-      }
-      return stars;
-   };
+   const renderStars = count => '⭐'.repeat(count);
 
    const settings = {
       infinite: true,
@@ -66,44 +61,49 @@ const Testimonials = () => {
                      <h2>No Testimonials Found</h2>
                   </div>
                ) : (
-                  testimonials.map(testimonial => (
-                     <div
-                        key={testimonial.id}
-                        className='relative w-full flex justify-center'
-                     >
-                        <div className='card cursor-grab w-[30vw] max-[599px]:w-full bg-white text-black rounded-xl px-6 py-8 transform transition-all duration-300'>
-                           <div className='profile flex items-center gap-4'>
-                              <div className='image w-[3.5vw] max-[599px]:w-[12vw] h-[3.5vw] max-[599px]:h-[12vw] rounded-full overflow-hidden'>
-                                 <img
-                                    src={testimonial.image}
-                                    alt={testimonial.name}
-                                    className='w-full h-full object-cover'
-                                 />
+                  testimonials.map(
+                     ({
+                        id,
+                        image,
+                        name,
+                        job_Role,
+                        message,
+                        star,
+                     }) => (
+                        <div
+                           key={id}
+                           className='relative w-full flex justify-center'
+                        >
+                           <div className='card cursor-grab w-[30vw] max-[599px]:w-full bg-white text-black rounded-xl px-6 py-8 transform transition-all duration-300'>
+                              <div className='profile flex items-center gap-4'>
+                                 <div className='image w-[3.5vw] max-[599px]:w-[12vw] h-[3.5vw] max-[599px]:h-[12vw] rounded-full overflow-hidden'>
+                                    <img
+                                       src={image}
+                                       alt={name}
+                                       className='w-full h-full object-cover'
+                                    />
+                                 </div>
+                                 <div className='txts'>
+                                    <h1 className='name text-[1.5vw] max-[599px]:text-[5vw] font-semibold'>
+                                       {name}
+                                    </h1>
+                                    <p className='position text-[1vw] max-[599px]:text-[3vw]'>
+                                       {job_Role}
+                                    </p>
+                                 </div>
                               </div>
-                              <div className='txts'>
-                                 <h1 className='name text-[1.5vw] max-[599px]:text-[5vw] font-semibold'>
-                                    {testimonial.name}
-                                 </h1>
-                                 <p className='position text-[1vw] max-[599px]:text-[3vw]'>
-                                    {testimonial.job_Role}
-                                 </p>
+                              <p className='review mt-4 text-[1vw] max-[599px]:text-[2.5vw]'>
+                                 {message}
+                              </p>
+                              <div className='stars flex justify-between mt-4'>
+                                 <span className='text-[1vw] max-[599px]:text-[3.5vw]'>
+                                    {renderStars(star)}
+                                 </span>
                               </div>
-                           </div>
-                           <p className='review mt-4 text-[1vw] max-[599px]:text-[2.5vw]'>
-                              {testimonial.message}
-                           </p>
-                           <div className='stars flex justify-between mt-4'>
-                              <span className='text-[1vw] max-[599px]:text-[3.5vw]'>
-                                 {starsFunction(testimonial.star)}
-                              </span>
-                              {/* Uncomment and use if needed */}
-                              {/* <span className="date text-[1vw] max-[599px]:text-[3.5vw]">
-                      {testimonial.date}
-                    </span> */}
                            </div>
                         </div>
-                     </div>
-                  ))
+                     ),
+                  )
                )}
             </Slider>
          </div>
