@@ -1,54 +1,53 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
 import bulletPoint from '../../../assets/images/bulletPoint.svg';
 
-export let Facilites_Card = ({ Title, index, isActive, onClick }) => {
+const FacilitiesCard = memo(({ title, index, isActive, onClick }) => {
    return (
       <div
-         className={`Facilites_Card flex gap-3 rounded-md cursor-pointer w-full h-full p-2 ${
+         className={`FacilitesCard flex gap-3 rounded-md cursor-pointer w-full h-full p-2 ${
             isActive ? 'bg-[#FF6603] text-white' : ''
          }`}
-         key={index}
          onClick={onClick}
       >
          <img
             src={bulletPoint}
-            alt=''
+            alt="icon"
             className='Facilites_Card_Image'
          />
          <h1 className='Facilites_Card_Title capitalize text-[1vw] max-[599px]:text-[4.6vw] font-medium'>
-            {Title}
+            {title}
          </h1>
       </div>
    );
-};
+});
 
 const CampusFacilities = () => {
-   const [Facilities, setFacilities] = useState([]);
-   const [Description, setDescription] = useState({});
+   const [facilities, setFacilities] = useState([]);
+   const [description, setDescription] = useState({});
    const [activeTab, setActiveTab] = useState(null);
 
-   let About_Page_Data = useSelector(state => state.about.aboutPage);
+   const aboutPage = useSelector(state => state.about.aboutPage);
 
    useEffect(() => {
-      if (About_Page_Data) {
-         setFacilities([...About_Page_Data.Facilities]);
-         setDescription({ ...About_Page_Data.Description });
-         setActiveTab(About_Page_Data.Facilities[0]); // Default active tab
+      if (aboutPage?.Facilities?.length) {
+         setFacilities(aboutPage.Facilities);
+         setDescription(aboutPage.Description || {});
+         setActiveTab(aboutPage.Facilities[0]);
       }
-   }, [About_Page_Data]);
+   }, [aboutPage]);
 
    return (
       <section className='w-full h-full px-8 max-[599px]:px-6 py-12 bg-[#333] flex items-center justify-between gap-2 max-[599px]:gap-10 max-[599px]:flex-col'>
-         <div className='Facilites_Card_Container left w-[18.5%] max-[599px]:w-full h-full bg-white p-4 max-[599px]:p-8 rounded-2xl max-[599px]:rounded-3xlxl'>
+         <div className='Facilites_Card_Container left w-[18.5%] max-[599px]:w-full h-full bg-white p-4 max-[599px]:p-8 rounded-2xl'>
             <div className='h-auto flex items-start justify-between flex-col gap-1.5 max-[599px]:gap-4'>
-               {Facilities.map((Facility, index) => (
-                  <Facilites_Card
+               {facilities.map((facility, index) => (
+                  <FacilitiesCard
                      key={index}
-                     Title={Facility.title}
+                     title={facility.title}
                      index={index}
-                     isActive={activeTab?.title === Facility.title}
-                     onClick={() => setActiveTab(Facility)}
+                     isActive={activeTab?.title === facility.title}
+                     onClick={() => setActiveTab(facility)}
                   />
                ))}
             </div>
@@ -66,6 +65,7 @@ const CampusFacilities = () => {
                   various others.
                </p>
             </div>
+
             <div className='dynamic-links'>
                <div className='link flex gap-3'>
                   <img src={bulletPoint} alt='bullet point' />
@@ -74,14 +74,19 @@ const CampusFacilities = () => {
                   </h1>
                </div>
                <p className='text-[0.9vw] max-[599px]:text-[3vw] my-4 w-[60%] max-[599px]:w-full'>
-                  {`There are twenty eight ${activeTab?.title || 'Hostels'} including eleven separate ${activeTab?.title || 'Hostels'} for female students. The residential accommodation in each of these ${activeTab?.title || 'Hostels'} comprises of cubicles and three-seat dormitories.`}
+                  There are twenty eight{' '}
+                  {activeTab?.title || 'Hostels'} including eleven
+                  separate {activeTab?.title || 'Hostels'} for female
+                  students. The residential accommodation in each of
+                  these {activeTab?.title || 'Hostels'} comprises of
+                  cubicles and three-seat dormitories.
                </p>
             </div>
+
             <div className='discription w-full h-full flex max-[599px]:flex-col items-start justify-start gap-7'>
                <div className='img-container w-[10vw] max-[599px]:w-full h-[10vw] max-[599px]:h-[45vw] bg-[#FFE7E7] rounded-2xl overflow-hidden'>
-                  {/* Dynamically change the image based on active tab */}
                   <img
-                     src={activeTab?.image || Description.image}
+                     src={activeTab?.image || description.image}
                      alt='Facility Image'
                      className='w-full h-full object-cover'
                   />
@@ -90,24 +95,21 @@ const CampusFacilities = () => {
                   <h1 className='text-[1.2vw] max-[599px]:text-[3.5vw] font-semibold'>
                      Description
                   </h1>
-                  {/* Dynamically change the description based on active tab */}
                   <p className='text-[0.9vw] max-[599px]:text-[3vw]'>
-                     {activeTab?.description || Description.paragraph}
+                     {activeTab?.description || description.paragraph}
                   </p>
                   <div className='flex gap-4 text-[0.9vw] max-[599px]:text-[3.4vw]'>
                      <div className='heading-1 flex gap-3'>
                         <p className='text-[#FF6603] font-semibold'>
                            Per Month
                         </p>
-                        {/* Dynamically change price */}
-                        <p>{activeTab?.price || Description.price}</p>
+                        <p>{activeTab?.price || description.price}</p>
                      </div>
                      <div className='heading-2 flex gap-3'>
                         <p className='text-[#FF6603] font-semibold'>
                            Room
                         </p>
-                        {/* Dynamically change room */}
-                        <p>{activeTab?.room || Description.room}</p>
+                        <p>{activeTab?.room || description.room}</p>
                      </div>
                   </div>
                </div>
@@ -117,4 +119,4 @@ const CampusFacilities = () => {
    );
 };
 
-export default CampusFacilities;
+export default memo(CampusFacilities);
