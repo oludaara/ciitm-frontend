@@ -1,226 +1,161 @@
+import { useState, useEffect, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import { IoMenu, IoClose, IoChevronDown } from 'react-icons/io5';
 import gsap from 'gsap';
-import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/ciitmLogo.png';
-import { useRef, useState, useEffect } from 'react';
 
 const Navbar = () => {
-   const menu = useRef(null);
-   const open = useRef(null);
-   const close = useRef(null);
-   const dropdownRef = useRef(null); // Ref for dropdown
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-   //const [isMenuOpen, setIsMenuOpen] = useState(true);
 
-   const windowWidth = window.innerWidth;
-   console.log(windowWidth);
+   const toggleDropdown = useCallback(() => {
+      setIsDropdownOpen(prev => !prev);
+   }, []);
 
-   // Open/Close menu methods
-   const openMenu = () => {
-      gsap.to(menu.current, {
-         y: '0%',
-         duration: 0.5,
-      });
-
-      if (windowWidth > 799) {
-         open.current.style.display = 'none';
-         close.current.style.display = 'none';
-      } else {
-         open.current.style.display = 'none';
-         close.current.style.display = 'block';
+   const handleResize = useCallback(() => {
+      if (window.innerWidth > 799) {
+         setIsMenuOpen(false);
       }
-   };
-
-   const closeMenu = () => {
-      gsap.to(menu.current, {
-         y: '-100%',
-         duration: 0.5,
-      });
-
-      if (windowWidth > 799) {
-         open.current.style.display = 'none';
-         close.current.style.display = 'none';
-      } else {
-         open.current.style.display = 'block';
-         close.current.style.display = 'none';
-      }
-   };
-
-   // Toggle dropdown state
-   const toggleDropdown = () => {
-      setIsDropdownOpen(!isDropdownOpen);
-   };
-
-   // Close dropdown when clicked outside
-
-   const handleClickOutside = event => {
-      if (
-         dropdownRef.current &&
-         !dropdownRef.current.contains(event.target)
-      ) {
-         setIsDropdownOpen(false);
-      }
-   };
+   }, []);
 
    useEffect(() => {
-      // Attach event listener to the document to detect outside clicks
-      document.addEventListener('mousedown', handleClickOutside);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+   }, [handleResize]);
 
-      // Cleanup on unmount
-      return () => {
+   useEffect(() => {
+      gsap.to('.mobile-menu', {
+         y: isMenuOpen ? '0%' : '-100%',
+         duration: 0.5,
+      });
+   }, [isMenuOpen]);
+
+   useEffect(() => {
+      const handleClickOutside = event => {
+         if (!event.target.closest('.dropdown-container')) {
+            setIsDropdownOpen(false);
+         }
+      };
+      document.addEventListener('mousedown', handleClickOutside);
+      return () =>
          document.removeEventListener(
             'mousedown',
             handleClickOutside,
          );
-      };
    }, []);
 
    const navLinks = [
       { to: '/', label: 'Home' },
       { to: '/about', label: 'About Us' },
       { to: '/gallery', label: 'Gallery' },
-      { to: '/students', label: 'Students' },
+      { to: '/students', label: 'Students', dropdown: true },
       { to: '/contact', label: 'Contact Us' },
    ];
 
    return (
       <>
-         <div
-            ref={menu}
-            className='mobile-menu w-full h-screen bg-[#333] text-[20px] font-semibold text-white hidden max-[799px]:block -translate-y-[100%] fixed top-0 left-0 z-[99]'
-         >
-            <nav className='w-full h-full flex items-center justify-center gap-10 flex-col mt-14'>
-               {navLinks.map(link =>
-                  link.label !== 'Students' ? (
-                     <NavLink
-                        key={link.to}
-                        to={link.to}
-                        state={{ scrollToSection: true }}
-                        className={({ isActive }) =>
-                           isActive
-                              ? 'font-semibold transition-all'
-                              : 'hover:font-normal transition-all'
-                        }
-                        onClick={closeMenu}
+         <div className='mobile-menu fixed top-0 left-0 z-50 w-full h-screen bg-[#333] text-white flex items-center justify-center flex-col gap-10 translate-y-[-100%] md:hidden'>
+            {navLinks.map(link =>
+               !link.dropdown ? (
+                  <NavLink
+                     key={link.to}
+                     to={link.to}
+                     onClick={() => setIsMenuOpen(false)}
+                  >
+                     {link.label}
+                  </NavLink>
+               ) : (
+                  <div
+                     key={link.to}
+                     className='relative dropdown-container'
+                  >
+                     <button
+                        className='flex items-center gap-1'
+                        onClick={toggleDropdown}
                      >
                         {link.label}
-                     </NavLink>
-                  ) : (
-                     <div key={link.to} className='relative'>
-                        <button
-                           onClick={toggleDropdown}
-                           className={`flex items-center gap-1 transition-all font-semibold`}
-                        >
-                           {link.label}
-                           <IoChevronDown
-                              className={`transform transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-                              size={16}
-                           />
-                        </button>
-                        {isDropdownOpen && (
-                           <div
-                              ref={dropdownRef} // Attach ref here
-                              className='flex flex-col bg-white text-black w-full text-[13px] absolute overflow-hidden top-full left-0 shadow-md rounded-md mt-1 mb-5 border border-gray-200'
+                        <IoChevronDown
+                           size={16}
+                           className={
+                              isDropdownOpen ? 'rotate-180' : ''
+                           }
+                        />
+                     </button>
+                     {isDropdownOpen && (
+                        <div className='absolute bg-white text-black shadow rounded w-40'>
+                           <NavLink
+                              to='/admission'
+                              onClick={() => setIsMenuOpen(false)}
+                              className='block px-4 py-2'
                            >
-                              <NavLink
-                                 to='/admission'
-                                 className='px-4 py-2 hover:bg-gray-100 hover:font-medium border-b border-gray-300'
-                              >
-                                 Admission
-                              </NavLink>
-                              <NavLink
-                                 to='/status'
-                                 className='px-4 py-2 hover:bg-gray-100 hover:font-medium border-b border-gray-300'
-                              >
-                                 Check Status
-                              </NavLink>
-                              <NavLink
-                                 to='/payment'
-                                 className='px-4 py-2 hover:bg-gray-100 hover:font-medium'
-                              >
-                                 Payment
-                              </NavLink>
-                           </div>
-                        )}
-                     </div>
-                  ),
-               )}
-               <div className='btns flex items-center justify-between gap-3 text-[5vw]'>
-                  <NavLink
-                     to='/login'
-                     state={{ scrollToSection: true }}
-                     className='px-8 py-2 w-full bg-[#f9f9f9] text-[#333] rounded-lg font-[Poppins]'
-                     onClick={closeMenu}
-                  >
-                     Login
-                  </NavLink>
-                  <NavLink
-                     to='/signup'
-                     state={{ scrollToSection: true }}
-                     className='px-3 py-2 w-full bg-[#F9F9F9] text-[#333] border-[1px] border-[#D7D7D74D] rounded-lg font-[Poppins]'
-                     onClick={closeMenu}
-                  >
-                     Registration
-                  </NavLink>
-               </div>
-            </nav>
+                              Admission
+                           </NavLink>
+                           <NavLink
+                              to='/status'
+                              onClick={() => setIsMenuOpen(false)}
+                              className='block px-4 py-2'
+                           >
+                              Check Status
+                           </NavLink>
+                           <NavLink
+                              to='/payment'
+                              onClick={() => setIsMenuOpen(false)}
+                              className='block px-4 py-2'
+                           >
+                              Payment
+                           </NavLink>
+                        </div>
+                     )}
+                  </div>
+               ),
+            )}
          </div>
 
-         <nav className='w-full fixed top-0 left-0 px-10 max-[799px]:px-6 py-3 z-[999] bg-white flex items-center justify-between'>
-            <NavLink
-               to='/'
-               state={{ scrollToSection: true }}
-               className='logo'
-            >
+         <nav className='fixed top-0 left-0 w-full px-10 py-3 bg-white flex justify-between items-center z-50'>
+            <NavLink to='/'>
                <img src={logo} alt='Logo' />
             </NavLink>
-            <div className='links flex items-center justify-between gap-6 text-[1vw] font-light font-[Poppins] max-[799px]:hidden'>
+
+            <div className='hidden md:flex gap-6'>
                {navLinks.map(link =>
-                  link.label !== 'Students' ? (
-                     <NavLink
-                        key={link.to}
-                        to={link.to}
-                        state={{ scrollToSection: true }}
-                        className={({ isActive }) =>
-                           isActive
-                              ? 'font-medium transition-all'
-                              : 'hover:font-normal transition-all'
-                        }
-                     >
+                  !link.dropdown ? (
+                     <NavLink key={link.to} to={link.to}>
                         {link.label}
                      </NavLink>
                   ) : (
-                     <div key={link.to} className='relative'>
+                     <div
+                        key={link.to}
+                        className='relative dropdown-container'
+                     >
                         <button
+                           className='flex items-center gap-1'
                            onClick={toggleDropdown}
-                           className={`flex items-center gap-1 transition-all ${isDropdownOpen ? 'font-bold' : 'font-normal'}`}
                         >
                            {link.label}
                            <IoChevronDown
-                              className={`transform transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
                               size={16}
+                              className={
+                                 isDropdownOpen ? 'rotate-180' : ''
+                              }
                            />
                         </button>
                         {isDropdownOpen && (
-                           <div
-                              ref={dropdownRef} // Attach ref here
-                              className='flex flex-col bg-white text-black w-40 text-[13px] absolute overflow-hidden top-full left-0 shadow-md rounded-md mt-1 border border-gray-200'
-                           >
+                           <div className='absolute bg-white text-black shadow rounded w-40'>
                               <NavLink
                                  to='/admission'
-                                 className='px-4 py-2 hover:bg-gray-100 hover:font-medium border-b border-gray-300'
+                                 className='block px-4 py-2'
                               >
                                  Admission
                               </NavLink>
                               <NavLink
                                  to='/status'
-                                 className='px-4 py-2 hover:bg-gray-100 hover:font-medium border-b border-gray-300'
+                                 className='block px-4 py-2'
                               >
                                  Check Status
                               </NavLink>
                               <NavLink
                                  to='/payment'
-                                 className='px-4 py-2 hover:bg-gray-100 hover:font-medium'
+                                 className='block px-4 py-2'
                               >
                                  Payment
                               </NavLink>
@@ -230,36 +165,32 @@ const Navbar = () => {
                   ),
                )}
             </div>
-            <div className='btns flex items-center justify-between gap-3 max-[799px]:hidden'>
+
+            <div className='hidden md:flex gap-3'>
                <NavLink
                   to='/login'
-                  state={{ scrollToSection: true }}
-                  className='px-8 py-2 w-full bg-[#333] text-white rounded-lg text-sm font-[Poppins]'
+                  className='px-8 py-2 bg-[#333] text-white rounded'
                >
                   Login
                </NavLink>
                <NavLink
                   to='/signup'
-                  state={{ scrollToSection: true }}
-                  className='px-3 py-2 w-full bg-[#F9F9F9] border-[1px] border-[#D7D7D74D] rounded-lg text-sm font-[Poppins]'
+                  className='px-8 py-2 border rounded'
                >
                   Registration
                </NavLink>
             </div>
-            <div
-               ref={open}
-               className='bg-[#333] rounded-full text-white p-2 hidden max-[799px]:block'
-               onClick={openMenu}
+
+            <button
+               className='md:hidden'
+               onClick={() => setIsMenuOpen(prev => !prev)}
             >
-               <IoMenu size={25} />
-            </div>
-            <div
-               ref={close}
-               className='bg-[#333] rounded-full text-white p-2 hidden'
-               onClick={closeMenu}
-            >
-               <IoClose size={25} />
-            </div>
+               {isMenuOpen ? (
+                  <IoClose size={25} />
+               ) : (
+                  <IoMenu size={25} />
+               )}
+            </button>
          </nav>
       </>
    );
