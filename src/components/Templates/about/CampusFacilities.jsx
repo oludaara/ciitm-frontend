@@ -12,7 +12,7 @@ const FacilitiesCard = memo(({ title, index, isActive, onClick }) => {
       >
          <img
             src={bulletPoint}
-            alt="icon"
+            alt='icon'
             className='Facilites_Card_Image'
          />
          <h1 className='Facilites_Card_Title capitalize text-[1vw] max-[599px]:text-[4.6vw] font-medium'>

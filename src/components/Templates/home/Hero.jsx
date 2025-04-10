@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NoticeCard from '../../Molecules/Cards/NoticeCard';
 import Loader from '../../Molecules/Loader/Loader';
+import H3 from '../../Atoms/Heading/H3';
+import P3 from '../../Atoms/Paragraph/P3';
+import H1 from '../../Atoms/Heading/H1';
 
 const Hero = React.memo(() => {
    const [image, setImage] = useState('');
@@ -35,12 +38,13 @@ const Hero = React.memo(() => {
          }}
       >
          <div className='text w-full lg:w-1/2 h-full flex items-start justify-center lg:justify-center flex-col gap-3 absolute left-[3vw]'>
-            <h3 className='max-[400px]:text-[8.5vw] text-[8vw] min-[768px]:text-5xl min-[768px]:w-[15ch] lg:text-[4vw] font-bold md:text-[4vw] md:w-[15ch] lg:font-[700] leading-tight w-[25vh] lg:w-fit'>
+            <H1>
                {heading}
-            </h3>
-            <p className='max-[400px]:text-[6vw] sm:text-xl md:text-balance w-[70%]'>
+            </H1>
+
+            <P3 Tailwind_utility_Class='max-[400px]:text-[6vw] sm:text-xl md:text-balance w-[70%]'>
                {paragraph}
-            </p>
+            </P3>
          </div>
 
          <div className='card-container absolute bottom-[3vh] right-[2vw] lg:h-full w-full sm:max-w-md lg:w-1/2 flex items-end justify-end pb-10 flex-col gap-4 -mb-20'>

@@ -13,7 +13,6 @@ const SocialLink = React.memo(({ href, label, isEmail }) => {
          href={isEmail ? `mailto:${href}` : href}
          target='_blank'
          rel='noopener noreferrer'
-  
       >
          {label}
       </a>
@@ -42,7 +41,8 @@ const Footer = React.memo(() => {
                <img src={logo} alt='Logo' />
             </Link>
             <p className='w-[47%] text-[1vw] max-[599px]:hidden text-[#333] max-[999px]:text-center max-[999px]:pb-6'>
-               See why students love learning with us and how we&apos;ve made a difference in their journeys.
+               See why students love learning with us and how
+               we&apos;ve made a difference in their journeys.
             </p>
          </div>
 
@@ -74,12 +74,31 @@ const Footer = React.memo(() => {
                   Social Media
                </p>
                <div className='links flex flex-col  max-[599px]:flex-row gap-4 flex-wrap items-start justify-center text-center'>
-                  <SocialLink href={socialLinks?.instagram} label='Instagram' />
-                  <SocialLink href={socialLinks?.facebook} label='Facebook' />
-                  <SocialLink href={socialLinks?.twitter} label='Twitter' />
-                  <SocialLink href={socialLinks?.youtube} label='Youtube' />
-                  <SocialLink href={socialLinks?.linkedin} label='LinkedIn' />
-                  <SocialLink href={socialLinks?.email} label='Email' isEmail />
+                  <SocialLink
+                     href={socialLinks?.instagram}
+                     label='Instagram'
+                  />
+                  <SocialLink
+                     href={socialLinks?.facebook}
+                     label='Facebook'
+                  />
+                  <SocialLink
+                     href={socialLinks?.twitter}
+                     label='Twitter'
+                  />
+                  <SocialLink
+                     href={socialLinks?.youtube}
+                     label='Youtube'
+                  />
+                  <SocialLink
+                     href={socialLinks?.linkedin}
+                     label='LinkedIn'
+                  />
+                  <SocialLink
+                     href={socialLinks?.email}
+                     label='Email'
+                     isEmail
+                  />
                </div>
             </div>
          </div>
