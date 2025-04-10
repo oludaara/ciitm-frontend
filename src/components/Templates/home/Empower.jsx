@@ -2,29 +2,55 @@ import React, { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import arrow from '../../../assets/images/arrow.png';
 
-function Empower() {
-   const [image1, setImage1] = useState(null);
-   const [image2, setImage2] = useState(null);
-   const [image3, setImage3] = useState(null);
-   const [headingFirst, setHeadingFirst] = useState('');
-   const [headingSecond, setHeadingSecond] = useState('');
-   const [paragraphFirst, setParagraphFirst] = useState('');
-   const [paragraphSecond, setParagraphSecond] = useState('');
+const Empower = () => {
+   const [images, setImages] = useState({
+      image1: null,
+      image2: null,
+      image3: null,
+   });
+   const [textContent, setTextContent] = useState({
+      headingFirst: '',
+      headingSecond: '',
+      paragraphFirst: '',
+      paragraphSecond: '',
+   });
 
    const about = useSelector(state => state.home.landingPage);
 
    useEffect(() => {
-      if (about) {
-         const { AboutSection } = about;
-         setImage1(AboutSection?.image_First || null);
-         setImage2(AboutSection?.image_Second || null);
-         setImage3(AboutSection?.image_Third || null);
-         setHeadingFirst(AboutSection?.Heading_First || '');
-         setHeadingSecond(AboutSection?.Heading_Second || '');
-         setParagraphFirst(AboutSection?.paragraph_First || '');
-         setParagraphSecond(AboutSection?.paragraph_Second || '');
+      if (about?.AboutSection) {
+         const {
+            image_First,
+            image_Second,
+            image_Third,
+            Heading_First,
+            Heading_Second,
+            paragraph_First,
+            paragraph_Second,
+         } = about.AboutSection;
+
+         setImages({
+            image1: image_First || null,
+            image2: image_Second || null,
+            image3: image_Third || null,
+         });
+
+         setTextContent({
+            headingFirst: Heading_First || '',
+            headingSecond: Heading_Second || '',
+            paragraphFirst: paragraph_First || '',
+            paragraphSecond: paragraph_Second || '',
+         });
       }
    }, [about]);
+
+   const { image1, image2, image3 } = images;
+   const {
+      headingFirst,
+      headingSecond,
+      paragraphFirst,
+      paragraphSecond,
+   } = textContent;
 
    return (
       <div className='flex my-10 max-[599px]:my-0 relative'>
@@ -44,7 +70,8 @@ function Empower() {
                   />
                )}
             </div>
-            <div className='h-[10vh] w-[10vh] md:h-[12vw]  md:w-[12vw] rounded-full absolute left-[22vw] top-[19vh]'>
+
+            <div className='h-[10vh] w-[10vh] md:h-[12vw] md:w-[12vw] rounded-full absolute left-[22vw] top-[19vh]'>
                {image2 && (
                   <img
                      src={image2}
@@ -53,7 +80,8 @@ function Empower() {
                   />
                )}
             </div>
-            <div className='h-[16vw] w-[16vw] rounded-full absolute left-[8vw] top-[30vh] md:top-[40vh] bg-red-600 '>
+
+            <div className='h-[16vw] w-[16vw] rounded-full absolute left-[8vw] top-[30vh] md:top-[40vh] bg-red-600'>
                {image3 && (
                   <img
                      src={image3}
@@ -71,20 +99,18 @@ function Empower() {
             <h2 className="heading2 text-[1.6vw] max-[599px]:text-[5vw] font-['Montserrat'] font-medium max-[599px]:font-bold my-2 max-[599px]:my-2 max-[599px]:leading-tight w-[37vw] max-[599px]:w-full text-[#333333]">
                {headingSecond}
             </h2>
-
             <p className="text-[0.9vw] max-[599px]:mt-4 max-[599px]:text-[3vw] mt-4 font-medium w-[35vw] max-[599px]:w-full text-[#333333] font-['Poppins'] ">
                {paragraphFirst}
                <br />
                <br />
                {paragraphSecond}
             </p>
-
-            <button className="my-[2vh] bg-[#333] font-['Poppins'] text-white py-2 px-4 rounded-lg">
+            <button className='my-[2vh] bg-[#333] font-["Poppins"] text-white py-2 px-4 rounded-lg'>
                Read More
             </button>
          </div>
       </div>
    );
-}
+};
 
 export default memo(Empower);
