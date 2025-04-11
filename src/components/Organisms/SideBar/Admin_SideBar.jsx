@@ -8,8 +8,8 @@ import { FaImage } from 'react-icons/fa';
 import gsap from 'gsap';
 import { GoBellFill } from 'react-icons/go';
 import { PiStudentBold } from 'react-icons/pi';
-import SideBar_UserCard from '../../Molecules/Cards/SideBarUserCard';
-import SideBar_Link from "../../Atoms/Links/SideBar_Link"
+import SideBar_UserCard from '../Cards/SideBarUserCard';
+// import Icon_Link from '../../atoms/Links/Icon_Link';
 
 let Links = [
    {
@@ -84,7 +84,7 @@ const Admin_SideBar = () => {
 
          <div className='w-full h-[70%] flex flex-col  mt-[4vh] gap-[1vh]'>
             {Links.map((link, index) => (
-               <SideBar_Link
+               <Icon_Link
                   icon={link.icon}
                   name={link.name}
                   link={link.link}

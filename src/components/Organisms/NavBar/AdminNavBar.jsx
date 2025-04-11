@@ -1,6 +1,6 @@
 import React from 'react';
 import H1 from '../../Atoms/Heading/H1';
-import Nav_UserCard from '../../Molecules/Cards/NavUserCard';
+import Nav_UserCard from '../Cards/NavUserCard';
 import Open_menu from '../../Atoms/Icon/Open_menu';
 
 const Admin_NavBar = ({ text }) => {

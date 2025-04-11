@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { GoArrowUpRight } from 'react-icons/go';
-import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import useAlbum from '../../../hooks/useAlbum';
 import { Remove_One_Album } from '../../../store/homeSlice';
+import AlbumPrimaryCard from '../../Organisms/Cards/Album/AlbumPrimaryCard';
 
 const Album = () => {
    const [albums, setAlbums] = useState([]);
@@ -68,76 +67,54 @@ const Album = () => {
                </h1>
             ) : (
                albums.map(item => (
-                  <Link
+                  <AlbumPrimaryCard
                      key={item._id}
-                     to={`/album/${item.aName}`}
-                     className='h-[40vw] w-full md:h-full rounded-lg overflow-hidden relative m-[3vw]'
-                  >
-                     <div className='h-full w-full bg-zinc-500 absolute top-0 left-0 bg-cover bg-center'>
-                        <img
-                           src={item.aImage_url}
-                           alt={item.aName}
-                           className='w-full h-full object-cover object-top'
-                        />
-                     </div>
-
-                     <div
-                        className='delete-btn flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'
-                        onClick={e => handleAlbumDelete(e, item)}
-                     >
-                        {userRole === 'admin' ? (
-                           <MdDelete className='text-2xl text-white' />
-                        ) : (
-                           <GoArrowUpRight className='text-2xl text-white' />
-                        )}
-                     </div>
-
-                     <div className='absolute bottom-0 left-0 bg-black bg-opacity-20 flex justify-between h-[20%] items-center px-4 w-full z-40'>
-                        <p className='text-[2vw] md:text-[1vw] text-white font-semibold'>
-                           {item.aName}
-                        </p>
-                        <p className='text-[2.3vw] md:text-[1vw] text-white'>
-                           {item.createdAt.split('T')[0]}
-                        </p>
-                     </div>
-                  </Link>
+                     image={item.aImage_url}
+                     title={item.aName}
+                     date={item.createdAt}
+                     isAdmin={userRole === 'admin'}
+                     onClickViewUrl={`/album/${item.aName}`}
+                     onClickDelete={e => handleAlbumDelete(e, item)}
+                     onClickView={() =>
+                        (window.location.href = `/album/${item.aName}`)
+                     }
+                     containerClass='h-[40vw] w-full md:h-full rounded-lg overflow-hidden relative m-[3vw]'
+                     imageClass='h-full w-full object-cover object-top'
+                     titleClass='text-[2vw] md:text-[1vw] text-white font-semibold'
+                     dateClass='text-[2.3vw] md:text-[1vw] text-white'
+                  />
                ))
             )}
          </div>
 
+         {/* Preview of the last album */}
          <div className='bg-red-600 h-[63vh] w-full md:w-[35vw] mr-[1vw] md:mr-[2vw] rounded-lg relative'>
             {albums.length > 0 && (
-               <>
-                  <Link
-                     to={`/album/${albums[albums.length - 1]?.aName}`}
-                     className='rounded-lg w-[80%]'
-                     onClick={e => isClick && e.preventDefault()}
-                  >
-                     <img
-                        srcSet={albums[albums.length - 1]?.aImage_url}
-                        alt={
-                           albums[albums.length - 1]?.aName ||
-                           'Album Preview'
-                        }
-                        className='w-full h-full object-cover rounded-lg object-top'
-                     />
-                     <div className='flex justify-center p-1.5 items-center rounded-full max-[528px]:w-[8vw] max-[528px]:h-[8vw] md:w-[2.5vw] md:h-[2.5vw] bg-black absolute z-40 right-1 top-1 my-2 mx-2'>
-                        <GoArrowUpRight className='text-2xl text-white' />
-                     </div>
-                     <div className='absolute bottom-0 right-0 bg-black bg-opacity-40 flex justify-between h-[25%] items-center px-4 w-full z-40'>
-                        <p className='text-lg md:text-base text-white'>
-                           {albums[albums.length - 1]?.aName}
-                        </p>
-                        <p className='text-lg md:text-base text-white'>
-                           {
-                              albums[
-                                 albums.length - 1
-                              ]?.createdAt.split('T')[0]
-                           }
-                        </p>
-                     </div>
-                  </Link>
-               </>
+               <Link
+                  to={`/album/${albums[albums.length - 1]?.aName}`}
+                  className='rounded-lg w-[80%]'
+                  onClick={e => isClick && e.preventDefault()}
+               >
+                  <AlbumPrimaryCard
+                     image={albums[albums.length - 1]?.aImage_url}
+                     title={albums[albums.length - 1]?.aName}
+                     date={albums[albums.length - 1]?.createdAt}
+                     isAdmin={userRole === 'admin'}
+                     onClickDelete={e =>
+                        handleAlbumDelete(
+                           e,
+                           albums[albums.length - 1],
+                        )
+                     }
+                     onClickView={() =>
+                        (window.location.href = `/album/${albums[albums.length - 1]?.aName}`)
+                     }
+                     containerClass='w-full h-full'
+                     imageClass='w-full h-full object-cover object-top rounded-lg'
+                     titleClass='text-lg md:text-base text-white'
+                     dateClass='text-lg md:text-base text-white'
+                  />
+               </Link>
             )}
          </div>
       </div>
