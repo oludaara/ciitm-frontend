@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SideBar_Link = ({ link, icon, name, index }) => {
+const Icon_Link = ({ link, icon, name, index }) => {
    return (
       <Link
          to={link}
@@ -16,4 +16,4 @@ const SideBar_Link = ({ link, icon, name, index }) => {
    );
 };
 
-export default SideBar_Link;
+export default Icon_Link;

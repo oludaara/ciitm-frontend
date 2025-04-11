@@ -1,7 +1,7 @@
 import React from 'react';
 import Admin_SideBar from '../../components/Organisms/SideBar/Admin_SideBar';
 import Admin_NavBar from '../../components/Organisms/NavBar/AdminNavBar';
-import Card_primary from '../../components/Molecules/Cards/PrimaryCard';
+// import Card_primary from '../../components/Molecules/Cards/PrimaryCard';
 
 let cards = [
    {
@@ -39,13 +39,13 @@ const DashBoard = () => {
             <div className='Page1_right w-[75%] h-[110vh] flex flex-wrap'>
                <div className='w-full h-fit flex items-center justify-center max-[1300px]:mt-[15vh]'>
                   <div className='Card_Container flex gap-[2vw] w-full  max-[1300px]:items-center h-[32%] flex-wrap px-[3vw]'>
-                     {cards.map((card, index) => (
+                     {/* {cards.map((card, index) => (
                         <Card_primary
                            title={card.title}
                            value={card.value}
                            Image_Src={card.Image}
                         />
-                     ))}
+                     ))} */}
                   </div>
                </div>
 

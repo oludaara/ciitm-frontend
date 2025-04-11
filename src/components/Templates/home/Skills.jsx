@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import P4 from '../../Atoms/Paragraph/P4';
+import H5 from '../../Atoms/Heading/H5';
+import H6 from '../../Atoms/Heading/H6.jsx';
 
 const Skills = () => {
    const [goals, setGoals] = useState(null);
@@ -49,12 +52,10 @@ const Skills = () => {
                      className='object-cover w-full h-full rounded-full'
                   />
                </div>
-               <h1 className='goal-title my-2 text-[2vw] max-[528px]:text-[3.5vw] md:text-[1.1vw] font-medium font-["Montserrat"]'>
-                  {item.title}
-               </h1>
-               <p className='goal-content text-gray-500 text-[2vw] max-[528px]:text-[2.5vw] md:text-[0.8vw]'>
+               <H6>{item.title}</H6>
+               <P4 Tailwind_utility_Class='goal-content text-gray-500 text-[2vw] max-[528px]:text-[2.5vw] md:text-[0.8vw]'>
                   {item.content}
-               </p>
+               </P4>
             </div>
          ))}
       </div>
