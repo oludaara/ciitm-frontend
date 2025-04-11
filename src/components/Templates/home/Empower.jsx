@@ -2,7 +2,6 @@ import React, { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import arrow from '../../../assets/images/arrow.png';
 import H2 from '../../Atoms/Heading/H2';
-import H3 from '../../Atoms/Heading/H3';
 import H4 from '../../Atoms/Heading/H4';
 import P4 from '../../Atoms/Paragraph/P4';
 
@@ -105,7 +104,7 @@ const Empower = () => {
                {headingSecond}
             </H4>
 
-            <P4 Tailwind_utility_Class="text-[0.9vw] max-[599px]:mt-4 max-[599px]:text-[3vw] mt-4 font-medium w-[35vw] max-[599px]:w-full text-[#333333] font-['Poppins'] ">
+            <P4 Tailwind_utility_Class="text-[0.9vw] max-[599px]:mt-4 max-[599px]:text-[3vw] mt-4 font-medium w-[35vw] max-[599px]:w-full text-[#333333] font-['Poppins']">
                {paragraphFirst}
                <br />
                <br />

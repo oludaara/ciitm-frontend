@@ -19,7 +19,6 @@ const Search = () => {
          const data = response.data.data;
 
          dispatch(setPayment_Info(data));
-
       } catch (error) {
          Swal.fire({
             icon: 'error',

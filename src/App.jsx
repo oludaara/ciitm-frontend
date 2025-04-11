@@ -21,9 +21,9 @@ import Protected_Student from './components/Protected/Protected_Student';
 import Student from './components/Templates/Student/Student';
 import PaymentPage from './pages/PaymentPage';
 import Gallery from './components/Templates/gallery/Gallery';
-import DashBoard from './pages/Admin/DashBoard';
 import Protected_Admin from './components/Protected/Protected_Admin';
 import Loader from './components/Molecules/Loader/Loader';
+import DashboardPage from './pages/Admin/DashboardPage';
 
 const userInput = "<img src='x' onerror='alert(1)' />";
 
@@ -98,7 +98,7 @@ const App = () => {
                <Route path='/admin' element={<Protected_Admin />}>
                   <Route
                      path='/admin/DashBoard'
-                     element={<DashBoard />}
+                     element={<DashboardPage />}
                   />
                </Route>
 

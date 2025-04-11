@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoMenu, IoClose, IoChevronDown } from 'react-icons/io5';
 import gsap from 'gsap';
-import logo from '../../../assets/images/ciitmLogo.png';
+import logo from '../../../../assets/images/ciitmLogo.png';
 
 const Navbar = () => {
    const [isMenuOpen, setIsMenuOpen] = useState(false);

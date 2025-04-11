@@ -8,8 +8,7 @@ import { FaImage } from 'react-icons/fa';
 import gsap from 'gsap';
 import { GoBellFill } from 'react-icons/go';
 import { PiStudentBold } from 'react-icons/pi';
-import SideBar_UserCard from '../Cards/SideBarUserCard';
-// import Icon_Link from '../../atoms/Links/Icon_Link';
+import AdminSidebarLink from '../../../Atoms/Links/AdminSidebarLink';
 
 let Links = [
    {
@@ -79,16 +78,16 @@ const Admin_SideBar = () => {
    }, [menu]);
 
    return (
-      <div className='Side_bar max-[1046px]:hidden  w-[25%] max-[1300px]:w-[35%] h-[80%] bg-[#1C1C1C] ml-[1.5vw] rounded-xl border border-[#322F2F] p-[2vw] flex item-center flex-col min-[1046px]:relative z-10 max-[1046px]:w-[100vw]  max-[1046px]:fixed max-[1046px]:top-[-81vh] max-[1046px]:left-0 max-[1046px]:h-[90vh] left-0'>
-         <SideBar_UserCard />
+      <div className='Side_bar max-[1046px]:hidden  w-[25%] max-[1300px]:w-[35%] h-[80%] bg-[#1C1C1C] ml-[1.5vw] rounded-xl border border-[#322F2F] p-[2vw] flex item-center flex-col min-[1046px]:relative z-10 max-[1046px]:w-[100vw]  max-[1046px]:fixed max-[1046px]:top-[-81vh] max-[1046px]:left-0 max-[1046px]:h-[90vh] left-0 mt-[7.5vh]'>
+         {/* <SideBar_UserCard /> */}
 
-         <div className='w-full h-[70%] flex flex-col  mt-[4vh] gap-[1vh]'>
+         <div className='w-full h-[70%] flex flex-col  mt-[4vh] gap-[2vh]'>
             {Links.map((link, index) => (
-               <Icon_Link
+               <AdminSidebarLink
                   icon={link.icon}
-                  name={link.name}
                   link={link.link}
-                  index={index}
+                  name={link.name}
+                  key={index}
                />
             ))}
          </div>

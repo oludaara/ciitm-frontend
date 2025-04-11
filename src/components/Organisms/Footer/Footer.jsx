@@ -5,29 +5,26 @@ import useSocialLinks from '../../../hooks/useSocialLinks';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const SocialLink = React.memo(({ href, label, isEmail }) => {
-   if (!href) return null;
+const SocialLink = React.memo(
+   ({ href = '', label, isEmail = false }) => {
+      if (!href) return null;
 
-   return (
-      <a
-         href={isEmail ? `mailto:${href}` : href}
-         target='_blank'
-         rel='noopener noreferrer'
-      >
-         {label}
-      </a>
-   );
-});
+      return (
+         <a
+            href={isEmail ? `mailto:${href}` : href}
+            target='_blank'
+            rel='noopener noreferrer'
+         >
+            {label}
+         </a>
+      );
+   },
+);
 
 SocialLink.propTypes = {
    href: PropTypes.string,
    label: PropTypes.string.isRequired,
    isEmail: PropTypes.bool,
-};
-
-SocialLink.defaultProps = {
-   href: '',
-   isEmail: false,
 };
 
 const Footer = React.memo(() => {
