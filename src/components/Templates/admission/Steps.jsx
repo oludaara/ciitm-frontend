@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import YourInfo from './YourInfo';
 import ParentsInfo from './ParentsInfo';
@@ -10,7 +10,6 @@ import { setFile } from '../../../store/AdmissionSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import admissionConstant from './admission.constant.mjs';
-import { useEffect } from 'react';
 
 const Steps = () => {
    const [isModalOpen, setIsModalOpen] = useState(false);
