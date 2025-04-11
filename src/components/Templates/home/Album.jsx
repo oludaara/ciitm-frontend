@@ -5,7 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAlbum from '../../../hooks/useAlbum';
 import { Remove_One_Album } from '../../../store/homeSlice';
-import AlbumPrimaryCard from '../../Molecules/Cards/Album/AlbumPrimaryCard';
+import AlbumPrimaryCard from '../../Organisms/Cards/Album/AlbumPrimaryCard';
 
 const Album = () => {
    const [albums, setAlbums] = useState([]);

@@ -8,7 +8,7 @@ import { FaImage } from 'react-icons/fa';
 import gsap from 'gsap';
 import { GoBellFill } from 'react-icons/go';
 import { PiStudentBold } from 'react-icons/pi';
-import SideBar_UserCard from '../../Molecules/Cards/SideBarUserCard';
+import SideBar_UserCard from '../Cards/SideBarUserCard';
 // import Icon_Link from '../../atoms/Links/Icon_Link';
 
 let Links = [

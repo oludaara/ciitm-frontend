@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useSelector } from 'react-redux';
 import useTestimonial from '../../../hooks/useTestimoniyal';
-import TestimonialPrimaryCard from '../../Molecules/Cards/Testimonial/TestimonialPrimaryCard';
+import TestimonialPrimaryCard from '../../Organisms/Cards/Testimonial/TestimonialPrimaryCard';
 
 const Testimonials = () => {
    const testimonialData = useSelector(
