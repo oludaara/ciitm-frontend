@@ -38,7 +38,7 @@ const Hero = React.memo(() => {
          }}
       >
          <div className='text w-full lg:w-1/2 h-full flex items-start justify-center lg:justify-center flex-col gap-3 absolute left-[3vw]'>
-            <H1 Tailwind_utility_Class='max-[400px]:text-[8.5vw] text-[8vw] min-[768px]:text-5xl min-[768px]:w-[15ch] lg:text-[4vw] font-bold md:text-[4vw] md:w-[15ch] lg:font-[700] leading-tight w-[25vh] lg:w-fit'>
+            <H1 Tailwind_utility_Class='max-[400px]:text-[8.5vw] text-[6.5vw] min-[768px]:text-[7vw] min-[768px]:w-[15ch] lg:text-[4vw] font-bold md:text-[4vw] md:w-[15ch] lg:font-[700] leading-tight w-[66vw] lg:w-fit max-[896px]:w-[85vw]'>
                {heading}
             </H1>
 

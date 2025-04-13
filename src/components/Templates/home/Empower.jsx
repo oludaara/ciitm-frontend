@@ -96,11 +96,11 @@ const Empower = () => {
          </div>
 
          <div className='empower-text md:w-1/2 relative'>
-            <H2 Tailwind_utility_Class="text-[2.4vw] max-[599px]:text-[5vw] font-['Montserrat'] font-bold my-2 max-[599px]:my-2  w-[37vw] max-[599px]:w-full text-[#333333]">
+            <H2 Tailwind_utility_Class="text-[3vw] max-[599px]:text-[6vw] max-[1440px]:text-[3vw] font-['Montserrat'] font-bold my-2 max-[599px]:my-2  w-[37vw] max-[599px]:w-full text-[#333333]">
                {headingFirst}
             </H2>
 
-            <H4 Tailwind_utility_Class="text-[1.6vw] max-[599px]:text-[5vw] font-['Montserrat'] font-medium max-[599px]:font-bold my-2 max-[599px]:my-2 max-[599px]:leading-tight w-[37vw] max-[599px]:w-full text-[#333333]">
+            <H4 Tailwind_utility_Class="text-[1.6vw] max-[599px]:text-[4vw] font-['Montserrat'] font-medium max-[599px]:font-bold my-2 max-[599px]:my-2 max-[599px]:leading-tight w-[37vw] max-[599px]:w-full text-[#333333]">
                {headingSecond}
             </H4>
 
