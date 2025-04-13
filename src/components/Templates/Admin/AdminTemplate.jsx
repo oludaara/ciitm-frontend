@@ -11,8 +11,8 @@ const AdminTemplate = ({ children, pageName }) => (
       <div className='flex h-[110vh] w-screen'>
          <Admin_SideBar />
 
-         <div className='Page1_right w-[75%] h-[110vh] flex flex-wrap'>
-            <div className='w-full h-fit flex items-center justify-center max-[1300px]:mt-[15vh]'>
+         <div className='Page1_right w-[74%] h-[110vh] flex  relative justify-between'>
+            <div className='w-full h-full flex  flex-col items-center mt-[4vh]'>
                {children}
             </div>
          </div>

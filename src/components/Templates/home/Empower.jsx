@@ -84,7 +84,7 @@ const Empower = () => {
                )}
             </div>
 
-            <div className='h-[16vw] w-[16vw] rounded-full absolute left-[8vw] top-[30vh] md:top-[40vh] bg-red-600'>
+            <div className='h-[16vw] w-[16vw] rounded-full absolute left-[8vw] top-[30vh] md:top-[40vh] bg-red-600  '>
                {image3 && (
                   <img
                      src={image3}
@@ -96,7 +96,7 @@ const Empower = () => {
          </div>
 
          <div className='empower-text md:w-1/2 relative'>
-            <H2 Tailwind_utility_Class="heading text-[3.2vw] max-[599px]:text-[9vw] max-[599px]:w-[90%] font-['Montserrat'] font-bold max-[599px]:font-extrabold leading-tight w-[43vw] text-[#333333]">
+            <H2 Tailwind_utility_Class="text-[2.4vw] max-[599px]:text-[5vw] font-['Montserrat'] font-bold my-2 max-[599px]:my-2  w-[37vw] max-[599px]:w-full text-[#333333]">
                {headingFirst}
             </H2>
 

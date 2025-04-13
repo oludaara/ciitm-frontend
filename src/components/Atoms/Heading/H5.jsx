@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const H5 = ({ children, Tailwind_utility_Class }) => {
-   const defaultClass =
-      'text-[2vw] max-[400px]:text-[3.5vw] md:text-[1.3vw] font-normal leading-normal';
-
    return (
-      <h5 className={Tailwind_utility_Class || defaultClass}>
+      <h5 className={`heading-5 ${Tailwind_utility_Class}`}>
          {children}
       </h5>
    );
