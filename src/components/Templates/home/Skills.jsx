@@ -51,7 +51,9 @@ const Skills = () => {
                      className='object-cover w-full h-full rounded-full'
                   />
                </div>
-               <H5 Tailwind_utility_Class="max-[590px]:text-[2.8vw] max-[998px]:text-[2vw] text-[1vw] font-medium">{item.title}</H5>
+               <H5 Tailwind_utility_Class='max-[590px]:text-[2.8vw] max-[998px]:text-[2vw] text-[1vw] font-medium'>
+                  {item.title}
+               </H5>
                <P4 Tailwind_utility_Class='goal-content text-gray-500 text-[2vw] max-[528px]:text-[2.5vw] md:text-[0.8vw]'>
                   {item.content}
                </P4>
