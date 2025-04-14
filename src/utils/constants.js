@@ -10,5 +10,7 @@ export const Delete_Testimonial_EndPoint =
    '/api/admin/delete/testimonial/';
 
 export const Sign_Up_EndPoint = ' /api/signup/admin';
+export const Admin_get_ContactData_EndPoint =
+   '/api/admin/contact/Inbox/message';
 
 // https://ciitm-backend.onrender.com
