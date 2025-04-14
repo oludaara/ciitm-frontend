@@ -1,37 +1,50 @@
 import React from 'react';
 import TableRow_Data from '../../Molecules/table/TableRow_Data';
-import propType from 'prop-types';
+import TableRow from '../../Atoms/Table/Tr/TableRow';
+import TableData from '../../Atoms/Table/Td/TableData';
+import { Link } from 'react-router-dom';
 
 const AdminContactData_Table = ({ Data = [] }) => {
+   if (Data.length <= 0) {
+      return (
+         <h1 className='text-center text-white'>No data Found</h1>
+      );
+   }
 
-    if (Data.length <= 0) {
-
-     return (
-        <h1 className='text-center text-white'>No data Found</h1>
-     );
-      
-    }
-
-
-   
+   console.log('Data from AdminContactData_Table:', Data);
 
    return (
-    Data.forEach((data, index) => {
-        return (
-            <TableRow_Data
-                key={index}
-                TableDataArray={[data.cName, data.cEmail, data.cNumber, data.cMessage]}
-                TableDataClassName='text-white font-medium bg-[#1C1C1C] w-full h-[6vh]'
-                TableRowClassName='text-[0.8vw] w-[5%] text-center align-middle border-r-[1px] border-b-[1px] border-t-[1px] border-[#322F2F]'
-            />
-        )
-    }
-    )
-    
-
+      <>
+     
+         {Data.map((item, index) => (
+            <TableRow
+               key={index}
+               Tailwind_utility_Class='w-full h-[7vh]  text-white'
+            >
+               <TableData Tailwind_utility_Class='text-center border-r-2  border-t-2  border-b-2  border-[#322F2F]'>
+                  {index + 1}
+               </TableData>
+               <TableData Tailwind_utility_Class='text-center  border-r-2 border-t-2  border-b-2  border-[#322F2F]'>
+                  {item.cName}
+               </TableData>
+               <TableData Tailwind_utility_Class='text-center  border-r-2 border-t-2 border-b-2  border-[#322F2F]'>
+                  {item.cEmail}
+               </TableData>
+               <TableData Tailwind_utility_Class='text-center  border-r-2 border-t-2 border-b-2  border-[#322F2F]'>
+                  {item.cNumber}
+               </TableData>
+               <TableData Tailwind_utility_Class='text-center   border-t-2  border-b-2  border-[#322F2F]'>
+                  <Link to={`/admin/contact/${item._id}`}>
+                     <button className='bg-[#322F2F] text-white px-4 py-2 rounded'>
+                        View
+                     </button>
+                  </Link>
+               </TableData>
+            </TableRow>
+         ))}
+      
+      </>
    );
 };
-
-
 
 export default AdminContactData_Table;
