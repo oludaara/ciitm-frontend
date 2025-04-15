@@ -1,6 +1,7 @@
 import React from 'react';
 import Input_Primary from '../../Atoms/Input/Input_Primary';
 import Link_btn from '../../Atoms/Button/Link_btn';
+import TextArea_Primary from '../../Atoms/Textarea/TextArea_Primary';
 
 const AdminInputContact_View = ({ data }) => {
    return (
@@ -10,31 +11,27 @@ const AdminInputContact_View = ({ data }) => {
             PlaceHolder='Name'
             ReadOnly={true}
             Value={data.cName}
-            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[10vh] p-[1vh] text-[1.2vw] pl-[2vw]'
+            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[8vh] p-[1vh] text-[1.2vw] pl-[2vw]'
          />
          <Input_Primary
             Type='text'
             PlaceHolder='Email'
             Value={data.cEmail}
             ReadOnly={true}
-            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[10vh] p-[1vh] text-[1.2vw] pl-[2vw]'
+            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[8vh] p-[1vh] text-[1.2vw] pl-[2vw]'
          />
          <Input_Primary
             Type='text'
             PlaceHolder='Mobile Number'
             ReadOnly={true}
             Value={data.cNumber}
-            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[10vh] p-[1vh] text-[1.2vw] pl-[2vw]'
+            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[8vh] p-[1vh] text-[1.2vw] pl-[2vw]'
          />
-         <Input_Primary
-            Type='text'
-            PlaceHolder='Message'
-            ReadOnly={true}
-            Value={data.cMessage}
-            InputClassName='w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[20vh] p-[1vh] text-[1.2vw] pl-[2vw]'
-         />
+     
 
-         <Link_btn link={'/admin/contact'} buttonText={'Back'} />
+         <TextArea_Primary value={data.cMessage} readOnly={true} className="w-full bg-black border-2 border-white rounded-md text-[#C7C0C0] h-[20vh] p-[1vh] text-[1.2vw] pl-[2vw]"  />
+
+         <Link_btn link={'/admin/contact'} buttonText={'Back'}  className="absolute left-[40%] bottom-[35vh] bg-[#322F2F] text-[1.2vw] text-white px-[1vw] py-[1vw] rounded w-[12vw]"/>
        
       </div>
    );
