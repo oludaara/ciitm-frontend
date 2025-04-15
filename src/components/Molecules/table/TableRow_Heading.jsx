@@ -1,11 +1,11 @@
 import React from 'react';
 import TableRow from '../../Atoms/Table/Tr/TableRow';
 import TableHeading from '../../Atoms/Table/Th/TableHeading';
+import PropTypes from 'prop-types';
 
 const TableRow_Heading = ({
    TableHeadingArray = [],
    TableRowClassName,
-   TableHeadingClassName,
 }) => {
    {
       if (TableHeadingArray.length < 0) {
@@ -18,17 +18,33 @@ const TableRow_Heading = ({
    }
    return (
       <TableRow Tailwind_utility_Class={TableRowClassName}>
-         {TableHeadingArray.map((data, index) => (
-            <TableHeading
-               key={index}
-               Tailwind_utility_Class={TableHeadingClassName}
-            >
-               {data}
-               {console.log(data)}
-            </TableHeading>
-         ))}
+         {TableHeadingArray.map(
+            (data, index) => (
+               console.log(data),
+               (
+                  // console.log(data.text),
+                  // console.log(data.style),
+                  <TableHeading
+                     key={index}
+                     Tailwind_utility_Class={data.style}
+                  >
+                     {data.text}
+                  </TableHeading>
+               )
+            ),
+         )}
       </TableRow>
    );
+};
+
+TableRow_Heading.PropTypes = {
+   TableHeadingArray: PropTypes.arrayOf(
+      PropTypes.shape({
+         text: PropTypes.string.isRequired,
+         style: PropTypes.string,
+      }),
+   ),
+   TableRowClassName: PropTypes.string,
 };
 
 export default TableRow_Heading;
