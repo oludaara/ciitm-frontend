@@ -1,13 +1,30 @@
 import React from 'react';
 import TableRow_Data from '../../Molecules/table/TableRow_Data';
+import Loader from 'react-spinners/ScaleLoader';
 import TableRow from '../../Atoms/Table/Tr/TableRow';
 import TableData from '../../Atoms/Table/Td/TableData';
 import { Link } from 'react-router-dom';
 
+const override = {
+   display: 'block',
+   position: 'absolute',
+   top: '40%',
+   left: '50%',
+   transform: 'translate(-50%, -50%)',
+   margin: '0 auto',
+};
+
 const AdminContactData_Table = ({ Data = [] }) => {
    if (Data.length <= 0) {
       return (
-         <h1 className='text-center text-white'>No data Found</h1>
+         <Loader
+            color='white'
+            loading={true}
+            cssOverride={override}
+            size={30}
+            aria-label='Loading Spinner'
+            data-testid='loader'
+         />
       );
    }
 
@@ -15,7 +32,6 @@ const AdminContactData_Table = ({ Data = [] }) => {
 
    return (
       <>
-     
          {Data.map((item, index) => (
             <TableRow
                key={index}
@@ -42,7 +58,6 @@ const AdminContactData_Table = ({ Data = [] }) => {
                </TableData>
             </TableRow>
          ))}
-      
       </>
    );
 };

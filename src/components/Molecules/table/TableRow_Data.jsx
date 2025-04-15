@@ -7,15 +7,11 @@ const TableRow_Data = ({
    TableDataClassName = '',
    TableRowClassName = '',
 }) => {
-
-
-
    if (TableDataArray.length <= 0) {
       return (
          <h1 className='text-center text-white'>No data Found</h1>
       );
    }
-
 
    return (
       <TableRow Tailwind_utility_Class={TableRowClassName}>
