@@ -1,4 +1,5 @@
 import { memo, useEffect, useState } from 'react';
+
 import AdminTemplate from '../../components/Templates/Admin/AdminTemplate';
 import FormTemplate from '../../components/Templates/Admin/form/FormTemplate';
 import AdminContactTable_Title from '../../components/Organisms/Admin/AdminContactTable_Title';
@@ -11,7 +12,6 @@ import AdminContactData_Table from '../../components/Organisms/Admin/AdminContac
 
 const ContactPage = memo(() => {
    let dispatch = useDispatch();
-
 
    const contactDataFromRedux = useSelector(
       state => state.AdminUi.Contact,
@@ -26,7 +26,6 @@ const ContactPage = memo(() => {
 
          dispatch(setContact(res.data));
          setContactData(res.data);
-
       } catch (error) {
          Swal.fire({
             icon: 'error',

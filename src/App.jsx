@@ -25,6 +25,7 @@ import Protected_Admin from './components/Protected/Protected_Admin';
 import Loader from './components/Molecules/Loader/Loader';
 import DashboardPage from './pages/Admin/DashboardPage';
 import ContactPage from './pages/Admin/ContactPage';
+import ViewContactPage from './pages/Admin/ViewContactPage';
 
 const userInput = "<img src='x' onerror='alert(1)' />";
 
@@ -105,6 +106,11 @@ const App = () => {
                   <Route
                      path='/admin/Contact'
                      element={<ContactPage />}
+                  />
+
+                  <Route
+                     path='/admin/Contact/:contactId'
+                     element={<ViewContactPage />}
                   />
                </Route>
 
