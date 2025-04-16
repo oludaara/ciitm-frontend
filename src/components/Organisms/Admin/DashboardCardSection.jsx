@@ -4,7 +4,7 @@ import AdminDashBoard_CardPrimary from '../../Molecules/Cards/DashBoard/Admin/Ad
 const DashboardCardSection = React.memo(({ cards }) => {
    return (
       <div className='bg-black w-full  h-fit flex flex-col'>
-         <div className='Card_Container flex gap-[2vw] w-full max-[1300px]:items-center h-[32%] flex-wrap px-[3vw]'>
+         <div className='Card_Container flex gap-[2vw] w-full max-[1300px]:items-center flex-wrap px-[3vw]'>
             {cards.map((card, index) => (
                <AdminDashBoard_CardPrimary
                   key={index}
