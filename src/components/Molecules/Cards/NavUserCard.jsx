@@ -11,9 +11,9 @@ const defaultFallbackImg =
 const UserProfileCard = ({
    user = null,
    fallbackImage = defaultFallbackImg,
-   containerClassName = 'p-[2vh] w-[25vw] h-[80%] bg-[#252323] rounded-lg flex items-center justify-center gap-[2vw] max-[1046px]:hidden',
-   imgClassName = 'bg-red-500 h-[5vh] w-[5vh] rounded-full flex items-center justify-center',
-   textClassName = 'text-white',
+   containerClassName = 'p-[2vh] w-[35vw] lg:w-[25vw] h-[4.8rem] mt-[1rem] bg-[#252323] rounded-lg flex items-center justify-center gap-[2vw] max-[998px]:hidden ',
+   imgClassName = 'bg-red-500  h-[3.5rem] lg:h-[2.5rem] w-[3.5rem] lg:w-[2.5rem] rounded-full flex items-center justify-center',
+   textClassName = 'text-white text-[2rem] lg:text-[0.8rem] ',
    showMenu = true,
 }) => {
    const reduxUser = useSelector(state => state.auth.user);

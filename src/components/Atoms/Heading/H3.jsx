@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const H3 = ({ children, Tailwind_utility_Class }) => {
    return (
-      <h2 className={`heading-3 ${Tailwind_utility_Class}`}>
+      <h3 className={`heading-3 ${Tailwind_utility_Class}`}>
          {children}
-      </h2>
+      </h3>
    );
 };
 
