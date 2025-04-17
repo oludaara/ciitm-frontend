@@ -14,7 +14,7 @@ const Open_menu = () => {
 
    return (
       <MdMenu
-         className='hidden text-[2rem] text-white mr-3 fixed top-0 right-0 m-3 min-[998px]:relative  max-[998px]:flex'
+         className='hidden text-[2rem] text-white mr-3 fixed top-0 right-0 m-3 min-[998px]:relative  max-[999px]:flex'
          onClick={() => handleMenuToggle()}
       />
    );

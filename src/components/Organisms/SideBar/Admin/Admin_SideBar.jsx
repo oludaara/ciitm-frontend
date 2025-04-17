@@ -36,7 +36,7 @@ const Admin_SideBar = () => {
    const dispatch = useDispatch();
    const sideBarRef = useRef();
 
-   const isMobile = () => window.innerWidth < 998;
+   const isMobile = () => window.innerWidth < 1000;
 
    const handleSidebarOpen = () => {
       if (isMobile()) {
@@ -77,7 +77,7 @@ const Admin_SideBar = () => {
    return (
       <div
          ref={sideBarRef}
-         className='Side_bar fixed z-10 w-screen h-screen  ease-in-out  bg-black p-[2vw]  flex-col  overflow-hidden  min-[998px]:relative md:w-[30%] lg:w-[25%]  md:h-[80%]  md:bg-[#1C1C1C]  md:ml-[1.5vw]  md:rounded-xl  md:border  md:border-[#322F2F]  min-[998px]:mt-[3.7vh]    
+         className='Side_bar fixed z-10 w-screen h-screen  ease-in-out  bg-black p-[2vw]  flex-col  overflow-hidden  min-[1000px]:relative md:w-[30%] lg:w-[25%]  md:h-[80%]  md:bg-[#1C1C1C]  md:ml-[1.5vw]  md:rounded-xl  md:border  md:border-[#322F2F]  min-[999px]:mt-[3.7vh]    
       '
       >
          <div className='w-full h-[70%] flex flex-col mt-[12vh] md:mt-[4vh] gap-[2vh]'>
