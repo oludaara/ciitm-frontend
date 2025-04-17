@@ -40,7 +40,7 @@ let QuickLinkData = [
 
 const DashboardPage = () => {
    return (
-      <AdminTemplate>
+      <AdminTemplate pageName={'Dashboard'}>
          <DashboardCardSection cards={cards} />
 
          <QuickLinkSection links={QuickLinkData} />

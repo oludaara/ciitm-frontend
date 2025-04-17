@@ -9,7 +9,7 @@ const Admin_NavBar = ({ text }) => {
          <div className='Nav_Text_Container w-[25%] h-full flex justify-end items-center'>
             <H3
                Tailwind_utility_Class={
-                  'text-white text-[1.1vw]  max-[998px]:mt-[2vh] max-[476px]:text-[2vh] max-[1228px]:text-[1.2rem] font-semibold'
+                  'text-white text-[1.1vw]   max-[500px]:w-full max-[998px]:mt-[2vh] max-[998px]:mt-0 max-[476px]:text-[3.5vw] max-[1228px]:text-[1.2rem] font-semibold'
                }
             >
                {text ? text : 'Admin Panel'}
