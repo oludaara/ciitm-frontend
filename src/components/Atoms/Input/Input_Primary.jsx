@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Input_Primary = ({
    Type,
    PlaceHolder,
    Value,
    ReadOnly = false,
-   InputClassName,
+   className,
 }) => {
+   const [Data, setData] = useState(Value);
    return (
       <input
          type={Type}
          readOnly={ReadOnly}
          placeholder={PlaceHolder}
-         value={Value}
-         className={InputClassName}
+         value={Data}
+         {...(ReadOnly
+            ? {}
+            : { onChange: e => setData(e.target.value) })}
+         className={className}
       />
    );
 };

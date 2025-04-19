@@ -3,7 +3,6 @@ import AdminTemplate from '../../components/Templates/Admin/AdminTemplate';
 import { useNavigate, useParams } from 'react-router-dom';
 import FormTemplate_Secondary from '../../components/Templates/Admin/form/FormTemplate_Secondary';
 import { useSelector } from 'react-redux';
-import Input_Primary from '../../components/Atoms/Input/Input_Primary';
 import AdminInputContact_View from '../../components/Organisms/Admin/AdminInputContact_View';
 
 const ViewContactPage = () => {

@@ -18,21 +18,14 @@ const TableRow_Heading = ({
    }
    return (
       <TableRow Tailwind_utility_Class={TableRowClassName}>
-         {TableHeadingArray.map(
-            (data, index) => (
-               console.log(data),
-               (
-                  // console.log(data.text),
-                  // console.log(data.style),
-                  <TableHeading
-                     key={index}
-                     Tailwind_utility_Class={data.style}
-                  >
-                     {data.text}
-                  </TableHeading>
-               )
-            ),
-         )}
+         {TableHeadingArray.map((data, index) => (
+            <TableHeading
+               key={index}
+               Tailwind_utility_Class={data.style}
+            >
+               {data.text}
+            </TableHeading>
+         ))}
       </TableRow>
    );
 };

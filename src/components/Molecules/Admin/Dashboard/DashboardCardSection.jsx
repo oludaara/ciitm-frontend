@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminDashBoard_CardPrimary from '../../Molecules/Cards/DashBoard/Admin/AdminDashBoard_CardPrimary';
+import AdminDashBoard_CardPrimary from './AdminDashBoard_CardPrimary';
 
 const DashboardCardSection = React.memo(({ cards }) => {
    return (
