@@ -5,6 +5,8 @@ import FormTemplate from '../../components/Templates/Admin/form/FormTemplate';
 import { AdminProfile_Title } from '../../components/Molecules/Admin/Profile/AdminProfile_Title';
 import ProfileInfo from '../../components/Molecules/Admin/Profile/ProfileInfo';
 import Profile__Image__Container from '../../components/Molecules/Admin/Profile/Profile__Image__Container';
+import { RiInstagramFill } from 'react-icons/ri';
+import Social_Input from '../../components/Molecules/Admin/Profile/Social_Input';
 
 const ProfilePage = () => {
    const fileInputRef = useRef(null);
@@ -22,7 +24,7 @@ const ProfilePage = () => {
          console.log('Error: ', reader.error);
       };
 
-      console.log('image rendered' , Image);
+      console.log('image rendered', Image);
       reader.readAsDataURL(e.target.files[0]);
    };
 

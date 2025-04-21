@@ -9,6 +9,7 @@ import MenuSlice from './MenuSlice';
 import SocialLinkSlice from './SocialLinkSlice';
 import PaymentSlice from './PaymentSlice';
 import AdminUiSlice from './AdminUi';
+import InputSlice from './InputSlice';
 
 export const appStore = configureStore({
    reducer: {
@@ -22,5 +23,6 @@ export const appStore = configureStore({
       socialLink: SocialLinkSlice,
       Payment: PaymentSlice,
       AdminUi: AdminUiSlice,
+      Input: InputSlice,
    },
 });

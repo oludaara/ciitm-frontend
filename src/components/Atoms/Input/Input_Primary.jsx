@@ -1,23 +1,67 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+   addInput,
+   setInputValueByIndex,
+   setInputValueByName,
+} from '../../../store/InputSlice';
 
 const Input_Primary = ({
-   Type,
-   PlaceHolder,
-   Value,
+   Type = 'text',
+   PlaceHolder = '',
+   Value = '',
    ReadOnly = false,
-   className,
+   className = '',
+   name,
+   index,
 }) => {
-   const [Data, setData] = useState(Value);
+   console.log(
+      'Input_Primary data',
+      Type,
+      PlaceHolder,
+      Value,
+      ReadOnly,
+      className,
+      name,
+   );
+   const dispatch = useDispatch();
+   const inputs = useSelector(state => state.Input.inputs);
+
+   useEffect(() => {
+      const exists = inputs.some(input => input.name === name);
+      if (!exists) {
+         dispatch(
+            addInput({
+               type: Type,
+               label: PlaceHolder,
+               name: name,
+               value: Value,
+               readOnly: ReadOnly,
+            }),
+         );
+      }
+   }, [dispatch, inputs, name, Type, PlaceHolder, Value, ReadOnly]);
+
+   const handleChange = e => {
+      const newValue = e.target.value;
+
+      if (!ReadOnly) {
+         dispatch(setInputValueByName({ name, value: newValue }));
+      }
+   };
+
+   const currentInput = inputs.find(input => input.name === name);
+   const valueToDisplay = currentInput ? currentInput.value : Value;
+
    return (
       <input
          type={Type}
          readOnly={ReadOnly}
          placeholder={PlaceHolder}
-         value={Data}
-         {...(ReadOnly
-            ? {}
-            : { onChange: e => setData(e.target.value) })}
+         value={valueToDisplay}
+         onChange={ReadOnly ? undefined : handleChange}
          className={className}
+         name={name}
       />
    );
 };
