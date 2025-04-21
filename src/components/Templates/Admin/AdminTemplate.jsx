@@ -4,7 +4,7 @@ import Admin_SideBar from '../../Organisms/SideBar/Admin/Admin_SideBar';
 
 const AdminTemplate = ({ children, pageName }) => (
    <div className='bg-black w-screen h-[120vh] flex flex-col '>
-      <div className='flex'>
+      <div className='flex text-white'>
          <Admin_NavBar text={pageName} />
       </div>
 

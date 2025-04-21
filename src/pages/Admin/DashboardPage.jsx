@@ -1,8 +1,8 @@
 import React from 'react';
-import AdminDashBoard_CardPrimary from '../../components/Molecules/Cards/DashBoard/Admin/AdminDashBoard_CardPrimary';
 import AdminTemplate from '../../components/Templates/Admin/AdminTemplate';
-import DashboardCardSection from '../../components/Organisms/Admin/DashboardCardSection';
+
 import QuickLinkSection from '../../components/Organisms/Admin/QuickLinkSection';
+import DashboardCardSection from '../../components/Molecules/Admin/Dashboard/DashboardCardSection';
 
 const cards = [
    {

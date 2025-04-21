@@ -25,7 +25,7 @@ let TableHeading_Data = [
 ];
 
 const AdminContactTable_Title = () => {
-   return <TableRow_Heading TableHeadingArray={TableHeading_Data}/>;
+   return <TableRow_Heading TableHeadingArray={TableHeading_Data} />;
 };
 
 export default AdminContactTable_Title;

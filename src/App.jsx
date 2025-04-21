@@ -26,6 +26,7 @@ import Loader from './components/Molecules/Loader/Loader';
 import DashboardPage from './pages/Admin/DashboardPage';
 import ContactPage from './pages/Admin/ContactPage';
 import ViewContactPage from './pages/Admin/ViewContactPage';
+import ProfilePage from './pages/Admin/ProfilePage';
 
 const userInput = "<img src='x' onerror='alert(1)' />";
 
@@ -111,6 +112,11 @@ const App = () => {
                   <Route
                      path='/admin/Contact/:contactId'
                      element={<ViewContactPage />}
+                  />
+
+                  <Route
+                     path='/admin/Profile'
+                     element={<ProfilePage />}
                   />
                </Route>
 
