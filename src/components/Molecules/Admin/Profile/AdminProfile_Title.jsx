@@ -9,9 +9,9 @@ import {
 } from '../../../../store/InputSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const AdminProfile_Title = () => {
+ const AdminProfile_Title = () => {
    let [Title, setTitle] = useState('Profile');
-   let [EditMode, setEditMode] = useState(false);
+   let [EditMode, setEditMode] = useState(true);
    const dispatch = useDispatch();
 
    const inputs = useSelector(state => state.Input.inputs);
@@ -27,7 +27,7 @@ export const AdminProfile_Title = () => {
             ReadOnly={false}
             className='hidden'
             Type='hidden'
-            Value={false}
+            Value={EditMode}
          />
 
          <MdEditSquare
@@ -56,3 +56,6 @@ export const AdminProfile_Title = () => {
       </div>
    );
 };
+
+
+export default AdminProfile_Title;

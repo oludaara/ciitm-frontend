@@ -1,14 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import AdminTemplate from '../../components/Templates/Admin/AdminTemplate';
 import FormTemplate from '../../components/Templates/Admin/form/FormTemplate';
-import { AdminProfile_Title } from '../../components/Molecules/Admin/Profile/AdminProfile_Title';
+import AdminProfile_Title from '../../components/Molecules/Admin/Profile/AdminProfile_Title';
 import ProfileInfo from '../../components/Molecules/Admin/Profile/ProfileInfo';
 import Profile__Image__Container from '../../components/Molecules/Admin/Profile/Profile__Image__Container';
 import { RiInstagramFill } from 'react-icons/ri';
 import Social_Input from '../../components/Molecules/Admin/Profile/Social_Input';
 
-const ProfilePage = () => {
+const ProfilePage = memo(() => {
    const fileInputRef = useRef(null);
    const admin = useSelector(state => state.auth.user);
    const [Image, setImage] = useState(admin.picture);
@@ -54,6 +54,6 @@ const ProfilePage = () => {
          </FormTemplate>
       </AdminTemplate>
    );
-};
+});
 
 export default ProfilePage;
