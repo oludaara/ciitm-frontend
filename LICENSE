@@ -1,24 +1,58 @@
-BSD 2-Clause License
+Personal Contributor License v1.0
+==================================
 
-Copyright (c) 2025, Mern Coding School
+Project: ciitm-frontend  
+Repository: https://github.com/Coder-Studies/ciitm-frontend  
+Website: https://www.growrichmindset.in/  
+Author: Coder-Studies (https://github.com/Coder-Studies)  
+Copyright © 2024-2025 Coder-Studies  
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+----------------------------------
+📌 Summary of License Terms:
+----------------------------------
 
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
+This software is made available for PERSONAL and NON-COMMERCIAL use only.  
+Its primary purpose is to welcome meaningful contributions from the open-source community while maintaining full control over distribution and use.
 
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
+You are allowed to:
+---------------------
+✅ View and explore the source code.  
+✅ Contribute to the project via Pull Requests.  
+✅ Use your accepted contributions in your personal portfolio, **with proper attribution** and **without hosting the project** itself.  
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+You are NOT allowed to:
+-------------------------
+❌ Copy or clone the codebase to host under your own domain or server.  
+❌ Redistribute the codebase in full or in part, whether modified or unmodified.  
+❌ Use the code or any part of it for commercial, startup, company, or freelance projects.  
+❌ Sell or sublicense this code or any derivative of it.  
+❌ Use this code in any SaaS product, teaching platform, bootcamp, or paid service.  
+❌ Use this project to generate revenue or traffic without written permission.
+
+Portfolio Use Clause:
+-----------------------
+If your contribution is accepted into the project, you're allowed to mention it in your **personal portfolio** or **GitHub profile** under the following conditions:
+- You must clearly state that your contribution is part of the *ciitm-frontend* project owned by **Coder-Studies**.
+- You may include screenshots **only of your contributions** or approved UI.
+- You may NOT deploy or host the full project as part of your portfolio showcase.
+- You must include a link back to the original repository: https://github.com/Coder-Studies/ciitm-frontend
+
+Legal & Enforcement:
+---------------------
+This software is protected under copyright law.
+
+Unauthorized usage or distribution may result in:
+- A formal DMCA takedown request.
+- Reporting to hosting providers or platforms.
+- Legal actions under applicable digital rights laws.
+
+Disclaimer:
+------------
+This software is provided "as-is" without any warranties, express or implied. The author is not liable for any damages or losses resulting from the use of this software.
+
+Contact:
+----------
+For permission requests or legal concerns, please contact the author via GitHub (https://github.com/Coder-Studies) or through the website https://www.growrichmindset.in/
+
+License Version: v1.0  
+Effective Date: April 21, 2025
