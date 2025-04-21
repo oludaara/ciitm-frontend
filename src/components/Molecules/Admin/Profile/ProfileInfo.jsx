@@ -21,16 +21,8 @@ const ProfileInfo = memo(({ admin }) => {
          const ReadOnly = data.find(input => input.name === 'Profile_Edit').value;
          setReadOnlyValue(ReadOnly);
        
-    
       }
 
-
-
-      // if(inputs.)
-      // const ReadOnly = inputs.find(
-      //    input => input.name === 'Profile_Edit',
-      // ).value;
-      // setReadOnlyValue(ReadOnly);
 
    }, [data]);
 

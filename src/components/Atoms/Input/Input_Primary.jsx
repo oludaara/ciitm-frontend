@@ -15,15 +15,7 @@ const Input_Primary = ({
    name,
    index,
 }) => {
-   console.log(
-      'Input_Primary data',
-      Type,
-      PlaceHolder,
-      Value,
-      ReadOnly,
-      className,
-      name,
-   );
+
    const dispatch = useDispatch();
    const inputs = useSelector(state => state.Input.inputs);
 
