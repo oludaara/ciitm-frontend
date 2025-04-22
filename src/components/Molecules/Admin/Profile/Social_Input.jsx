@@ -6,8 +6,10 @@ const Social_Input = ({
    LinkUrl,
    PlaceHolder,
    ReadOnly = false,
+   Name,
 }) => {
    const [Link, setLink] = useState(LinkUrl);
+   console.log(LinkUrl);
    return (
       <div className='Social_LinkContainer flex w-[97%] h-[6vh] bg-black text-white rounded-lg  mt-[1vh] ml-[1vw]'>
          <div className='Link_Logo_Container w-[8%] h-full flex items-center justify-center bg-white rounded-l-lg  text-black text-[2.6vw] '>
@@ -16,8 +18,9 @@ const Social_Input = ({
          <div className='Input_Container w-[92%] h-full flex items-center justify-center'>
             <Input_Primary
                Type={'text'}
-               className='w-full h-full bg-black text-white rounded-lg px-[1.5vw] focus:outline-none focus:ring-1 focus:ring-[#3FEF9D] focus:border-transparent'
+               className='w-[97%] h-[6vh] bg-black text-white rounded-lg  focus:outline-none focus:ring-1 focus:ring-[#3FEF9D] focus:border-transparent'
                Value={Link}
+               name={Name}
                ReadOnly={ReadOnly}
                onChange={e => setLink(e.target.value)}
                PlaceHolder={PlaceHolder}

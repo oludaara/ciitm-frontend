@@ -15,7 +15,6 @@ const Input_Primary = ({
    name,
    index,
 }) => {
-
    const dispatch = useDispatch();
    const inputs = useSelector(state => state.Input.inputs);
 

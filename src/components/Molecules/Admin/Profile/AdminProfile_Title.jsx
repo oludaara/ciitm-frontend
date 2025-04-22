@@ -9,34 +9,27 @@ import {
 } from '../../../../store/InputSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
- const AdminProfile_Title = () => {
+const AdminProfile_Title = () => {
    let [Title, setTitle] = useState('Profile');
    let [EditMode, setEditMode] = useState(true);
    const dispatch = useDispatch();
 
    const inputs = useSelector(state => state.Input.inputs);
 
+   useEffect(() => {
+      if (inputs.length > 0) {
+         const ReadOnly = inputs.find(
+            input => input.name === 'Profile_Edit',
+         ).value;
+         console.log('ReadOnly title', ReadOnly);
 
- useEffect(() => {
- 
-   if(inputs.length > 0) {
-         
-      const ReadOnly = inputs.find(input => input.name === 'Profile_Edit').value;
-      console.log('ReadOnly title', ReadOnly);
-      
-      setTitle('Profile');
+         setTitle('Profile');
 
-
-      if (!ReadOnly) {
-         setTitle('Edit Profile');
+         if (!ReadOnly) {
+            setTitle('Edit Profile');
+         }
       }
-    
-
-   }
-
-
- }, [inputs])
- 
+   }, [inputs]);
 
    return (
       <div className='bg-[#090909] w-full h-[7.5vh] flex items-center justify-between px-[2vw]'>
@@ -57,9 +50,8 @@ import { useDispatch, useSelector } from 'react-redux';
             className='text-white text-[1.2vw] cursor-pointer'
             onClick={() => {
                const newEditMode = !EditMode;
-               setEditMode(newEditMode); 
+               setEditMode(newEditMode);
 
-              
                let data = inputs.findIndex(
                   i => i.name === 'Profile_Edit',
                );
@@ -75,6 +67,5 @@ import { useDispatch, useSelector } from 'react-redux';
       </div>
    );
 };
-
 
 export default AdminProfile_Title;
