@@ -112,7 +112,7 @@ const Dropdown = ({
          </div>
 
          {isOpen && (
-            <div className='absolute z-10 overflow-hidden divide-y divide-[#D7D7D7] bg-white border border-[#A0A0A080] rounded-[8px] mt-2 w-full shadow-lg'>
+            <div className='absolute z-10 overflow-hidden divide-y divide-[#D7D7D7] bg-white border border-[#A0A0A080] rounded-[8px] mt-2 w-full shadow-lg '>
                {options.map((option, index) => (
                   <div
                      key={index}

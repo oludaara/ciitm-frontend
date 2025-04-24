@@ -14,7 +14,8 @@ const useAlbum = () => {
       try {
          if (!Album) {
             const response = await axios.get(Album_EndPoint);
-            dispatch(setAlbum(response.data));
+            let data = response.data.data;
+            dispatch(setAlbum(data));
          }
       } catch (error) {
          console.log(error);

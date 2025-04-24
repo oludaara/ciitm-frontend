@@ -1,9 +1,9 @@
-export const Login_EndPoint = '/api/login';
-export const frontend_EndPoint = '/api/frontend';
+export const Login_EndPoint = '/api/v1/auth/login';
+export const frontend_EndPoint = '/api/v1/frontend';
 export const Testimonital_EndPoint = '/api/find/testimonial';
-export const Album_EndPoint = '/api/albums';
+export const Album_EndPoint = '/api/v1/user/get/album';
 export const Find_Teacher_EndPoint = '/api/find/teacher';
-export const Contact_EndPoint = `/api/contact/form/submit`;
+export const Contact_EndPoint = `/api/v1/contact/create`;
 export const Social_Link_EndPoint = '/api/link';
 export const Delete_Album_EndPoint = '/api/albums';
 export const Delete_Testimonial_EndPoint =
@@ -11,6 +11,6 @@ export const Delete_Testimonial_EndPoint =
 
 export const Sign_Up_EndPoint = ' /api/signup/admin';
 export const Admin_get_ContactData_EndPoint =
-   '/api/admin/contact/Inbox/message';
+   '/api/v1/contact/admin/getContact';
 
 // https://ciitm-backend.onrender.com

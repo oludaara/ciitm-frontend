@@ -24,8 +24,8 @@ const ContactPage = memo(() => {
       try {
          const res = await axios.get(Admin_get_ContactData_EndPoint);
 
-         dispatch(setContact(res.data));
-         setContactData(res.data);
+         dispatch(setContact(res.data.data));
+         setContactData(res.data.data);
       } catch (error) {
          Swal.fire({
             icon: 'error',

@@ -8,22 +8,13 @@ const ProfileInfo = memo(({ admin }) => {
    let [ReadOnlyValue, setReadOnlyValue] = useState(true);
    const data = useSelector(state => state.Input.inputs);
 
-
-  
-
-
-
-
    useEffect(() => {
-
-      if(data.length > 0) {
-         
-         const ReadOnly = data.find(input => input.name === 'Profile_Edit').value;
+      if (data.length > 0) {
+         const ReadOnly = data.find(
+            input => input.name === 'Profile_Edit',
+         ).value;
          setReadOnlyValue(ReadOnly);
-       
       }
-
-
    }, [data]);
 
    return (
@@ -38,7 +29,6 @@ const ProfileInfo = memo(({ admin }) => {
             ReadOnly={ReadOnlyValue}
             Value={admin.name}
          />
-     
 
          <Input_Primary
             className='w-[97%] h-full bg-black text-white rounded-lg px-[1.5vw] focus:outline-none focus:ring-1 focus:ring-[#3FEF9D] focus:border-transparent'

@@ -20,7 +20,8 @@ const useHomeUi = () => {
       try {
          if (!landingPage) {
             const response = await axios.get(frontend_EndPoint);
-            let data = response.data.data[0];
+            let data = response.data.data;
+            console.log('data:', data);
             dispatch(setLandingPage(data.landingPage));
          }
       } catch (error) {

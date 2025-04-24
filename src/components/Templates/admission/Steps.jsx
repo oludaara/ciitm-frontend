@@ -82,8 +82,11 @@ const Steps = () => {
             formData.append('avtar', Avtor);
          }
 
+
+         console.log('formData', formData);
+
          let res = await axios.post(
-            '/api/admission/student',
+            '/api/v1/online/admission',
             formData,
             {
                headers: {
@@ -226,7 +229,7 @@ const Steps = () => {
 
                <input
                   type='file'
-                  accept='image/*'
+                  accept='.jpg, .jpeg, .png , .webp'
                   onChange={handleImageUpload}
                   className='hidden'
                   id='upload-btn'

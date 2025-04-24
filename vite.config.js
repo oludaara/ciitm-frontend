@@ -10,3 +10,9 @@ export default defineConfig({
       },
    },
 });
+
+
+
+// 
+
+// http://localhost:8000/api/v1/frontend

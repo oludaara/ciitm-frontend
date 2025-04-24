@@ -49,9 +49,9 @@ const Login = () => {
             },
          );
 
-         console.log(res.data.Find_User);
+         console.log(res.data);
 
-         let user = res.data.Find_User;
+         let user = res.data.data;
 
          if (!user) {
             throw new Error('User not found');
@@ -69,6 +69,7 @@ const Login = () => {
             navigate('/admin/DashBoard');
          }
       } catch (error) {
+         console.log(error);
          Swal.fire({
             icon: 'error',
             title: 'Error',

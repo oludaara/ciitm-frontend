@@ -1,5 +1,6 @@
 import { GoArrowUpRight } from 'react-icons/go';
 import { MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const AlbumPrimaryCard = ({
    image,
@@ -35,16 +36,11 @@ const AlbumPrimaryCard = ({
       }
    }
 
-   const onClickView = () => {
-      window.location.href = onClickViewUrl;
-   };
 
    return (
-      <div
+      <Link to={onClickViewUrl}
          className={`relative rounded-lg overflow-hidden bg-black group cursor-pointer ${containerClass}`}
-         onClick={() =>
-            onClickView ? onClickView() : onClickViewUrl()
-         }
+     
       >
          <img
             src={image}
@@ -74,7 +70,7 @@ const AlbumPrimaryCard = ({
                {formattedDate}
             </p>
          </div>
-      </div>
+      </Link>
    );
 };
 

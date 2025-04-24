@@ -23,7 +23,7 @@ const Album_Image = () => {
          if (find_index !== -1) {
             setImage([...Image_Slice[find_index].Images]);
          } else {
-            let res = await axios.get(`/api/image/${name}`);
+            let res = await axios.get(`/api/v1/user/get/Album/Image/${name}`);
             let data = {
                name: name,
                Images: [...res.data.data],

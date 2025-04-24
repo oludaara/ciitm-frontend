@@ -13,7 +13,7 @@ const useAbout = () => {
       try {
          if (!About) {
             const response = await axios.get(frontend_EndPoint);
-            let data = response.data.data[0];
+            let data = response.data.data;
 
             dispatch(setAboutPage(data.aboutPage));
          }

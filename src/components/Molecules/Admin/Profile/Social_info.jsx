@@ -5,23 +5,21 @@ import { RiInstagramFill } from 'react-icons/ri';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { IoLogoLinkedin } from 'react-icons/io5';
-import { FaSquarePhone } from "react-icons/fa6";
+import { FaSquarePhone } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
 
 const Social_info = ({ link }) => {
+   let [ReadOnlyValue, setReadOnlyValue] = useState(true);
+   const data = useSelector(state => state.Input.inputs);
 
-    let [ReadOnlyValue, setReadOnlyValue] = useState(true);
-    const data = useSelector(state => state.Input.inputs);
- 
-    useEffect(() => {
-       if (data.length > 0) {
-          const ReadOnly = data.find(
-             input => input.name === 'Profile_Edit',
-          ).value;
-          setReadOnlyValue(ReadOnly);
-       }
-    }, [data]);
-
+   useEffect(() => {
+      if (data.length > 0) {
+         const ReadOnly = data.find(
+            input => input.name === 'Profile_Edit',
+         ).value;
+         setReadOnlyValue(ReadOnly);
+      }
+   }, [data]);
 
    return (
       <div className='flex flex-col mb-[3vh] gap-[1.2vh] mt-[3.5vh]'>
@@ -44,7 +42,6 @@ const Social_info = ({ link }) => {
             PlaceHolder={'Facebook Link'}
             ReadOnly={ReadOnlyValue}
             Name={'facebook'}
-         
          />
          <Social_Input
             LinkUrl={link.linkedin}
@@ -53,13 +50,17 @@ const Social_info = ({ link }) => {
             ReadOnly={ReadOnlyValue}
             Name={'linkedin'}
          />
-         <Social_Input LinkUrl={link.email} Icon={<MdEmail  />} Name='email' />
+         <Social_Input
+            LinkUrl={link.email}
+            Icon={<MdEmail />}
+            Name='email'
+         />
          <Social_Input
             LinkUrl={link.number}
             PlaceHolder={'Phone Number'}
             ReadOnly={ReadOnlyValue}
             Icon={<FaSquarePhone />}
-            Name='number' 
+            Name='number'
          />
       </div>
    );

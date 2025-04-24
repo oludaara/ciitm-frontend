@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useRazorpay } from 'react-razorpay';
 import logo from '../../../assets/images/ciitmLogo.png';
 import axios from 'axios';
@@ -8,15 +8,19 @@ import Swal from 'sweetalert2';
 
 const Payment = () => {
    let student = useSelector(state => state.Payment.Payment_Info);
+   const [Reload, setReload] = useState(true);
 
    const [Amount, setAmount] = useState(null);
-   const [Reload, setReload] = useState(false);
    const [Order_Id, setOrder_Id] = useState('');
 
    useEffect(() => {
-      if (student) {
+      if (!student) {
+         setReload(false);
+      } 
+
+      return () => {
          setReload(true);
-      }
+      };
    }, [student]);
 
    let Rayzor_Pay_id = import.meta.env.VITE_RAZORPAY_KEY_ID;
@@ -59,6 +63,8 @@ const Payment = () => {
          setOrder_Id(response.data.id);
 
          console.log('student', student);
+
+    
 
          const options = {
             key: Rayzor_Pay_id,
@@ -107,7 +113,8 @@ const Payment = () => {
    };
    return (
       <div className='bg-[#FAFAFA] border-x-[0.62px] border-b-[0.62px] border-[#D7D7D79E] p-8'>
-         {Reload && (
+
+         {Reload === true && (
             <>
                <input
                   className='bg-white border-[1px] border-[#D7D7D79E] rounded-lg px-4 py-3 placeholder:text-[.9vw] max-[599px]:placeholder:text-[2.9vw] outline-none'

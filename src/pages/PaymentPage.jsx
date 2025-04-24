@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import TitleContainer from '../components/Templates/payment/TitleContainer';
 import Summary from '../components/Templates/payment/Summary';
 import { useSelector } from 'react-redux';
-import { use } from 'react';
 
-const PaymentPage = () => {
+const PaymentPage = memo(() => {
    const [Student, setStudent] = useState(null);
    const [Error, setError] = useState(false);
    const [Course, setCourse] = useState(null);
@@ -115,22 +114,16 @@ const PaymentPage = () => {
    ];
 
    const fees = [
-      { id: 'fee', name: 'Admission Fee', amount: '₹ 25,000' },
-      { id: 'fee', name: '1 Year', amount: '₹ 50,000' },
-      { id: 'fee', name: '2 Year', amount: '₹ 50,000' },
-      { id: 'fee', name: '3 Year', amount: '₹ 50,000' },
-      { id: 'fee', name: '4 Year', amount: '₹ 50,000' },
+      { id: 'fee', name: 'Admission Fee', amount: ' 25,000' },
+      { id: 'fee', name: '1 Year', amount: ' 50,000' },
+      { id: 'fee', name: '2 Year', amount: ' 50,000' },
+      { id: 'fee', name: '3 Year', amount: ' 50,000' },
+      { id: 'fee', name: '4 Year', amount: ' 50,000' },
    ];
-   const totalAmount = fees.reduce(
-      (sum, fee) => {
-         let total = (sum += fee.amount.split('₹')[1]
-            ? Number(fee.amount.split('₹')[1])
-            : 0);
-         console.log('Total', total);
-         return total;
-      }, // Use += to accumulate the sum
-      0,
-   );
+   const totalAmount = fees.reduce((sum, fee) => {
+      const amount = parseFloat(fee.amount.replace(/[^0-9.-]+/g, ''));
+      return sum + (isNaN(amount) ? 0 : amount);
+   }, 0);
 
    console.log('Total Amount', totalAmount);
 
@@ -182,6 +175,6 @@ const PaymentPage = () => {
          </div>
       </section>
    );
-};
+});
 
 export default PaymentPage;
