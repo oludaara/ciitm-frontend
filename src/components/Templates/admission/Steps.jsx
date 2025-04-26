@@ -82,7 +82,6 @@ const Steps = () => {
             formData.append('avtar', Avtor);
          }
 
-
          console.log('formData', formData);
 
          let res = await axios.post(

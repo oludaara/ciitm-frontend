@@ -36,11 +36,10 @@ const AlbumPrimaryCard = ({
       }
    }
 
-
    return (
-      <Link to={onClickViewUrl}
+      <Link
+         to={onClickViewUrl}
          className={`relative rounded-lg overflow-hidden bg-black group cursor-pointer ${containerClass}`}
-     
       >
          <img
             src={image}
