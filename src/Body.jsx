@@ -16,13 +16,9 @@ const Body = () => {
          });
       }
 
-      socket.on('welcome', (data) => {
-         console.log('🎬', data.message);
-      });
 
       return () => {
          socket.off('movie/welcome'); // remove listener
-         // socket.disconnect(); // Optional: keep socket alive or disconnect
       };
    }, []);
 

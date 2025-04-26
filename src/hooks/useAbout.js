@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAboutPage } from '../store/AboutSlice';
 import axios from 'axios';
 import { frontend_EndPoint } from '../utils/constants';
+import socket from '../config/socket.mjs';
 
 const useAbout = () => {
    let About = useSelector(state => state.about.aboutPage);
@@ -22,8 +23,22 @@ const useAbout = () => {
       }
    };
 
+
+ 
+
+
    useEffect(() => {
-      fetchData();
+      socket.on('connect_error', (error) => {
+         fetchAlbum();
+       });
+    
+   
+      socket.on('frontend', (data) => {
+         if (!data) {
+            fetchAlbum();
+         }
+         dispatch(setAboutPage(data.aboutPage));
+      });
    }, []);
 };
 

@@ -16,4 +16,22 @@ const socket = io('https://localhost:3000', {
 // ✅ Connection success
 
 
+socket.on('connect', () => {
+  console.log('✅ Connected to server');
+});
+
+
+socket.on('disconnect', () => {
+  console.log('❌ Disconnected from server');
+});
+
+socket.on('connect_error', (error) => {
+  throw new Error(`Connection error: ${error.message}`);
+});
+
+socket.on('connect_timeout', (timeout) => {
+  console.error(`Connection timeout: ${timeout}`);
+}
+);
+
 export default socket;
