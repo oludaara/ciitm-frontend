@@ -5,18 +5,14 @@ import Album from '../components/Templates/home/Album';
 import Testimonials from '../components/Templates/home/Testimonials';
 import { Helmet } from 'react-helmet-async';
 import useHomeUi from '../hooks/useHomeUi';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Loader from '../components/Molecules/Loader/Loader';
 import { useEffect } from 'react';
 
-
 function Home() {
-
-
    let data = useSelector(state => state.home.landingPage);
 
    useHomeUi();
-
 
    if (!data) {
       return <Loader />;

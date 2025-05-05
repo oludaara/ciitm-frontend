@@ -14,12 +14,12 @@ const override = {
    margin: '0 auto',
 };
 
-const AdminContactData_Table = ({ Data = [] }) => {
-   if (Data.length <= 0) {
+const AdminContactData_Table = ({ Data = [], isLoading = false }) => {
+   if (Data.length <= 0 && isLoading) {
       return (
          <Loader
             color='white'
-            loading={true}
+            loading={isLoading}
             cssOverride={override}
             size={30}
             aria-label='Loading Spinner'
@@ -28,6 +28,8 @@ const AdminContactData_Table = ({ Data = [] }) => {
       );
    }
 
+
+   console.log('Data dasfsdf', Data);
    return (
       <>
          {Data.map((item, index) => (

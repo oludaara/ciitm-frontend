@@ -23,17 +23,12 @@ const useAbout = () => {
       }
    };
 
-
- 
-
-
    useEffect(() => {
-      socket.on('connect_error', (error) => {
+      socket.on('connect_error', error => {
          fetchAlbum();
-       });
-    
-   
-      socket.on('frontend', (data) => {
+      });
+
+      socket.on('frontend', data => {
          if (!data) {
             fetchAlbum();
          }

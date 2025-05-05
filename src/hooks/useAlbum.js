@@ -22,13 +22,9 @@ const useAlbum = () => {
       }
    };
 
-
-   
-
    useEffect(() => {
       Handle_Album();
    }, []);
-
 };
 
 export default useAlbum;

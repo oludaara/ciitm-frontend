@@ -6,7 +6,6 @@ import H3 from '../../Atoms/Heading/H3';
 import P3 from '../../Atoms/Paragraph/P3';
 import H1 from '../../Atoms/Heading/H1';
 
-
 const Hero = React.memo(() => {
    const [image, setImage] = useState('');
    const [heading, setHeading] = useState('');
@@ -17,8 +16,6 @@ const Hero = React.memo(() => {
    const hero = useSelector(state => state.home.landingPage);
 
    useEffect(() => {
-
-
       if (hero?.HeroSection) {
          const { homeBackgroundImage, homeTitle, homeParagraph } =
             hero.HeroSection;

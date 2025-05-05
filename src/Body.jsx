@@ -7,15 +7,12 @@ import socket from './config/socket.mjs';
 import { useEffect } from 'react';
 
 const Body = () => {
-
    useEffect(() => {
- 
       if (!socket.connected) {
          socket.on('connect', () => {
             console.log('✅ Connected to server');
          });
       }
-
 
       return () => {
          socket.off('movie/welcome'); // remove listener
