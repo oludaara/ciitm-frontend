@@ -13,10 +13,6 @@ const Body = () => {
             console.log('✅ Connected to server');
          });
       }
-
-      return () => {
-         socket.off('movie/welcome'); // remove listener
-      };
    }, []);
 
    useHomeUi();

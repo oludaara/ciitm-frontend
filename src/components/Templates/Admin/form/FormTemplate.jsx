@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
    increaseLimit,
    increaseParPage,
-   decreaseParPage
+   decreaseParPage,
 } from '../../../../store/NavigatorSlice';
 
 const FormTemplate = ({ children, Navigator = true, PageName }) => {
@@ -29,15 +29,17 @@ const FormTemplate = ({ children, Navigator = true, PageName }) => {
          {Navigator && (
             <div className='w-full h-[8vh] bg-[#090909] rounded-bl-2xl rounded-br-2xl text-white flex items-center gap-[1.5vw] justify-end text-[1.5vw]'>
                fff
-               <FaArrowAltCircleLeft  onClick={()=>{
-                  dispatch(
-                     decreaseParPage({
-                        pageName: findNavigator.pageName,
-                        parPage: findNavigator.parPage,
-                        limit: findNavigator.limit,
-                     }),
-                  );
-               }}/>
+               <FaArrowAltCircleLeft
+                  onClick={() => {
+                     dispatch(
+                        decreaseParPage({
+                           pageName: findNavigator.pageName,
+                           parPage: findNavigator.parPage,
+                           limit: findNavigator.limit,
+                        }),
+                     );
+                  }}
+               />
                <FaArrowAltCircleRight
                   className='mr-[2vw]'
                   onClick={() => {

@@ -8,11 +8,11 @@ const DashboardCardSection = React.memo(({ cards }) => {
             {cards.map((card, index) => (
                <AdminDashBoard_CardPrimary
                   key={index}
-                  title={card.title}
+                  title={card.name}
                   value={card.value}
                   icon={
                      <img
-                        src={card.image}
+                        src={card.icon}
                         alt={card.title}
                         className='w-[60%] h-[60%] object-contain'
                      />

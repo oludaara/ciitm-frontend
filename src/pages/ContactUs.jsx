@@ -8,6 +8,7 @@ import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import useSocialLinks from '../hooks/useSocialLinks';
 import SubmitButton from '../components/Atoms/Button/Submit_btn';
+import socket from '../config/socket.mjs';
 
 const ContactUs = () => {
    const socialLinks = useSocialLinks();
@@ -188,7 +189,16 @@ const ContactUs = () => {
                <SubmitButton
                   url={Contact_EndPoint}
                   data={formData}
-                  onSuccess={() => reset()}
+                  onSuccess={(data) => {
+                     console.log('Response data:', data);
+                  
+                     if (data?.success) {
+                        console.log('Data sent successfully');
+                        socket.emit('DashBoard_Confirmation', {
+                           ContactConfirmation: true,
+                        });
+                     }
+                  }}
                   Tailwind_utility_Class='text-center bg-[#333333] w-full text-white py-2 text-[1.2vw] rounded-lg'
                >
                   Submit

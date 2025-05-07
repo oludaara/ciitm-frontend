@@ -63,6 +63,6 @@ export const {
    increaseLimit,
    decreaseLimit,
    increaseParPage,
-   decreaseParPage
+   decreaseParPage,
 } = NavigatorSlice.actions;
 export default NavigatorSlice.reducer;

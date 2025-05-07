@@ -28,7 +28,6 @@ const AdminContactData_Table = ({ Data = [], isLoading = false }) => {
       );
    }
 
-
    console.log('Data dasfsdf', Data);
    return (
       <>

@@ -25,10 +25,6 @@ const ContactPage = memo(() => {
    );
 
    console.log('findNavigator', findNavigator);
-   
-
-
-
 
    const [Message, setMessage] = useState('');
    const [isLoading, setIsLoading] = useState(true);
@@ -38,18 +34,16 @@ const ContactPage = memo(() => {
 
    const GetContactData = async () => {
       try {
-
          setIsError(false);
          const res = await axios.get(
             Admin_get_ContactData_EndPoint +
                `?perPage=${findNavigator.parPage}&limit=${findNavigator.limit}`,
          );
 
-
-         setMessage('')
+         setMessage('');
 
          setContactData(res.data.data);
-        
+
          dispatch(setContact(res.data.data));
       } catch (error) {
          setIsError(true);
@@ -59,8 +53,6 @@ const ContactPage = memo(() => {
    };
 
    useEffect(() => {
-    
-
       GetContactData();
    }, [findNavigator.limit, findNavigator.parPage]);
 
@@ -68,20 +60,17 @@ const ContactPage = memo(() => {
       <AdminTemplate pageName='Contact Us'>
          <FormTemplate PageName='Contact'>
             <AdminContactTable_Title />
-         
-            <p className='text-red-500 text-center w-full text-[1.1vw]'>
-                 {Message}
-              </p>
 
+            <p className='text-red-500 text-center w-full text-[1.1vw]'>
+               {Message}
+            </p>
 
             {!isError && (
-                 <AdminContactData_Table
-                 Data={contactData}
-                 isLoading={isLoading}
-              />
+               <AdminContactData_Table
+                  Data={contactData}
+                  isLoading={isLoading}
+               />
             )}
-
-          
          </FormTemplate>
       </AdminTemplate>
    );
