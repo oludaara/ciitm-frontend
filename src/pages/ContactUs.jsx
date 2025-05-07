@@ -9,8 +9,21 @@ import { MdEmail } from 'react-icons/md';
 import useSocialLinks from '../hooks/useSocialLinks';
 import SubmitButton from '../components/Atoms/Button/Submit_btn';
 import socket from '../config/socket.mjs';
+import { useEffect } from 'react';
 
 const ContactUs = () => {
+
+   useEffect(() => {
+ 
+      if (!socket.connected) {
+        socket.connect();
+      }
+  
+   
+    }, []);
+
+
+
    const socialLinks = useSocialLinks();
 
    const Form_schema = yup
@@ -193,10 +206,7 @@ const ContactUs = () => {
                      console.log('Response data:', data);
                   
                      if (data?.success) {
-                        console.log('Data sent successfully');
-                        socket.emit('DashBoard_Confirmation', {
-                           ContactConfirmation: true,
-                        });
+                        socket.emit('Request_DashBoard_Data');
                      }
                   }}
                   Tailwind_utility_Class='text-center bg-[#333333] w-full text-white py-2 text-[1.2vw] rounded-lg'

@@ -2,7 +2,7 @@ import { io } from 'socket.io-client';
 
 // 👇 Initialize socket connection
 const socket = io('https://localhost:3000', {
-   autoConnect: true, // Automatically connect on load (set to false if you want manual control)
+   autoConnect: false, // Automatically connect on load (set to false if you want manual control)
    transports: ['websocket'], // Prefer WebSocket
    reconnectionAttempts: 5, // Retry 5 times if connection fails
    timeout: 20000, // Max time to wait for connection

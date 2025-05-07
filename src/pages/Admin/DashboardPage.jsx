@@ -45,33 +45,33 @@ const DashboardPage = () => {
 
 
    useEffect(() => {
-
-      if(!socket.connected){
+      const handleDashboardData = (data) => {
+         console.log('data from server DashBoard_Data', data);
+         setCard(data?.DashBoard_Data || []);
+      };
+   
+      // Connect socket if needed
+      if (!socket.connected) {
          socket.connect();
       }
-
-
-     socket.emit('Request_DashBoard_Data');
-
-      socket.on('DashBoard_Data', data => {
-         console.log('data from server dashBoard Data', data);
-
-         let DashBoard_Data = data?.DashBoard_Data;
-
-         setCard(DashBoard_Data);
-        
-      });
-
-      console.log('Cards', Cards);
+   
+      // Attach listener BEFORE emitting request
+      socket.on('DashBoard_Data', handleDashboardData);
+   
+   
+      // Emit request after listener is attached
+      socket.emit('Request_DashBoard_Data');
+   
+      // Clean up
       return () => {
-         socket.off('DashBoard_Data');
+         socket.off('DashBoard_Data', handleDashboardData);
       };
-
-   }, []);
+   },[]);
+   
 
    return (
       <AdminTemplate pageName={'Dashboard'}>
-         <DashboardCardSection cards={Cards} />
+         <DashboardCardSection Cards={Cards}  />
 
          <QuickLinkSection links={QuickLinkData} />
       </AdminTemplate>

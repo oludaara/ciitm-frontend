@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import History from '../components/Templates/about/History';
 import AboutHero from '../components/Templates/about/AboutHero';
@@ -8,11 +8,13 @@ import CampusFacilities from '../components/Templates/about/CampusFacilities';
 import { useSelector } from 'react-redux';
 import useAbout from '../hooks/useAbout';
 import Loader from '../components/Molecules/Loader/Loader';
+import socket from '../config/socket.mjs';
 
 const About = () => {
-   useAbout();
-
+   
    let about = useSelector(state => state.about.aboutPage);
+
+   useAbout();
 
    if (!about) {
       return <Loader />;

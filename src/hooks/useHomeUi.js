@@ -8,9 +8,27 @@ import {
 } from '../utils/constants';
 import socket from '../config/socket.mjs';
 
+
 const useHomeUi = () => {
    const landingPage = useSelector(state => state.home.landingPage);
    const dispatch = useDispatch();
+
+
+   if (socket.connected) {
+      socket.connect();
+   }
+
+
+   socket.on('frontend', data => {
+    
+      if (!data) {
+         fetchData();
+      }
+
+      dispatch(setLandingPage(data.landingPage));
+   });
+
+
 
    const fetchData = async () => {
       try {
@@ -22,17 +40,12 @@ const useHomeUi = () => {
       }
    };
 
+ 
    socket.on('connect_error', error => {
       fetchData();
    });
 
-   socket.on('frontend', data => {
-      if (!data) {
-         fetchData();
-      }
 
-      dispatch(setLandingPage(data.landingPage));
-   });
 
    useEffect(() => {
       if (!landingPage) {
