@@ -16,7 +16,7 @@ const Payment = () => {
    useEffect(() => {
       if (!student) {
          setReload(false);
-      } 
+      }
 
       return () => {
          setReload(true);
@@ -63,8 +63,6 @@ const Payment = () => {
          setOrder_Id(response.data.id);
 
          console.log('student', student);
-
-    
 
          const options = {
             key: Rayzor_Pay_id,
@@ -113,7 +111,6 @@ const Payment = () => {
    };
    return (
       <div className='bg-[#FAFAFA] border-x-[0.62px] border-b-[0.62px] border-[#D7D7D79E] p-8'>
-
          {Reload === true && (
             <>
                <input

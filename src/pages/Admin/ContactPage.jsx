@@ -9,6 +9,7 @@ import { Admin_get_ContactData_EndPoint } from '../../utils/constants';
 import { setContact } from '../../store/AdminUi';
 import Swal from 'sweetalert2';
 import AdminContactData_Table from '../../components/Organisms/Admin/AdminContactData_Table';
+import { setNavigator } from '../../store/NavigatorSlice';
 
 const ContactPage = memo(() => {
    let dispatch = useDispatch();
@@ -17,39 +18,59 @@ const ContactPage = memo(() => {
       state => state.AdminUi.Contact,
    );
 
-   console.log('contactData from redux 123', contactDataFromRedux);
+   let Navigator = useSelector(state => state.Navigator.navigator);
+
+   let findNavigator = Navigator.find(
+      item => item.pageName === 'Contact',
+   );
+
+   console.log('findNavigator', findNavigator);
+
+   const [Message, setMessage] = useState('');
+   const [isLoading, setIsLoading] = useState(true);
+   const [isError, setIsError] = useState(false);
+
    const [contactData, setContactData] = useState([]);
 
    const GetContactData = async () => {
       try {
-         const res = await axios.get(Admin_get_ContactData_EndPoint);
+         setIsError(false);
+         const res = await axios.get(
+            Admin_get_ContactData_EndPoint +
+               `?perPage=${findNavigator.parPage}&limit=${findNavigator.limit}`,
+         );
+
+         setMessage('');
+
+         setContactData(res.data.data);
 
          dispatch(setContact(res.data.data));
-         setContactData(res.data.data);
       } catch (error) {
-         Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: error.message,
-         });
+         setIsError(true);
+         setMessage(error.response.data.message);
+         setIsLoading(false);
       }
    };
 
    useEffect(() => {
-      if (
-         !contactDataFromRedux ||
-         contactDataFromRedux.length === 0
-      ) {
-         GetContactData();
-      } else {
-         setContactData(contactDataFromRedux);
-      }
-   }, [contactDataFromRedux]);
+      GetContactData();
+   }, [findNavigator.limit, findNavigator.parPage]);
+
    return (
       <AdminTemplate pageName='Contact Us'>
-         <FormTemplate>
+         <FormTemplate PageName='Contact'>
             <AdminContactTable_Title />
-            <AdminContactData_Table Data={contactData} />
+
+            <p className='text-red-500 text-center w-full text-[1.1vw]'>
+               {Message}
+            </p>
+
+            {!isError && (
+               <AdminContactData_Table
+                  Data={contactData}
+                  isLoading={isLoading}
+               />
+            )}
          </FormTemplate>
       </AdminTemplate>
    );

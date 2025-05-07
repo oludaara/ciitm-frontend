@@ -1,37 +1,57 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-   setLandingPage,
-   setTestimonital,
-   setAlbum,
-} from '../store/homeSlice';
+import { setLandingPage } from '../store/homeSlice';
 import axios from 'axios';
 import {
    Album_EndPoint,
    frontend_EndPoint,
 } from '../utils/constants';
+import socket from '../config/socket.mjs';
+
 
 const useHomeUi = () => {
-   let landingPage = useSelector(state => state.home.landingPage);
+   const landingPage = useSelector(state => state.home.landingPage);
+   const dispatch = useDispatch();
 
-   let dispatch = useDispatch();
+
+   if (socket.connected) {
+      socket.connect();
+   }
+
+
+   socket.on('frontend', data => {
+    
+      if (!data) {
+         fetchData();
+      }
+
+      dispatch(setLandingPage(data.landingPage));
+   });
+
+
 
    const fetchData = async () => {
       try {
-         if (!landingPage) {
-            const response = await axios.get(frontend_EndPoint);
-            let data = response.data.data;
-            console.log('data:', data);
-            dispatch(setLandingPage(data.landingPage));
-         }
+         const response = await axios.get(frontend_EndPoint);
+         const data = response.data.data;
+         dispatch(setLandingPage(data.landingPage));
       } catch (error) {
-         console.error(error);
+         console.error('Error fetching frontend data:', error);
       }
    };
 
-   useEffect(() => {
+ 
+   socket.on('connect_error', error => {
       fetchData();
-   }, []);
+   });
+
+
+
+   useEffect(() => {
+      if (!landingPage) {
+         fetchData();
+      }
+   }, [landingPage]);
 };
 
 export default useHomeUi;

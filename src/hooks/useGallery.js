@@ -13,9 +13,9 @@ export let useGallery = () => {
       try {
          if (gallery.length < 1) {
             let res = await axios.get('/api/v1/user/get/All/Image');
-  
+
             let data = res.data.data;
-     
+
             dispatch(set_Gallery([...data]));
          }
       } catch (error) {
