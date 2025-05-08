@@ -8,33 +8,14 @@ import { frontend_EndPoint } from '../utils/constants';
 const useAbout = () => {
    let About = useSelector(state => state.about.aboutPage);
 
-
-
    let dispatch = useDispatch();
-
-   if(socket.connected){
-      socket.connect();
-   }
-
-   socket.on('frontend', data => {
-  
-      if (!data) {
-         fetchData();
-      }
-      dispatch(setAboutPage(data.aboutPage));
-   });
-
-   
 
    const fetchData = async () => {
       try {
          if (!About) {
             const response = await axios.get(frontend_EndPoint);
-      
-      
+
             let data = response.data.data;
-     
- 
 
             dispatch(setAboutPage(data.aboutPage));
          }
@@ -43,20 +24,41 @@ const useAbout = () => {
       }
    };
 
-
-
    useEffect(() => {
-
-      socket.on('connect_error', error => {
-         fetchData();
-      });
-
-      if (!About) {
-         fetchData();
+      if (!socket.connected) {
+         socket.connect();
       }
+   
+      const handleConnectError = error => {
+         console.log('Socket connection error:', error);
+         fetchData();
+      };
 
-     
-   }, [About]);
+   
+      const handleFrontendData = data => {
+         console.log('data from server frontend', data);
+         if (!data) {
+            fetchData();
+         } else {
+            dispatch(setAboutPage(data.aboutPage));
+         }
+
+
+      };
+   
+      socket.on('connect_error', handleConnectError);
+      
+      if (!About) {
+         socket.emit('requestFrontend')
+         socket.on('frontend', handleFrontendData);
+      
+      }
+ 
+      return () => {
+         socket.off('connect_error', handleConnectError);
+         socket.off('frontend', handleFrontendData);
+      };
+   }, [About, dispatch]);
 };
 
 export default useAbout;
