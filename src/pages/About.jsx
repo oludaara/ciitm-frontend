@@ -11,7 +11,6 @@ import Loader from '../components/Molecules/Loader/Loader';
 import socket from '../config/socket.mjs';
 
 const About = () => {
-   
    let about = useSelector(state => state.about.aboutPage);
 
    useAbout();

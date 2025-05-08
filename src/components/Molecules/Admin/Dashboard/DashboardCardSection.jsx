@@ -2,44 +2,33 @@ import React, { memo } from 'react';
 import AdminDashBoard_CardPrimary from './AdminDashBoard_CardPrimary';
 import Loader from 'react-spinners/ClockLoader';
 
-
-
 const Loader_Component = () => {
-   const override = {
+   const loaderOverride = {
       backgroundColor: 'gray',
       transform: 'translate(-50%, -50%)',
-
    };
-
 
    return (
       <div className='w-full h-fit flex items-center justify-center  flex-col mt-[3vh]'>
          <Loader
-         color='black'
-         loading={true}
-         cssOverride={override}
-         size={48}
-         speedMultiplier={1}
-      />
+            color='black'
+            loading={true}
+            cssOverride={loaderOverride}
+            size={48}
+            speedMultiplier={1}
+         />
          <p className='text-gray-700 text-[1vw] font-semibold mr-[2vw]'>
             Loading...
          </p>
       </div>
    );
+};
 
-}
-
-const DashboardCardSection = memo(({ Cards = []}) => {
-
+const DashboardCardSection = memo(({ Cards = [] }) => {
    return (
-
-
       <div className=' bg-black w-full  h-fit flex flex-col'>
          <div className='Card_Container  flex gap-[2vw] w-full max-[376px]:justify-center max-[1300px]:items-center flex-wrap px-[3vw]'>
-            {Cards?.length === 0 && (
-               <Loader_Component />
-            )}
-
+            {Cards?.length === 0 && <Loader_Component />}
 
             {Cards.map((card, index) => (
                <AdminDashBoard_CardPrimary

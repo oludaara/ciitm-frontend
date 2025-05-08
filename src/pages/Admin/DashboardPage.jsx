@@ -5,7 +5,6 @@ import QuickLinkSection from '../../components/Organisms/Admin/QuickLinkSection'
 import DashboardCardSection from '../../components/Molecules/Admin/Dashboard/DashboardCardSection';
 import socket from '../../config/socket.mjs';
 
-
 let QuickLinkData = [
    {
       path: '/admin/DashBoard',
@@ -18,38 +17,34 @@ let QuickLinkData = [
 ];
 
 const DashboardPage = () => {
-
-   const [Cards, setCard] = useState()
-
+   const [Cards, setCard] = useState();
 
    useEffect(() => {
-      const handleDashboardData = (data) => {
+      const handleDashboardData = data => {
          console.log('data from server DashBoard_Data', data);
          setCard(data?.DashBoard_Data || []);
       };
-   
+
       // Connect socket if needed
       if (!socket.connected) {
          socket.connect();
       }
-   
+
       // Attach listener BEFORE emitting request
       socket.on('DashBoard_Data', handleDashboardData);
-   
-   
+
       // Emit request after listener is attached
       socket.emit('Request_DashBoard_Data');
-   
+
       // Clean up
       return () => {
          socket.off('DashBoard_Data', handleDashboardData);
       };
-   },[]);
-   
+   }, []);
 
    return (
       <AdminTemplate pageName={'Dashboard'}>
-         <DashboardCardSection Cards={Cards}  />
+         <DashboardCardSection Cards={Cards} />
 
          <QuickLinkSection links={QuickLinkData} />
       </AdminTemplate>

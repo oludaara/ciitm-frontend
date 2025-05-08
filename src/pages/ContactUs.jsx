@@ -12,17 +12,11 @@ import socket from '../config/socket.mjs';
 import { useEffect } from 'react';
 
 const ContactUs = () => {
-
    useEffect(() => {
- 
       if (!socket.connected) {
-        socket.connect();
+         socket.connect();
       }
-  
-   
-    }, []);
-
-
+   }, []);
 
    const socialLinks = useSocialLinks();
 
@@ -202,9 +196,9 @@ const ContactUs = () => {
                <SubmitButton
                   url={Contact_EndPoint}
                   data={formData}
-                  onSuccess={(data) => {
+                  onSuccess={data => {
                      console.log('Response data:', data);
-                  
+
                      if (data?.success) {
                         socket.emit('Request_DashBoard_Data');
                      }

@@ -11,10 +11,7 @@ const Body = () => {
       if (!socket.connected) {
          socket.connect();
       }
-   
    }, [location.pathname]);
-
-  
 
    return (
       <>
