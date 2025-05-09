@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 
 // 👇 Initialize socket connection
-const socket = io('http://localhost:8000', {
+const socket = io(import.meta.env.VITE_BACKEND_URL, {
    autoConnect: false, // Automatically connect on load (set to false if you want manual control)
    transports: ['websocket'], // Prefer WebSocket
    reconnectionAttempts: 5, // Retry 5 times if connection fails
