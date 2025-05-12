@@ -14,7 +14,15 @@ const override = {
    margin: '0 auto',
 };
 
-const AdminContactData_Table = ({ Data = [], isLoading = false }) => {
+
+let counter = (StartIndex) =>{
+   
+   return function increaseCounter() {
+
+      return StartIndex++;
+   }
+};
+const AdminContactData_Table = ({ Data = [], isLoading = false , StartIndex = 0}) => {
    if (Data.length <= 0 && isLoading) {
       return (
          <Loader
@@ -38,7 +46,9 @@ const AdminContactData_Table = ({ Data = [], isLoading = false }) => {
                className=''
             >
                <TableData Tailwind_utility_Class='text-center overflow-hidden    border-r-2  border-t-2  border-b-2  border-[#322F2F] max-[348px]:text-[3.5vw] max-[553px] max-[553px]:text-[2.7vw] max-[775px]:text-[2vw] md:text-md'>
-                  {index + 1}
+                 
+                      {counter(0)()}
+                 
                </TableData>
                <TableData Tailwind_utility_Class=' text-center text-sm overflow-hidden border-r-2 border-t-2  border-b-2 max-[348px]:hidden max-[553px]:text-[2.7vw] border-[#322F2F] max-[553px]:text-[2.9vw] max-[775px]:text-[2vw]  md:text-md'>
                   {item.cName}
