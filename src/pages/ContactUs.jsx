@@ -55,37 +55,39 @@ const ContactUs = () => {
    };
 
    return (
-      <div className='Form_Container flex bg-[#d7d7d719] my-[2vh] max-[550px]:pt-[10%] px-[3vw] justify-between max-[823px]:flex-col items-center pt-[5vh] pb-[7vh]'>
-         <div className='Container_Left w-[35%] max-[823px]:w-[93vw] p-2 text-[#333333] text-wrap'>
-            <h1 className='text-[2.6vw] font-semibold'>About Us</h1>
-            <p className='text-[0.9vw] font-medium'>
+      <div className='flex flex-col bg-[#d7d7d719] my-4 pt-12 px-4 md:px-10 justify-between md:flex-row items-center pb-10'>
+         <div className=' w-full lg:w-1/2 md:w-1/3 p-2 text-[#333333] text-wrap'>
+            <h1 className='text-xl sm:text-2xl md:text-4xl font-semibold mb-2'>
+               About Us
+            </h1>
+            <p className='text-sm lg:text-base lg:font-medium'>
                Welcome to [Institute Name], an institution dedicated
                to fostering innovation, knowledge, and personal
                growth...
             </p>
 
-            <h2 className='font-semibold text-[1.5vw] mt-[.8rem] mb-[.5rem]'>
+            <h2 className='font-semibold text-lg lg:text-xl mt-4 mb-2'>
                Location
             </h2>
-            <p className='text-[0.9vw] font-medium'>
+            <p className='text-sm lg:text-base lg:font-medium'>
                [Location Description]
             </p>
 
-            <h2 className='font-semibold text-[1.5vw] mt-[.8rem] mb-[.5rem]'>
+            <h2 className='font-semibold text-lg lg:text-xl mt-4 mb-2'>
                Our Principle
             </h2>
-            <p className='text-[0.9vw] font-medium'>
+            <p className='text-sm lg:text-base lg:font-medium'>
                Muhammad Muneeb and Vice Principle Sammer Khan
             </p>
 
-            <h2 className='font-semibold text-[1.5vw] mt-[.8rem] mb-[.5rem]'>
+            <h2 className='font-semibold text-lg lg:text-xl mt-4 mb-2'>
                Phone Number
             </h2>
-            <p className='text-[0.9vw] font-medium'>
+            <p className='text-sm lg:text-base lg:font-medium'>
                +92 315 4488695
             </p>
 
-            <h2 className='font-semibold text-[1.5vw] mt-[.8rem] mb-[.5rem]'>
+            <h2 className='font-semibold text-lg lg:text-xl mt-4 mb-2'>
                Social Media Accounts
             </h2>
             <div className='flex gap-4'>
@@ -132,17 +134,17 @@ const ContactUs = () => {
             </div>
          </div>
 
-         <div className='Container_Right bg-white rounded-[2.5vw] w-[40vw] max-[1179px]:w-[48vw] max-[822px]:w-[90vw] h-fit p-[2vw] text-[#333333] border-[1.1px] border-[#D7D7D7] shadow-lg shadow-gray-300 mt-[7vh]'>
-            <h1 className='text-[1.3vw] font-semibold'>
+         <div className='bg-white rounded-xl w-full md:w-1/2 h-fit p-4 text-[#333333] border-[1.1px] border-[#D7D7D7] shadow-lg shadow-gray-300 mt-10 md:mt-0'>
+            <h1 className='text-xl md:text-2xl font-semibold mb-2'>
                Feel free to ask any query
             </h1>
-            <p className='text-[0.9vw] mt-1 mb-[1vw] font-medium w-[85%]'>
+            <p className='text-xs lg:text-base mt-2 mb-2 font-medium w-full'>
                Welcome to [Institute Name], an institution dedicated
                to fostering innovation...
             </p>
-            <form className='form flex flex-col gap-[1vh]'>
+            <form className='form flex flex-col gap-5'>
                {errors.cName && (
-                  <p className='text-red-800 -mb-4 text-[0.9vw] font-bold'>
+                  <p className='text-red-800 mb-4 text-xs font-bold'>
                      {errors.cName.message}
                   </p>
                )}
@@ -150,11 +152,11 @@ const ContactUs = () => {
                   type='text'
                   {...register('cName')}
                   placeholder='Name:'
-                  className='peer w-full py-1 border-b text-[0.9vw] focus:outline-none transition ease-linear focus:border-[#333333] border-gray-300 shadow-sm'
+                  className='peer w-full py-1 border-b text-xs focus:outline-none transition ease-linear focus:border-[#333333] border-[#A0A0A0] shadow-sm'
                />
 
                {errors.cEmail && (
-                  <p className='text-red-800 text-[0.9vw] font-bold'>
+                  <p className='text-red-800 text-xs font-bold'>
                      {errors.cEmail.message}
                   </p>
                )}
@@ -162,11 +164,11 @@ const ContactUs = () => {
                   type='email'
                   {...register('cEmail')}
                   placeholder='Email:'
-                  className='border-b p-1 w-full border-[#A0A0A0] focus:outline-none text-[0.9vw]'
+                  className='border-b p-1 w-full border-[#A0A0A0] focus:outline-none text-xs'
                />
 
                {errors.cNumber && (
-                  <p className='text-red-800 text-[0.9vw] font-bold'>
+                  <p className='text-red-800 text-xs font-bold'>
                      {errors.cNumber.message}
                   </p>
                )}
@@ -179,18 +181,18 @@ const ContactUs = () => {
                         e.target.value = value.slice(0, -1);
                   }}
                   placeholder='Phone Number:'
-                  className='border-b p-1 text-[0.9vw] w-full border-[#A0A0A0] focus:outline-none'
+                  className='border-b p-1 text-xs w-full border-[#A0A0A0] focus:outline-none'
                />
 
                {errors.cMessage && (
-                  <p className='text-red-800 text-[0.9vw] font-bold'>
+                  <p className='text-red-800 text-xs font-bold'>
                      {errors.cMessage.message}
                   </p>
                )}
                <textarea
                   {...register('cMessage')}
                   placeholder='Message:'
-                  className='p-4 bg-[#F9F9F9] text-[0.9vw] outline-none w-full h-[8vh] rounded-lg border border-[#D7D7D7]'
+                  className='p-1 bg-[#F9F9F9] text-xs outline-none w-full h-16 rounded-lg border border-[#D7D7D7]'
                ></textarea>
 
                <SubmitButton
@@ -203,7 +205,7 @@ const ContactUs = () => {
                         socket.emit('Request_DashBoard_Data');
                      }
                   }}
-                  Tailwind_utility_Class='text-center bg-[#333333] w-full text-white py-2 text-[1.2vw] rounded-lg'
+                  Tailwind_utility_Class='text-center bg-[#333333] w-full text-white py-2 text-sm rounded-lg'
                >
                   Submit
                </SubmitButton>
