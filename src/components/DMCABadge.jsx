@@ -73,7 +73,9 @@ const DMCABadge = ({
   };
 
   // Check if DMCA is properly configured
-  const isConfigured = true; // Your badge is now properly configured
+  const isConfigured =
+    !!process.env.REACT_APP_DMCA_BADGE_URL &&
+    !!process.env.REACT_APP_DMCA_STATUS_URL;
 
   // Don't render if not configured in production
   if (!isConfigured && process.env.NODE_ENV === 'production') {
@@ -151,30 +153,41 @@ export const withDMCAProtection = (WrappedComponent, badgeProps = {}) => {
   };
 };
 
-// Hook for DMCA protection status
-export const useDMCAProtection = () => {
+// Hook for DMCA protection status (robust version)
+export const useDMCAProtection = (selector = '.dmca-badge-link') => {
   const [protectionStatus, setProtectionStatus] = useState({
     isProtected: false,
     lastChecked: null,
-    certificateUrl: null
+    badgeCount: 0,
+    certificateUrls: []
   });
 
   useEffect(() => {
-    // Check if page has DMCA badge
-    const badge = document.querySelector('.dmca-badge-link');
-    if (badge) {
+    const updateStatus = () => {
+      const badges = document.querySelectorAll(selector);
       setProtectionStatus({
-        isProtected: true,
+        isProtected: badges.length > 0,
         lastChecked: new Date(),
-        certificateUrl: badge.href
+        badgeCount: badges.length,
+        certificateUrls: Array.from(badges).map(b => b.href)
       });
-    }
-  }, []);
+    };
+
+    updateStatus();
+
+    // Watch for DOM changes
+    const observer = new MutationObserver(updateStatus);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, [selector]);
 
   return protectionStatus;
 };
 
 // Utility function to validate DMCA configuration
+const FALLBACK_GUID = "638734f7-8b37-47af-b022-7b03a77295f2";
+
 export const validateDMCAConfig = () => {
   const badges = document.querySelectorAll('.dmca-badge-link');
   const issues = [];
@@ -186,9 +199,14 @@ export const validateDMCAConfig = () => {
     if (!href || !href.includes('dmca.com')) {
       issues.push(`Badge ${index + 1}: Invalid or missing status URL`);
     }
-    
-    if (!img || !img.src || img.src.includes('YOUR_GUID_HERE')) {
-      issues.push(`Badge ${index + 1}: Invalid or missing badge image URL`);
+    // Check for fallback GUID in either the image or the status URL
+    if (
+      !img ||
+      !img.src ||
+      img.src.includes(FALLBACK_GUID) ||
+      (href && href.includes(FALLBACK_GUID))
+    ) {
+      issues.push(`Badge ${index + 1}: Using fallback DMCA badge (not site-specific)`);
     }
   });
 

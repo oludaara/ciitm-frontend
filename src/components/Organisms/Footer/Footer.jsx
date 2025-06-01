@@ -88,7 +88,7 @@ const Footer = React.memo(() => {
                      href={socialLinks?.youtube}
                      label='Youtube'
                   />
-                  <SotalLink
+                  <SocialLink
                      href={socialLinks?.linkedin}
                      label='LinkedIn'
                   />
